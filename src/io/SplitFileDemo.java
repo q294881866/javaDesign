@@ -8,10 +8,6 @@ import java.util.Properties;
 
 /*
  * ÎÄ¼şÇĞ¸îÆ÷¡£
- * 
- * 
- * 
- * 
  */
 
 public class SplitFileDemo {
