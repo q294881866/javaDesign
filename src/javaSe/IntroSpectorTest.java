@@ -11,7 +11,6 @@ import java.util.Map;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.beanutils.PropertyUtils;
 
-import annotationClassloader.ReflectPoint;
 
 public class IntroSpectorTest {
 

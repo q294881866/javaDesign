@@ -35,7 +35,7 @@ public class NullExample {
 
 		
 		//基本类型
-		int i = null;//错误，基本类型没有空值，只有默认值
+		int i = 0;//null;//错误，基本类型没有空值，只有默认值
 		Integer inter= 56;//自动将int类型56装箱为Integer类型
 		i=inter;//自动拆箱把Integer类型转为int类型
 		double d = dbl;//dbl=null,避免隐含d=null的复制
