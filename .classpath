@@ -10,5 +10,8 @@
 	<classpathentry kind="lib" path="lib/mysql-connector-java-5.1.10-bin.jar"/>
 	<classpathentry kind="lib" path="lib/cglib-3.2.4.jar" sourcepath="lib/cglib-RELEASE_3_2_4.zip"/>
 	<classpathentry kind="lib" path="lib/cglib-nodep-3.2.4.jar"/>
+	<classpathentry kind="lib" path="lib/commons-beanutils-1.9.3-javadoc.jar"/>
+	<classpathentry kind="lib" path="lib/commons-beanutils-1.9.3-sources.jar"/>
+	<classpathentry kind="lib" path="lib/commons-beanutils-1.9.3.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -1,13 +1,9 @@
 package javaSe.special.classLoader;
 
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
 
 public class MyClassLoader extends ClassLoader {
 
@@ -35,10 +31,11 @@ public class MyClassLoader extends ClassLoader {
 	
 	
 	public static void main(String[] args) throws Exception {
-		ClassLoader cl = new MyClassLoader("E:\\work4java\\MyJavaDesign\\bin");
-		Class<?> c= cl.loadClass("javaSe.classLoader.MyClassLoader");
-		System.out.print(c.getClassLoader()+" ");
-		System.out.println(c.newInstance() instanceof MyClassLoader);
+		ClassLoader cl1 = new MyClassLoader("E:\\work4java\\MyJavaDesign\\bin");
+		ClassLoader cl2 = new MyClassLoader2("E:\\work4java\\MyJavaDesign\\bin");
+		Class<?> c1= cl1.loadClass("javaSe.special.classLoader.MyClassLoader");
+		Class<?> c2= cl2.loadClass("javaSe.special.classLoader.MyClassLoader");
+		System.out.println(c1 == c2);
 	}
 	
 	
