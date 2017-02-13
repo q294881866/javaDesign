@@ -1,35 +1,21 @@
 package javaSe.special.annotation;
 
 import java.lang.reflect.Method;
+import java.util.Arrays;
 
-import javax.jws.soap.InitParam;
-
-@ExampleAnnotation(annotationAttr=@MetaAnnotation("flx"),color="red",value="abc",arrayAttr=1)
+@Example(msg = "门前大桥下")
 public class AnnotationTest {
 
-	/**
-	 * @param args
-	 */
-	@SuppressWarnings("deprecation")
-	@ExampleAnnotation(color="xyz")
+	@Example( msg = "游过一群鸭")
 	public static void main(String[] args) throws Exception{
-		// TODO Auto-generated method stub
-		/*System.runFinalizersOnExit(true);
-		if(AnnotationTest.class.isAnnotationPresent(ExampleAnnotation.class)){
-			ExampleAnnotation annotation = (ExampleAnnotation)AnnotationTest.class.getAnnotation(ExampleAnnotation.class);
-			System.out.println(annotation.color());
-			System.out.println(annotation.value());
-			System.out.println(annotation.arrayAttr().length);
-			System.out.println(annotation.annotationAttr().value());
-		}*/
-		
-		Method mainMethod = AnnotationTest.class.getMethod("main", String[].class);
-		ExampleAnnotation annotation2 = (ExampleAnnotation)mainMethod.getAnnotation(ExampleAnnotation.class);
-		System.out.println(annotation2.color());
-	}
-
-	@Deprecated
-	public static void sayHello(){
-		System.out.println("hi,ppf");
+		Method m = AnnotationTest.class.getMethod("main", String[].class);
+		if(AnnotationTest.class.isAnnotationPresent(Example.class)){
+			Example annotation = (Example)AnnotationTest.class.getAnnotation(Example.class);
+			System.out.println(annotation.msg());
+			Example a2 = m.getAnnotation(Example.class);
+			System.out.println(a2.msg());
+			System.out.println(annotation.anno().value());
+			System.out.println(Arrays.toString(annotation.iArr()));
+		}
 	}
 }
