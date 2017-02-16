@@ -1,0 +1,50 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Untitled Document</title>
+		<!-- 外部引入文件 src属性 -->
+		<!-- 解析顺序 从上到下 边解析边执行 -->
+		<!-- 延迟执行：defer="defer"  可以延迟执行代码（当页面都加载完毕以后 window.onload）  -->
+		<script type="text/javascript" charset="utf-8" src="packaging.js"></script>
+		<script type=text/javascript charset=utf-8 >
+			var p1 = new JM.Person('吕布', '男');
+			var p2 = new JM.Person('貂蝉', '女');
+			/* //1.当作构造函数去使用 ：
+			// alert(p1.name);
+			// p1.getName();//括号表示执行
+			alert(p1.constructor == JM.Person);// true
+			alert(p1 == p2); // false
+	
+			alert(p1 instanceof JM.Person);// true
+			alert(p1 instanceof Object);// true
+	
+			// 2.作为普通的函数去调用
+			// 在全局环境里定义属性并复制 直接定义在window上
+			JM.Person('貂蝉', '女');
+			// alert(name);
+			// 3.在另一个对象的作用域中调用
+			var o = new Object();
+			// call applly
+			JM.Person.call(o, '吕布', '男');
+			// alert(o.name); */
+			
+			/*prototype 原型，类似java类属性,被所有对象共享*/
+			var obj = JM.Person.prototype;
+			alert(typeof obj);
+			obj.master = '曹孟德';
+			alert(p1.master == p2.master);
+			
+			alert(obj.constructor);//模板本身,JM.Person
+			//实例对象.prototype = 原型对象
+			alert(p1.prototype);//undefined
+			alert(obj.isPrototypeOf(p1));//true
+			
+			
+		</script>
+		
+		
+	</head>
+	<body>
+	</body>
+</html>

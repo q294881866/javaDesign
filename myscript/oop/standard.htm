@@ -1,0 +1,34 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Untitled Document</title>
+		<!-- 外部引入文件 src属性 -->
+		<!-- 解析顺序 从上到下 边解析边执行 -->
+		<!-- 延迟执行：defer="defer"  可以延迟执行代码（当页面都加载完毕以后 window.onload）  -->
+		<script type="text/javascript" charset="utf-8" src="packaging.js"></script>
+		<script type=text/javascript charset=utf-8 >
+			//1.原型继承
+			function Test(){};
+			Test.prototype = new JM.Person('吕布', '男');
+			var test = new Test();
+			alert(test.sex);
+			alert(test.msg);
+			
+			//2.模板继承
+			var t = new JM.Teacher('荀彧' , '男', 20);
+			alert(t.name);
+			alert(t.msg);//undefined
+			
+			//3.原型继承+模板继承
+			JM.extend(JM.Student,JM.Person);
+			var s = new JM.Student('袁术' , '男', 'lol');
+			alert(s.msg);
+			alert(s.game);
+		</script>
+		
+		
+	</head>
+	<body>
+	</body>
+</html>

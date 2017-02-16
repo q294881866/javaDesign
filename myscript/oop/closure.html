@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" charset="utf-8" src="packaging.js"></script>
+<script type=text/javascript charset=utf-8>
+	var UserAgent = "MSIE";
+	var Singleton = (function() {
+		//var 定义该作用域私有变量
+		var _instance;
+		var isIE = "MSIE"== UserAgent;
+		function init() {
+			var msg1 = "正在使用IE浏览器";
+			var msg2 = "正在使用火狐浏览器";
+			var mozilla = function() {
+				return "正常显示";
+			};
+			var ie7 = function() {
+				return "IE兼容显示";
+			};
+			return {
+				msg : isIE ? msg1 :msg2,
+				config : function() {
+					return  isIE ? ie7() : Mozilla();
+				}
+			};
+		};
+
+		return {
+			getInstance : function() {
+				if (!_instance) {
+					_instance = init();
+				}
+				return _instance;
+			}
+		}
+	})();
+	alert(Singleton.getInstance().msg);
+	alert(Singleton.getInstance().config());
+</script>
+</head>
+<body>
+</body>
+</html>
