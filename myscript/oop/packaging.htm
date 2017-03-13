@@ -10,6 +10,7 @@
 		<script type=text/javascript charset=utf-8 >
 			var p1 = new JM.Person('吕布', '男');
 			var p2 = new JM.Person('貂蝉', '女');
+			
 			/* //1.当作构造函数去使用 ：
 			// alert(p1.name);
 			// p1.getName();//括号表示执行
@@ -31,15 +32,15 @@
 			
 			/*prototype 原型，类似java类属性,被所有对象共享*/
 			var obj = JM.Person.prototype;
-			alert(typeof obj);
-			obj.master = '曹孟德';
-			alert(p1.master == p2.master);
-			
+			//alert(typeof obj);
+			//obj.master = '曹孟德';
+			//alert(p1.master == p2.master);
+			//
 			alert(obj.constructor);//模板本身,JM.Person
-			//实例对象.prototype = 原型对象
+			//方法名.prototype = 原型对象
 			alert(p1.prototype);//undefined
 			alert(obj.isPrototypeOf(p1));//true
-			
+			alert(JM.Person.prototype.isPrototypeOf(p1));
 			
 		</script>
 		

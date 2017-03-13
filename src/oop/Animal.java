@@ -4,6 +4,4 @@ package oop;
  * @author ppf@jiumao.org
  * @date 2017Äê2ÔÂ14ÈÕ
  */
-public interface Animal extends Action,Art{
-	
-}
+public interface Animal extends Action,Art{ }

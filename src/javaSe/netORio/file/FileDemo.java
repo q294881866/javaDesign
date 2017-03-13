@@ -1,125 +1,78 @@
 package javaSe.netORio.file;
 
+import static org.junit.Assert.*;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
-import java.net.URI;
+import java.io.Reader;
+import java.io.Writer;
 import java.net.URISyntaxException;
 import java.util.Date;
 
+import org.junit.Test;
+
 /**
- * java io api
- * @author ppf@jiumao.org
- *
+ * 文件、文件夹的创建、读写
+ * 
+ * @author ppf
+ * @since 2017年3月2日
  */
 public class FileDemo {
-	/**文件夹名称*/
-	static String dir = "test";
-	static String disk = "D:";
-	static String  filename = "D:\\v5\\v6\\87";
-	public static void main(String[] args) throws Exception {
-//		params();
-//		apis();
-		apis2();
+	/** 文件夹名称 */
+	final static String dir = "test";
+	final static String disk = "D:";
+	final static String filename = "test.txt";
+	final static String path = disk + File.separator + dir;
+	final static String file = path + File.separator + filename;
+
+	/** 注意：char类型与String类型 */
+	@Test
+	public void params() {
+		String useString = File.separator + File.pathSeparator;
+		String useChar = "" + File.separatorChar + File.pathSeparatorChar;
+		System.out.println(useString.equals(useChar));
 	}
 
-	/**
-	 * java file 中的属性
-	 */
-	public static void params() {
-		filename = "D:/v5/87.txt";
-		filename = disk+File.separator+dir+File.separator+
-				"test.txt";
-		System.out.println(filename);
-		System.out.println(File.separator.equals(""+File.separatorChar));
+	@Test
+	public void createFileWithTmpFile() throws Exception {
+		File f1 = new File(path + File.separator + dir + File.separator + filename);
+		File f2 = new File(File.separator + filename);
+		// 创建一个文件
+		boolean b1 = f1.createNewFile();// 创建出来的是文件而不是文件夹
+		boolean b2 = f2.createNewFile();// 创建出来的是文件而不是文件夹
+		System.out.println(b1 + " || " + b2);
+		// String 返回字符串
+		System.out.println(f1.getAbsolutePath() + " || " + f2.getAbsolutePath() );
+		//如果路径是空，返回根据系统参数user.dir当前用户路径
+		System.out.println(new File("").getAbsolutePath().equals(System.getProperty("user.dir")));
+		// File 返回文件
+		System.out.println(f1.getAbsoluteFile() + " || " + f2.getAbsoluteFile());
+		// 相对路径
+		System.out.println(f1.getPath() + " || " + f2.getPath());
 		
-		System.out.println(File.pathSeparator);// ;
-		System.out.println(File.pathSeparatorChar);// ;
-	}
-	
-	/**
-	 * file api
-	 * @throws IOException 
-	 * @throws URISyntaxException 
-	 */
-	public static void apis() throws IOException, URISyntaxException {
-		File f = new File(filename+".txt");
-		boolean b = false;
-//		boolean b = f.mkdir();//创建目录
-//				boolean b  = f.mkdirs();//若父目录不存在,就先创建父目录
-//				System.out.println(b);
-		//创建一个文件
-//		b = f.createNewFile();// 创建出来的是文件而不是文件夹
-//		System.out.println(b);
-//		System.out.println(f);
-//		System.out.println(f.canExecute());
-//		System.out.println(f.canWrite());
-//
-//		//String getAbsolutePath() 返回此抽象路径名的绝对路径名字符串
-//		System.out.println(f.getAbsolutePath());
-//		//File getAbsoluteFile() 返回此抽象路径名的绝对路径名形式。<br>
-//		System.out.println(f.getAbsoluteFile());
-//		System.out.println(f.getName());
-//		
-//		System.out.println(f.isFile());
-//		System.out.println(f.isDirectory());
-		
-//		
-//		System.out.println(f.getParent());
-//		System.out.println(f.getPath());
-//		
-//
-//		/*
-//		 * other operation
-//		 */
-//		
-//		/*
-//		 * boolean renameTo(File dest)  重新命名此抽象路径名表示的文件。 
-//		 * */
-//		
-//		f.renameTo(new File(filename+"1"));
-//		
-//		URI uri= f.toURI();
-//		System.out.println(uri);
-//		
-//		f = new File(uri);
-//		System.out.println(f);
-//		
-//		/**
-//		 * boolean delete() 删除此抽象路径名表示的文件或目录。
-//		 */
-		System.out.println(new File(filename).delete());
-		System.out.println(new File(filename).exists());
-		
-	}
+		File tmp = File.createTempFile("test", null, null);
+		System.out.println(tmp.getAbsolutePath());
+		tmp.deleteOnExit();
 
-	/**
-	 * 创建指定文件
-	 * @throws URISyntaxException 
-	 */
-	private static void apis2() throws IOException, URISyntaxException {
-		/*
-		 * static File createTempFile(String prefix, String suffix, File
-		 * directory) 在指定目录中创建一个新的空文件，使用给定的前缀和后缀字符串生成其名称。
-		 */
-
-		File myfile = File.createTempFile("test", ".java", new File(disk+File.separator+dir));
-		System.out.println(myfile);
-		
-		/*
-		 * boolean isHidden() 
-			          测试此抽象路径名指定的文件是否是一个隐藏文件。 
-		   long lastModified() 
-			          返回此抽象路径名表示的文件最后一次被修改的时间。 
-		   long length()  
-
-		 * */
-		System.out.println(myfile.isHidden());
-		System.out.println(new Date(myfile.lastModified()));
-		System.out.println(myfile.length());
-		
-		
-		
 	}
 	
-	
+	@Test
+	public void charFile() throws Exception {
+		File f = new File(file);
+		Writer fw = new BufferedWriter(new FileWriter(f));
+		fw.write("字节流文件读取");
+		fw.close();
+
+		Reader fr = new BufferedReader(new FileReader(f));
+		int i=-1;
+		while ((i = fr.read())!=-1) {
+			System.out.print((char)i);
+		}
+		fr.close();
+	}
+
 }

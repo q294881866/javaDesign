@@ -92,11 +92,12 @@ JM.Interface.ensureImplements = function(args) {
  */
 JM.extend = function(sub, sup) {
 	// 1 临时函数
-	var F = new Function();
-	// 2 保存父类原型
-	F.prototype = sup.prototype;
-	// 3 原型继承
-	sub.prototype = new F();
+//	var F = new Function();
+//	// 2 保存父类原型
+//	F.prototype = sup.prototype;
+//	// 3 原型继承
+//	sub.prototype = new F();
+	sub.prototype = sup.prototype;
 	// 4 还原子类的构造器
 	sub.prototype.constructor = sub;
 	// 5 保存一下父类的原型对象: 一方面方便解耦 另一方面方便获得父类的原型对象

@@ -9,16 +9,16 @@
 		<script type="text/javascript" charset="utf-8" src="packaging.js"></script>
 		<script type=text/javascript charset=utf-8 >
 			//1.原型继承
-			function Test(){};
-			Test.prototype = new JM.Person('吕布', '男');
-			var test = new Test();
-			alert(test.sex);
-			alert(test.msg);
-			
-			//2.模板继承
-			var t = new JM.Teacher('荀彧' , '男', 20);
-			alert(t.name);
-			alert(t.msg);//undefined
+			//function Test(){};
+			//Test.prototype = new JM.Person('吕布', '男');
+			//var test = new Test();
+			//alert(test.sex);
+			//alert(test.msg);
+			//
+			////2.模板继承
+			//var t = new JM.Teacher('荀彧' , '男', 20);
+			//alert(t.name);
+			//alert(t.msg);//undefined
 			
 			//3.原型继承+模板继承
 			JM.extend(JM.Student,JM.Person);

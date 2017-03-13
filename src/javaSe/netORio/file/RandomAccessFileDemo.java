@@ -2,75 +2,25 @@ package javaSe.netORio.file;
 
 import java.io.IOException;
 import java.io.RandomAccessFile;
-
-
+import java.nio.MappedByteBuffer;
+import java.nio.channels.FileChannel;
 
 public class RandomAccessFileDemo {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		// write("data.txt");
-		read("data.txt");
+		// read("data.txt");
+		nioRA("data.txt");
 	}
 
-	public static void read(String filename) {
-		RandomAccessFile raf = null;
-		try {
-			raf = new RandomAccessFile(filename, "r");
-			//先读 lisi,再度 zhangsan, 最后读wangwu
-			
-			//移动文件指针
-			
-			//raf.seek(9);//绝对位置效率偏低
-			raf.skipBytes(9);//相对位置
-			
-			String name = "";
-			for (int i = 0; i < "lisi".length(); i++) {
-				char c = (char)raf.read();
-				name += c;
-			}
-			System.out.println(name);
-			System.out.println(raf.readInt());//往下读四个字符
-			
-			//张三
-			
-			raf.seek(0);
-			name = "";
-			
-			for (int i = 0; i < "zhangsan".length(); i++) {
-				char c = (char)raf.read();
-				name += c;
-			}
-			System.out.println("name="+name);
-			/*
-			 * 返回值此方法返回这个文件的下四个字节，解释为一个int。
-			 * 
-			 * 异常IOException --如果发生I/ O错误。
-			 * 
-			 * EOFException -- 如果这个文件读取四个字节之前到达末尾。
-			 */
-			System.out.println(raf.readInt());
-			
-			
-			//王五
-			raf.skipBytes(3);//lisi  16
-			name = "";
-			for (int i = 0; i < "wangwu".length(); i++) {
-				char c = (char)raf.read();
-				name += c;
-			}
-			System.out.println(name);
-			System.out.println(raf.readInt());
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			// 最后必须关闭资源
-			if (raf != null) {
-				try {
-					raf.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
-		}
+	public static void read(String filename) throws IOException {
+		RandomAccessFile raf = new RandomAccessFile(filename, "r");
+		System.out.println(raf.readBoolean());
+		raf.seek(3);// 文件指针绝对位置
+		System.out.println(raf.readInt());
+		System.out.println(raf.getFilePointer());
+		raf.skipBytes(4);// 文件指针相对位置
+		System.out.println(raf.readLong());
+		raf.close();
 	}
 
 	/**
@@ -78,38 +28,38 @@ public class RandomAccessFileDemo {
 	 * 
 	 * @param filename
 	 *            目标文件
+	 * @throws IOException
 	 */
-	public static void write(String filename) {
-		RandomAccessFile raf = null;
-		try {
-			raf = new RandomAccessFile(filename, "rw");
+	public static void write(String filename) throws IOException {
+		RandomAccessFile raf = new RandomAccessFile(filename, "rw");
+		raf.setLength(1024);// 文件大小预分配
+		raf.writeBoolean(true);// true (byte)1，false (byte)0
+		raf.writeShort(2);// 2 字节，与数据类型相关，下同
+		raf.writeInt(5);
+		raf.writeFloat(1F);
+		raf.writeLong(2L);
+		raf.writeDouble(3.33);
+		raf.writeChar('中');
+		raf.writeUTF("华");
+		raf.write("人民共和国".getBytes());
+		System.out.print("文件指针：" + raf.getFilePointer());
+		System.out.println(" 文件容量：" + raf.length());
 
-			// raf.setLength(1024 * 1024);
-			// 相文件里写入数据
-			// System.out.println(raf.getFilePointer());
-			raf.write("zhangsan".getBytes());
-			raf.writeInt(15);
+		raf.close();
+	}
 
-			System.out.println(raf.getFilePointer());
-
-			// raf.seek(0);//把文件指针移到0位置
-			raf.write("lisi".getBytes());
-			raf.writeInt(16);
-
-			raf.write("wangwu".getBytes());
-			raf.writeInt(17);
-			System.out.println(raf.getFilePointer());
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			// 最后必须关闭资源
-			if (raf != null) {
-				try {
-					raf.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
+	@SuppressWarnings("resource")
+	public static void nioRA(String filename) throws IOException {
+		FileChannel fc = new RandomAccessFile(filename, "rw").getChannel();
+		MappedByteBuffer out = fc.map(// 文件在内存中映射
+				FileChannel.MapMode.READ_WRITE, // 读或写模式
+				0, // 文件映射开始位置
+				Math.max(fc.size(), 1 << 10));// 结束位置
+		for (int i = 0; i < 1 << 10; i++) {
+			out.put((byte) i);// 写0-1023
 		}
+		System.out.println(out.get(2) + out.get(3));// 5
+		System.out.println(out.limit());// 1024
+		fc.close();
 	}
 }

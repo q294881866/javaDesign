@@ -7,23 +7,26 @@ interface Worker {
 class Programmer implements Worker{
 	@Override
 	public void work() {
-		System.out.println("ç¨‹åºè®¾è®¡");
+		System.out.println("³ÌĞòÉè¼Æ");
 	}
 }
 
 class Coder extends Programmer{
+	private String get = "¼Ó°à coding£¡";
 	private class BlackTech implements Worker{
 		@Override
 		public void work() {
-			System.out.println("åŠ ç­ codingï¼");
+			//ÄÚ²¿¿ÉÒÔ·ÃÎÊÍâ²¿ÀàµÄË½ÓĞ³ÉÔ±
+			System.out.println(get);
 		}
 	}
 	
 	public Worker getBlackTech(){
-		//é€šè¿‡æ¥å£å¼•ç”¨ç§æœ‰å­ç±»å®ä¾‹
+		//Í¨¹ı½Ó¿ÚÒıÓÃË½ÓĞ×ÓÀàÊµÀı
 		return new BlackTech();
 	}
 	public static void main(String[] args) {
+		new Coder().work();
 		new Coder().getBlackTech().work();
 	}
 }

@@ -1,21 +1,13 @@
 package oop;
 
 public class Learner implements Animal{
-	private Action act;
-	private Art art;
+	private Action act; //不同的行动
+	private Art art;//不同的表现力
 	public Learner(Action act,Art art) {
-		this.act= act;
-		this.art= art;
+		this.act= act; this.art= art;
 	}
-
 	@Override
-	public void action() {
-		act.action();
-	}
-
+	public void action() { act.action(); }
 	@Override
-	public void show() {
-		art.show();
-	}
-
+	public void show() { art.show(); }
 }

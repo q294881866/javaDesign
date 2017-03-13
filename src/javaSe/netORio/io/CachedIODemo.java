@@ -1,75 +1,147 @@
 package javaSe.netORio.io;
 
+import static org.junit.Assert.*;
+
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.CharArrayReader;
 import java.io.CharArrayWriter;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.PrintStream;
+import java.nio.charset.Charset;
+import java.util.Scanner;
+
+import org.junit.Test;
 
 /**
- *		ÄÚ´æÁ÷¿ÉÒÔ²»ÓÃ¹Ø±Õ 
- *
+ * ç¼“å†²æµ
  */
 public class CachedIODemo {
-	public static void main(String[] args) throws IOException {
-		byteStream1();
-		charArray1();
-	}
-	
-	/**
-	 * ÄÚ´æÁ÷µÄ¶ÁĞ´
-	 * @throws IOException
-	 */
-	public static void byteStream1() throws IOException{
-		/*
-		 * Œ¢Êı¾İĞ´µ½ÄÚ´æÖĞ
-		 */
-		String data  = "Å¬Á¦ÁË£¬ÕäÏ§ÁË£¬ÎÊĞÄÎŞÀ¢¡£ÆäËüµÄ£¬½»¸øÃüÔË!";
-		//±£´æµ½ÄÚ´æÖĞÈ¥.//³ÌĞò-->ÄÚ´æ 
+	@Test
+	public void byteArrayStreamTest() throws Exception {
+		String data = "åŠªåŠ›äº†ï¼Œçæƒœäº†ï¼Œé—®å¿ƒæ— æ„§ã€‚å…¶å®ƒçš„ï¼Œäº¤ç»™å‘½è¿!";
+		// ä¿å­˜åˆ°å†…å­˜ä¸­å».//ç¨‹åº-->å†…å­˜
 		ByteArrayOutputStream bos = new ByteArrayOutputStream();
 		bos.write(data.getBytes());
-		
-		/*
-		 * ´¦Àí²¢´òÓ¡Êı¾İ
-		 */
-		
-		//byte[] toByteArray() ´´½¨Ò»¸öĞÂ·ÖÅäµÄ byte Êı×é¡£
-		byte[] bys = bos.toByteArray();//ÕæÕıµÄÊı¾İ
-		ByteArrayInputStream bis = new  ByteArrayInputStream(bys);
-		
-		byte[] b= new byte[1024];
+		bos.close();// å…³é—­æ— æ•ˆ
+		byte[] bys = bos.toByteArray();// çœŸæ­£çš„æ•°æ®
+		System.out.println(new String(bys));
+
+		ByteArrayInputStream bis = new ByteArrayInputStream(bys);
+	}
+
+	@Test
+	public void charArrayChar() throws IOException {
+		String data = "äººå’Œäººä¹‹é—´å°±æ˜¯ä¸€ä»½æƒ…ï¼Œä¸€ä»½ç¼˜ï¼Œä½ çæƒœæˆ‘ï¼Œ"//
+				+ "æˆ‘ä¼šåŠ å€å¥‰è¿˜ï¼Œä½ ä¸åœ¨æ„ï¼Œæˆ‘åˆä½•å¿…å»çæƒœã€‚";
+		// ç¨‹åº -> å†…å­˜
+		CharArrayWriter cw = new CharArrayWriter();
+		cw.write(data);// FileOutputStream
+		char[] cs = cw.toCharArray();// å–å‡ºå†…å­˜è¾“å‡ºæµçš„æ•°æ®
+		System.out.println(cs.length);
+		// æŠŠå†…å­˜çš„æ•°æ® ---> ç¨‹åº
+
+		CharArrayReader cr = new CharArrayReader(cs);
+		char[] buff = new char[1024];
 		int len = 0;
-		while((len = bis.read(b)) != -1){
-			String str = new String(b,0,len);
-			System.out.println(str);
+		while ((len = cr.read(buff)) != -1) {
+			System.out.println(new String(buff, 0, len));
 		}
 	}
-	
-	
-	public static void charArray1() throws IOException {
-		String data = "ÈËºÍÈËÖ®¼ä¾ÍÊÇÒ»·İÇé£¬Ò»·İÔµ£¬ÄãÕäÏ§ÎÒ£¬ÎÒ»á¼Ó±¶·î»¹£¬Äã²»ÔÚÒâ£¬ÎÒÓÖºÎ±ØÈ¥ÕäÏ§¡£";
-		
-		
-		//³ÌĞò  -> ÄÚ´æ
-		
-		CharArrayWriter cw = new  CharArrayWriter();
-		
-		cw.write(data);//FileOutputStream
-		
-		char[] cs = cw.toCharArray();//È¡³öÄÚ´æÊä³öÁ÷µÄÊı¾İ
-		
-		
-		System.out.println(cs.length);
-		//°ÑÄÚ´æµÄÊı¾İ   --->  ³ÌĞò
-		
-		
-		CharArrayReader cr = new CharArrayReader(cs);
-		
-		char[] buff = new char[1024];
-		
-		int len = 0;
-		while((len = cr.read(buff)) != -1){
-			System.out.println(new String(buff,0,len));
+
+	@Test
+	public void bufferedCharTest() throws Exception {
+		BufferedReader br = new BufferedReader(//
+				new FileReader("data.txt"));
+		BufferedWriter bw = new BufferedWriter(//
+				new FileWriter("copy.txt"));
+		String line = null;
+		while ((line = br.readLine()) != null) {//
+			bw.write(line);// å†™ä¸€è¡Œ
+			bw.newLine();// å†™å®Œä¸€è¡Œå°±æ¢è¡Œ
 		}
+		bw.close();
+		br.close();
+	}
+
+	@Test
+	public void bufferedStreamTest() throws Exception {
+		BufferedInputStream bis = new BufferedInputStream(//ç¼“å†²
+				new FileInputStream("data.txt"));
+		ByteArrayOutputStream bos = new //å­—èŠ‚æ•°ç»„
+				ByteArrayOutputStream(bis.available());
+		int i = -1;
+		while ((i = bis.read()) != -1) {
+			bos.write(i);
+		}
+		bis.close();//å†…éƒ¨è°ƒç”¨ input.close() å³FileInputStream close
+		byte[] bs = bos.toByteArray();
+		
+		BufferedOutputStream buffOut = new BufferedOutputStream(
+				new FileOutputStream("copy.txt"));
+		buffOut.write(bs);
+		buffOut.close();//å…ˆflush å†è°ƒç”¨åº•å±‚out.close
+	}
+
+	@Test
+	public void stream2Char() throws Exception {
+
+		InputStreamReader isr = new InputStreamReader(new FileInputStream("data.txt"));
+		BufferedReader br = new BufferedReader(isr);
+		String line = null;
+		while (null != (line = br.readLine())) {
+			System.out.println(line);
+		}
+
+		br.close();
+		isr.close();
+	}
+
+	@Test
+	public void char2Stream() throws Exception {
+		OutputStreamWriter osw = new OutputStreamWriter(new FileOutputStream("data.txt"), // out
+				Charset.defaultCharset().name());// charset
+		osw.write("Hi there!");
+		osw.close();
+	}
+
+	// Javaçš„æ ‡å‡†è¾“å…¥è¾“å‡ºï¼Œåˆ†åˆ«é€šè¿‡System.inå’ŒSystem.outè¡¨ç¤ºï¼Œé»˜è®¤æƒ…å†µä¸‹ï¼Œä»–ä»¬åˆ†åˆ«è¡¨ç¤ºé”®ç›˜å’Œå±å¹•ã€‚ä¹Ÿå°±æ˜¯è¯´é”®ç›˜è¾“å…¥ï¼Œå±å¹•æ˜¾ç¤ºè¾“å‡ºã€‚
+	// Systemç±»é‡Œé¢æœ‰ä¸‰ä¸ªé‡å®šå‘æ ‡å‡†è¾“å…¥/è¾“å‡ºçš„æ–¹æ³•ï¼š
+	// static void setErr(PrintStream err)ï¼šé‡å®šå‘â€œæ ‡å‡†â€é”™è¯¯è¾“å‡ºæµâ€
+	// static void setIn(InputStream in)ï¼šé‡å®šå‘â€œæ ‡å‡†"è¾“å…¥æµâ€
+	// static void setOut(PrintStream out)ï¼šé‡å®šå‘â€œæ ‡å‡†â€è¾“å‡ºæµâ€
+	@SuppressWarnings("resource")
+	@Test
+	public void systemStreamTest() throws Exception {
+		// 1.ä¾‹å­ï¼šæ‹·è´æ–‡ä»¶
+		System.setIn(new FileInputStream("data.txt"));
+		System.setOut(new PrintStream(new File("copy.txt")));
+	}
+
+	// 2.ä¾‹å­ï¼šä»æ ‡å‡†è¾“å…¥æµæ‰“å°
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		String line = null;
+		while (sc.hasNext()) {
+			line = sc.next();
+			System.out.print(line);
+			if ("exit".equals(line)) {
+				System.out.println("end ...");
+				break;
+			}
+		}
+		sc.close();
+		System.exit(0);
 	}
 }
