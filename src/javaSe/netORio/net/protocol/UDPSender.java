@@ -18,6 +18,7 @@ public class UDPSender {
 		System.out.println("发送端启动......");
 		DatagramSocket ds = new DatagramSocket(8888);
 
+		// XXX 广播模式编写
 		String str = "男人要有三才。\n" //
 				+ "首先，要有点钱财，不用担心油盐米柴。\n"//
 				+ "其次，要有点文采，让人家有点小崇拜。\n" //

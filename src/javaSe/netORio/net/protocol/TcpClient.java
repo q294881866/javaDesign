@@ -25,6 +25,11 @@ public class TcpClient {
 		PrintWriter pw = new PrintWriter(out);
 		pw.println("TcpClient");
 		pw.close();
+		/*
+		 * 如果通道为非阻塞模式，将抛出 IllegalBlockingModeException。
+		 * 输出流的 write 操作 
+		 * 输入流的 read 操作
+		 */
 		
 		//读取服务端返回的数据,使用socket读取流。 
 		InputStream in = socket.getInputStream();

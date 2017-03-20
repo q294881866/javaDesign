@@ -8,7 +8,8 @@ import java.util.Map;
 
 public class PlayKuaiSan {
 
-	public static  Map<Float, String> hm = new HashMap<>();
+	/**中奖的类型池*/
+	public static final Map<Float, String> pool = new HashMap<>();
 	/**1.选择三个数的和值为中奖标准*/
 //	public static final int SUM_RESULT = 1;
 	/**1.1选择三个数的和值为中奖标准  和值相同中奖*/
@@ -39,28 +40,17 @@ public class PlayKuaiSan {
 	
 	/**6 三连号*/
 	public static final float ABC = 6f;
-	private static void init(){
-		hm.put(SUM_RESULT_EQUAL, "和值相同中奖");
-		hm.put(SUM_RESULT_ODD_AND_EVEN, "和值单双相同中奖");
-		hm.put(SUM_RESULT_BIG_SMALL, "和值大小中奖");
-		
-		hm.put(AAA_ALL, "只要开奖号码为三个同号，就中奖");
-		hm.put(AAA_ONE, "开奖号为三同号，且和你买的三同号一样");
-		
-		hm.put(AAB_ALL, "只要开奖号码为两个同号，就中奖");
-		hm.put(AAB_ONE, " 二同号单选");
-		
-		/**4. 三不同号中奖方式*/
-		hm.put(THREE_DIFFERENT, "三不同号中奖方式");
-		
-		/**5  二不同号中奖方式*/
-		hm.put(TWO_DIFFERENT, " 二不同号中奖方式");
-		
-		/**6 三连号*/
-		hm.put(ABC, " 三连号");
-	}
-	public PlayKuaiSan() {
-		init();
+	static{
+		pool.put(SUM_RESULT_EQUAL, "和值相同中奖");
+		pool.put(SUM_RESULT_ODD_AND_EVEN, "和值单双相同中奖");
+		pool.put(SUM_RESULT_BIG_SMALL, "和值大小中奖");
+		pool.put(AAA_ALL, "只要开奖号码为三个同号，就中奖");
+		pool.put(AAA_ONE, "开奖号为三同号，且和你买的三同号一样");
+		pool.put(AAB_ALL, "只要开奖号码为两个同号，就中奖");
+		pool.put(AAB_ONE, " 二同号单选");
+		pool.put(THREE_DIFFERENT, "三不同号中奖方式");
+		pool.put(TWO_DIFFERENT, " 二不同号中奖方式");
+		pool.put(ABC, " 三连号");
 	}
 	
 	/**
@@ -70,20 +60,11 @@ public class PlayKuaiSan {
 	 * @param z
 	 */
 	public static List<Float> inputThreeNum(int x,int y,int z){
-		List<Float> floats = new PlayKuaiSan().inputCheck(x,y,z);
-//		if (null == floats) {
-//			System.out.println("输入有误");
-//		}else {
-//			for (Float float1 : floats) {
-//				System.out.println("根据您的号码，可以选择如下投注：\n"+PlayKuaiSan.hm.get(float1));
-//			}
-//		}
-		return floats;
+		return inputCheck(x,y,z);
 	}
 	
 	//用于验证输入是不是合格
-	private List<Float> inputCheck(int... number) {
-
+	private static List<Float> inputCheck(int... number) {
 		Arrays.sort(number); // 对下注号码排序
 		if (number[0]<1||number[2]>6) {
 			return null;//输入不合法，有小于1和大于6的数
@@ -109,13 +90,11 @@ public class PlayKuaiSan {
 		(((number2 == 123 || number2 == 234) || number2 == 345)
 				|| number2 == 456) {
 			list.add(ABC);
-		} else		{
+		} else{
 			/** 4. 三不同号中奖方式 */
 			list.add(THREE_DIFFERENT);
 		}
-		
 		return list;
-
 	}
 	
 	
@@ -125,7 +104,6 @@ public class PlayKuaiSan {
 		for (Float float1 : floats) {
 			PlayKuaiSan.checkPoint(float1, i,i);
 		}
-		
 	}
 	
 	/**

@@ -4,138 +4,124 @@ import java.util.Arrays;
 
 public class KuaiSan {
 
-	Integer[] num = new Integer[3]; // 鐢ㄦ潵瀛樹骇鐢熺殑鍙风爜
+	 /**用来存产生的号码*/
+	Integer[] jackpot = new Integer[3];
 
-	KuaiSan(Integer... owner ) {
-
-		this.num = owner;
-		System.out.print("鏈湡鍙风爜涓猴細");
-		for (int i : num)
+	KuaiSan(Integer... owner) {
+		this.jackpot = owner;
+		System.out.print("本期号码为：");
+		for (int i : jackpot)
 			System.out.print(i);
 		System.out.println();
 	}
 
-	// 浜х敓闅忔満鍙风爜
+	/**
+	 * 产生随机号码
+	 */
 	private void randomSan() {
 		for (int i = 0; i < 3; i++)
-			num[i] = (int) ((Math.random() * 300 % 6) + 1);
-		Arrays.sort(num);
+			jackpot[i] = (int) ((Math.random() * 300 % 6) + 1);
+		Arrays.sort(jackpot);
 	}
 
 	/**
-	 * 鏍稿鍙风爜锛屾槸鍚︿腑濂?
+	 * 核对号码，是否中奖
 	 * 
 	 * @param a
-	 *            鐢ㄦ潵琛ㄧず鍏ぇ绫荤殑涓鏂瑰紡
+	 *            用来表示六大类的中奖方式
 	 * @param b
-	 *            鐢ㄦ潵琛ㄧず姣忎釜澶х被鐨勪腑濂栨柟寮忎笅鐨勫皬绫诲埆
+	 *            用来表示每个大类的中奖方式下的小类别
 	 * @param number
-	 *            闇?瑕佹牳瀹炵殑涓嬫敞鍙风爜
+	 *            要核实的下注号码
 	 */
 	void check(int a, int b, Integer[] number) {
 
-		Arrays.sort(number); // 瀵逛笅娉ㄥ彿鐮佹帓搴?
-		// 杈撳嚭涓嬫敞鍙风爜
-		System.out.print("涓嬫敞鍙风爜涓猴細");
+		Arrays.sort(number); 
+		System.out.print("下注号码为：");
 		for (int i : number)
 			System.out.print(i);
 		System.out.println();
 
-		int numSum = num[0] + num[1] + num[2]; // 寮?濂栧彿鐮佸拰
-		int numberSum = number[0] + number[1] + number[2]; // 鐢ㄦ埛鍙风爜鍜?
+		int numSum = jackpot[0] + jackpot[1] + jackpot[2]; // 中奖号码和
+		int numberSum = number[0] + number[1] + number[2]; // 用户号码和
 		switch (a) {
-		// 閫夋嫨涓変釜鏁扮殑鍜屽?间负涓鏍囧噯
+		// 选择三个数的和值为中奖标准
 		case 1:
 			switch (b) {
-			// 鍜屽?肩浉鍚屼腑濂?
-			case 1:
+			case 1:// 和值相同中奖
 				if (numberSum == numSum)
-					System.out.println("鎭枩浣狅紝(涓夋暟鍜?)涓鍟︼紒");
+					System.out.println("恭喜你，(三数和)中奖啦！");
 				else
-					System.out.println("寰堥仐鎲撅紝(涓夋暟鍜?)浣犳病涓紒");
+					System.out.println("很遗憾，(三数和)你没中！");
 				break;
-			// 鍜屽?煎崟鍙岀浉鍚屼腑濂?
-			case 2:
+			case 2:// 和值单双相同中奖
 				if ((numberSum % 2) == (numSum % 2))
-					System.out.println("鎭枩浣狅紝(涓夋暟鍜屽崟鍙?)涓鍟︼紒");
+					System.out.println("恭喜你，(三数和单双)中奖啦！");
 				else
-					System.out.println("寰堥仐鎲撅紝(涓夋暟鍜屽崟鍙?)浣犳病涓紒");
+					System.out.println("很遗憾，(三数和单双)你没中！");
 				break;
-			// 鍜屽?煎ぇ灏忎腑濂?
-			case 3:
-				if ((numberSum < 11 && numSum < 11)
-						|| (numberSum > 10 && numSum > 10))
-					System.out.println("鎭枩浣狅紝(涓夋暟鍜屽ぇ灏?)涓鍟︼紒");
+			case 3:// 和值大小中奖
+				if ((numberSum < 11 && numSum < 11) || (numberSum > 10 && numSum > 10))
+					System.out.println("恭喜你，(三数和大小)中奖啦！");
 				else
-					System.out.println("寰堥仐鎲撅紝(涓夋暟鍜屽ぇ灏?)浣犳病涓紒");
+					System.out.println("很遗憾，(三数和大小)你没中！");
 				break;
 			}
 			break;
-		// 涓夊悓鍙蜂腑濂栨柟寮?
-		case 2:
+		case 2:// 三同号中奖方式
 			switch (b) {
-			// 鍙寮?濂栧彿鐮佷负涓変釜鍚屽彿锛屽氨涓
+			// 只要中奖号码为三个同号，就中奖
 			case 1:
-				if (num[0] == num[2]) // 鎺掑簭鍚庡鏋滅涓?涓拰鏈?鍚庝竴涓浉绛夛紝鍒欒〃绀烘槸涓変釜鍚屽彿
-					System.out.println("鎭枩浣狅紝(涓夊悓鍙烽?氶??)涓鍟︼紒");
+				if (jackpot[0] == jackpot[2]) 
+					System.out.println("恭喜你，(三同号)中奖啦！");
 				else
-					System.out.println("寰堥仐鎲撅紝(涓夊悓鍙烽?氶??)浣犳病涓紒");
+					System.out.println("很遗憾，(三同号)你没中！");
 				break;
-			// 寮?濂栧彿涓轰笁鍚屽彿锛屼笖鍜屼綘涔扮殑涓夊悓鍙蜂竴鏍?
+			// 中奖号为三同号，且和你买的三同号一样
 			case 2:
-				if (((num[0] == num[2]) && (number[0] == number[2]))
-						&& (num[1] == number[1]))
-					System.out.println("鎭枩浣狅紝(涓夊悓鍙峰崟閫?)涓鍟︼紒");
+				if (((jackpot[0] == jackpot[2]) && (number[0] == number[2])) && (jackpot[1] == number[1]))
+					System.out.println("恭喜你，(三同号)中奖啦！");
 				else
-					System.out.println("寰堥仐鎲撅紝(涓夊悓鍙峰崟閫?)浣犳病涓紒");
+					System.out.println("很遗憾，(三同号)你没中！");
 				break;
 			}
 			break;
-		// 浜屽悓鍙蜂腑濂栨柟寮?
-		case 3:
+		case 3:// 二同号中奖方式
 			switch (b) {
-			// 濡傛灉鏄袱杩炲彿锛屽垯寮?濂栧彿鍜屼笅娉ㄥ彿鐨勪腑闂存暟瀛楀繀瀹氱浉绛?
-			case 1:
-				if ((number[1] == num[1])
-						&& ((num[1] == num[0]) || (num[1] == num[2])))
-					System.out.println("鎭枩浣狅紝(浜屽悓鍙峰閫?)涓鍟︼紒");
+			case 1:// 如果是两连号，则中奖号和下注号的中间数字必定相等
+				if ((number[1] == jackpot[1]) && ((jackpot[1] == jackpot[0]) || (jackpot[1] == jackpot[2])))
+					System.out.println("恭喜你，(二同号复等)中奖啦！");
 				else
-					System.out.println("寰堥仐鎲撅紝(浜屽悓鍙峰閫?)浣犳病涓紒");
+					System.out.println("很遗憾，(二同号复等)你没中！");
 				break;
-			// 浜屽悓鍙峰崟閫?
-			case 2:
-				if ((number[1] == num[1])
-						&& ((number[0] == num[0]) || (number[2] == num[2])))
-					System.out.println("鎭枩浣狅紝(浜屽悓鍙峰崟閫?)涓鍟︼紒");
+			case 2:// 二同号单双
+				if ((number[1] == jackpot[1]) && ((number[0] == jackpot[0]) || (number[2] == jackpot[2])))
+					System.out.println("恭喜你，(二同号单双)中奖啦！");
 				else
-					System.out.println("寰堥仐鎲撅紝(浜屽悓鍙峰崟閫?)浣犳病涓紒");
+					System.out.println("很遗憾，(二同号单双)你没中！");
 				break;
 			}
 			break;
-		// 涓変笉鍚屽彿涓鏂瑰紡
-		case 4:
-			if ((num[0] != num[1]) && (num[1] != num[2])) // 寮?濂栧彿鐮侀兘涓嶅悓
-				if (((num[0] == number[0]) && (num[1] == number[1]))
-						&& (num[2] == number[2])) // 涓嬫敞鍙风爜涓庡紑濂栧彿鐮佷竴鏍?
-					System.out.println("鎭枩浣狅紝(涓変笉鍚屽彿)涓鍟︼紒");
+		case 4:// 三不同号中奖方式
+			if ((jackpot[0] != jackpot[1]) && (jackpot[1] != jackpot[2])) // 等奖号码都不同
+				if (((jackpot[0] == number[0]) && (jackpot[1] == number[1])) && (jackpot[2] == number[2])) // 下注号码与开奖号码一等
+					System.out.println("恭喜你，(三不同号)中奖啦！");
 				else
-					System.out.println("寰堥仐鎲撅紝(涓変笉鍚?)浣犳病涓紒");
+					System.out.println("很遗憾，(三不等)你没中！");
 			break;
-		// 浜屼笉鍚屽彿涓鏂瑰紡
-		case 5:
-			if (((number[0] == num[0]) && ((number[1] == num[1]) || (number[1] == num[2])))
-					|| ((number[0] == num[1]) && (number[1] == num[2])))
-				System.out.println("鎭枩浣狅紝(浜屼笉鍚屽彿)涓鍟︼紒");
+		case 5:// 二不同号中奖方式
+			if (((number[0] == jackpot[0]) && ((number[1] == jackpot[1]) || (number[1] == jackpot[2])))
+					|| ((number[0] == jackpot[1]) && (number[1] == jackpot[2])))
+				System.out.println("恭喜你，(二不同号)中奖啦！");
 			else
-				System.out.println("寰堥仐鎲撅紝(浜屼笉鍚屽彿)浣犳病涓紒");
+				System.out.println("很遗憾，(二不同号)你没中！");
 			break;
-		// 涓夎繛鍙?
-		case 6:
-			int num1 = 100 * num[0] + 10 * num[1] + num[2];
+		case 6:// 三连号
+			int num1 = 100 * jackpot[0] + 10 * jackpot[1] + jackpot[2];
 			if (((num1 == 123 || num1 == 234) || num1 == 345) || num1 == 456)
-				System.out.println("鎭枩浣狅紝(涓夎繛鍙烽?氶??)涓鍟︼紒");
+				System.out.println("恭喜你，(三连号)中奖啦！");
 			else
-				System.out.println("寰堥仐鎲撅紝(涓夎繛鍙烽?氶??)浣犳病涓紒");
+				System.out.println("很遗憾，(三连号)你没中！");
 			break;
 		default:
 			System.out.println("Input Error");
