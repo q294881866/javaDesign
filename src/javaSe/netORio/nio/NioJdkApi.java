@@ -19,7 +19,14 @@ import java.nio.channels.Selector;
 import java.nio.channels.ServerSocketChannel;
 import java.nio.channels.SocketChannel;
 import java.nio.channels.WritableByteChannel;
+import java.sql.Types;
+import java.util.Collections;
+import java.util.EnumMap;
+import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.CopyOnWriteArrayList;
+
+import javaSe.special.enums.Color;
+import sun.management.snmp.jvmmib.EnumJvmJITCompilerTimeMonitoring;
 
 public class NioJdkApi {
 
@@ -63,7 +70,17 @@ public class NioJdkApi {
 		System.out.println();
 		Thread thread;
 		ThreadGroup group;
-		
-		CopyOnWriteArrayList<String> list;
+		ThreadLocal<String > local;
+		Types type;
 	}
+	
+	
+	public void collections(){
+		CopyOnWriteArrayList<String> list;
+		EnumMap<Color, String> enumMap;
+		Collections collections;
+		ConcurrentLinkedQueue<String> queue;
+	}
+	
+	
 }
