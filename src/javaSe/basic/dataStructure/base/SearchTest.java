@@ -10,7 +10,7 @@ public class SearchTest {
 	 * @return 应该插入的位置（数组下标）
 	 */
 	public static int binarySearch(int[] arr, int dest, int begin, int end) {
-		int index, tmp, left = begin, right = end;// arr.length !-1
+		int index, tmp, left = begin, right = end;
 		if (arr[begin] > dest)
 			return 0;
 		do {// 最后值return判断大小

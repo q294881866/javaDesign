@@ -8,17 +8,8 @@ import java.net.SocketException;
 import java.net.UnknownHostException;
 
 public class UDPSender {
-
-	/**
-	 * @param args
-	 * @throws IOException
-	 */
 	public static void main(String[] args) throws IOException {
-
-		System.out.println("发送端启动......");
 		DatagramSocket ds = new DatagramSocket(8888);
-
-		// XXX 广播模式编写
 		String str = "男人要有三才。\n" //
 				+ "首先，要有点钱财，不用担心油盐米柴。\n"//
 				+ "其次，要有点文采，让人家有点小崇拜。\n" //
@@ -29,7 +20,5 @@ public class UDPSender {
 				buf, buf.length, InetAddress.getLocalHost(), 9999);
 		ds.send(dp);
 		ds.close();
-
 	}
-
 }

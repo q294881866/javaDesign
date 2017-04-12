@@ -19,18 +19,13 @@ import org.junit.Test;
  */
 public class SortTest {
 
+	private static int[] arr/* = { 2, 1, 3 } */;
+	private static final int SIZE = 30;// 栈上分配
 	@FunctionalInterface
 	interface Sort {
 		void sort();// invokedynamic 指令
 	}
 
-	private static int[] arr/* = { 2, 1, 3 } */;
-	private static int size = 30;// 栈上分配
-
-	/**
-	 * @param size
-	 *            >0
-	 */
 	public static int[] generateArray(int size) {
 		int[] arr = new int[size];
 		Random r = new Random();
@@ -48,7 +43,7 @@ public class SortTest {
 	}
 
 	public static void runTest(Sort s) {
-		arr = generateArray(size);
+		arr = generateArray(SIZE);
 		printArray(arr);
 		// --execute--
 		s.sort();
@@ -78,14 +73,13 @@ public class SortTest {
 	public void select() throws Exception {
 		Sort select = () -> {
 			// 遍历，找最大最小
-			selectSort(0, size - 1);
+			selectSort(0, SIZE - 1);
 		};
 		runTest(select);
 	}
 
-	int[] tmp = new int[size];
+	int[] tmp = new int[SIZE];
 	int limit, index2, index1, k = 0, gap, num;
-
 	@Test
 	public void merge() throws Exception {
 		Sort merge = () -> {
@@ -108,7 +102,7 @@ public class SortTest {
 			index1 = gap * i;
 			index2 = gap * i + gap;
 			limit = index2;
-			copyValues(limit, Math.min(size, limit + gap));
+			copyValues(limit, Math.min(SIZE, limit + gap));
 		}
 		// ==============最后一个数组归并=================
 		if (1 == num) {
@@ -183,7 +177,7 @@ public class SortTest {
 	@Test
 	public void quick() throws Exception {
 		Sort quick = () -> {
-			quickSort(0, size - 1);
+			quickSort(0, SIZE - 1);
 		};
 		runTest(quick);
 	}
