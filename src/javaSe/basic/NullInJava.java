@@ -1,44 +1,44 @@
 package javaSe.basic;
 
 /**
- * Javaä¸­çš„null
+ * JavaÖĞµÄnull
  * 
  * @author ppf@jiumao.org
- * @date 2016å¹´12æœˆ21æ—¥
+ * @date 2016Äê12ÔÂ21ÈÕ
  */
 public class NullInJava {
-	
-	public static void main(String[] args) {
-		NullInJava e =null;
-		e.sysoNull();//æ­£å¸¸è¾“å‡º
-		e.testNull();//NullPointerException
-	}
-	
-	public void testNull() {
-		System.out.println("éé™æ€æ–¹æ³•");
-	}
-	public static void sysoNull() {
-		System.out.println("é™æ€æ–¹æ³•");
-	}
+    
+    public static void main(String[] args) {
+        NullInJava e =null;
+        e.sysoNull();//Õı³£Êä³ö
+        e.testNull();//NullPointerException
+    }
+    
+    public void testNull() {
+        System.out.println("·Ç¾²Ì¬·½·¨");
+    }
+    public static void sysoNull() {
+        System.out.println("¾²Ì¬·½·¨");
+    }
 
-	public static void object() {
-		//å¼•ç”¨ç±»å‹nullå€¼
-		String s = null; 
-		Integer integer = null; 
-		Double dbl = null; 
-		//null ä½œä¸ºå€¼å¯ä»¥èµ‹å€¼ç»™ä»»æ„å¼•ç”¨ç±»å‹
-		s = (String) null; 
-		integer = (Integer) null; 
-		dbl = (Double) null; 
-		//nullä¸æ˜¯ä»»æ„å¼•ç”¨ç±»å‹çš„å®ä¾‹
-		System.out.println(integer instanceof Integer);
+    public static void object() {
+        //ÒıÓÃÀàĞÍnullÖµ
+        String s = null; 
+        Integer integer = null; 
+        Double dbl = null; 
+        //null ×÷ÎªÖµ¿ÉÒÔ¸³Öµ¸øÈÎÒâÒıÓÃÀàĞÍ
+        s = (String) null; 
+        integer = (Integer) null; 
+        dbl = (Double) null; 
+        //null²»ÊÇÈÎÒâÒıÓÃÀàĞÍµÄÊµÀı
+        System.out.println(integer instanceof Integer);
 
-		
-		//åŸºæœ¬ç±»å‹
-		int i = 0;//null;//é”™è¯¯ï¼ŒåŸºæœ¬ç±»å‹æ²¡æœ‰ç©ºå€¼ï¼Œåªæœ‰é»˜è®¤å€¼
-		Integer inter= 56;//è‡ªåŠ¨å°†intç±»å‹56è£…ç®±ä¸ºIntegerç±»å‹
-		i=inter;//è‡ªåŠ¨æ‹†ç®±æŠŠIntegerç±»å‹è½¬ä¸ºintç±»å‹
-		double d = dbl;//dbl=null,é¿å…éšå«d=nullçš„å¤åˆ¶
-		
-	}
+        
+        //»ù±¾ÀàĞÍ
+        int i = 0;//null;//´íÎó£¬»ù±¾ÀàĞÍÃ»ÓĞ¿ÕÖµ£¬Ö»ÓĞÄ¬ÈÏÖµ
+        Integer inter= 56;//×Ô¶¯½«intÀàĞÍ56×°ÏäÎªIntegerÀàĞÍ
+        i=inter;//×Ô¶¯²ğÏä°ÑIntegerÀàĞÍ×ªÎªintÀàĞÍ
+        double d = dbl;//dbl=null,±ÜÃâÒşº¬d=nullµÄ¸´ÖÆ
+        
+    }
 }
