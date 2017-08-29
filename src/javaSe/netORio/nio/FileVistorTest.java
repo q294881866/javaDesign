@@ -14,7 +14,7 @@ public class FileVistorTest {
 	private static StringBuilder space=new StringBuilder();
 
 	public static void main(String[] args) throws IOException {
-		Path file = Paths.get("F:/", "root");
+		Path file = Paths.get("C:", "Users","Administrator","store");
 		Files.walkFileTree(file, new FileVisitor<Path>() {
 			@Override
 			public FileVisitResult visitFile(Path file,
