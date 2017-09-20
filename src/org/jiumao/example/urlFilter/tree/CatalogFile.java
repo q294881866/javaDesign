@@ -1,6 +1,9 @@
 package org.jiumao.example.urlFilter.tree;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.PrintStream;
 import java.io.RandomAccessFile;
 import java.nio.ByteBuffer;
 import java.nio.MappedByteBuffer;
@@ -47,7 +50,16 @@ public class CatalogFile {
     }
 
 
-    public static void writeFileHeader(){
+    public void writeFileHeader(){
+        File h = new File(header);
+        File hBak = new File(headerBak);
+        try {
+            PrintStream hOut = new  PrintStream(h);
+            PrintStream hBakOut = new  PrintStream(hBak);
+        }
+        catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
 

@@ -60,8 +60,6 @@ public class FileHeader implements Serializable{
     public AtomicLong getCommittedPosition() {
         return committedPosition;
     }
-
-
     public static AtomicLong getUrlcount() {
         return UrlCount;
     }
