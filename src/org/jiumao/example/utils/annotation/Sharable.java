@@ -5,12 +5,12 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 /**
- * 字段为必需，保障其有合法的值
+ * 对象可以共享，线程安全
  * @author ppf@jiumao.org
  * @date 2017年9月20日
  */
 @Retention(RetentionPolicy.RUNTIME)
-@Target({ElementType.FIELD})
-public @interface Required {
+@Target({ElementType.TYPE})
+public @interface Sharable {
 
 }

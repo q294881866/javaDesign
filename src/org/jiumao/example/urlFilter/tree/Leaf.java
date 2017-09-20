@@ -6,7 +6,8 @@ import java.util.Map;
 import org.jiumao.example.utils.annotation.Required;
 
 /**
- * 叶子节点，数据结构
+ * 叶子节点，树状结构<p>
+ * 描述每个站点资源的目录结构，一般只描述3层
  * @author ppf@jiumao.org
  * @date 2017年9月19日
  */
