@@ -5,6 +5,8 @@ import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.Properties;
 
+import org.jiumao.example.urlFilter.tree.CatalogFile;
+
 
 public class URLSrvStartup {
     private static Properties config = null;
@@ -18,12 +20,14 @@ public class URLSrvStartup {
         catch (Exception e) {
             throw new RuntimeException(e);
         }
-        String home = config.getProperty(MixAll.USR_HOME);// µ±Ç°Â·¾¶
+        String home = config.getProperty(MixAll.USR_HOME);
         System.setProperty(MixAll.URLSRV_HOME, null == home ? MixAll.projectPath : home);
     }
 
 
     public static void startup() {
+        
+        CatalogFile.getInstance(0);
     }
 
 
