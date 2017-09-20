@@ -31,6 +31,9 @@ public class CatalogFile {
     private String fileName = srvConfig.getUrlSrvHome() + File.pathSeparator + MixAll.CATALOG_FILE_NAME;
     private String header = fileName + ".json";
     private String headerBak = fileName + ".json.bak";
+    private File file = new File(fileName);
+    private File h = new File(header);
+    private File hBak = new File(headerBak);
 
     private final FileChannel channel;// 文件管道
     private MappedByteBuffer mappedByteBuffer;// 文件内存映射
@@ -49,19 +52,14 @@ public class CatalogFile {
 
 
     @SuppressWarnings("resource")
-    private CatalogFile(long fileFromOffset) {
+    private CatalogFile() {
         try {
-            File file = new File(fileName);
-            File h = new File(header);
-            File hBak = new File(headerBak);
             createFile(file);
             createFile(h);
             createFile(hBak);
 
             RandomAccessFile raf = new RandomAccessFile(file, "rw");
             this.channel = raf.getChannel();
-            this.fileFromOffset = fileFromOffset;
-            mmap();
             this.hOut = new PrintStream(h);
             this.hBakOut = new PrintStream(hBak);
         }
@@ -192,9 +190,9 @@ public class CatalogFile {
     }
 
 
-    public static synchronized CatalogFile getInstance(long fileFromOffset) {
+    public static synchronized CatalogFile getInstance() {
         if (null == CF) {
-            CF = new CatalogFile(fileFromOffset);
+            CF = new CatalogFile();
         }
         return CF;
     }
@@ -208,6 +206,126 @@ public class CatalogFile {
         }
         hOut.close();
         hBakOut.close();
+    }
+
+
+    public String getFileName() {
+        return fileName;
+    }
+
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
+    }
+
+
+    public String getHeader() {
+        return header;
+    }
+
+
+    public void setHeader(String header) {
+        this.header = header;
+    }
+
+
+    public String getHeaderBak() {
+        return headerBak;
+    }
+
+
+    public void setHeaderBak(String headerBak) {
+        this.headerBak = headerBak;
+    }
+
+
+    public PrintStream gethOut() {
+        return hOut;
+    }
+
+
+    public void sethOut(PrintStream hOut) {
+        this.hOut = hOut;
+    }
+
+
+    public PrintStream gethBakOut() {
+        return hBakOut;
+    }
+
+
+    public void sethBakOut(PrintStream hBakOut) {
+        this.hBakOut = hBakOut;
+    }
+
+
+    public long getFileFromOffset() {
+        return fileFromOffset;
+    }
+
+
+    public void setFileFromOffset(long fileFromOffset) {
+        this.fileFromOffset = fileFromOffset;
+    }
+
+
+    public FileChannel getChannel() {
+        return channel;
+    }
+
+
+    public int getFileSize() {
+        return fileSize;
+    }
+
+
+    public static AtomicLong getTotalmapedvitualmemory() {
+        return TotalMapedVitualMemory;
+    }
+
+
+    public static AtomicInteger getTotalmapedfiles() {
+        return TotalMapedFiles;
+    }
+
+
+    public AtomicLong getCommittedPosition() {
+        return committedPosition;
+    }
+
+
+    public void setMappedByteBuffer(MappedByteBuffer mappedByteBuffer) {
+        this.mappedByteBuffer = mappedByteBuffer;
+    }
+
+
+    public File getFile() {
+        return file;
+    }
+
+
+    public void setFile(File file) {
+        this.file = file;
+    }
+
+
+    public File getH() {
+        return h;
+    }
+
+
+    public void setH(File h) {
+        this.h = h;
+    }
+
+
+    public File gethBak() {
+        return hBak;
+    }
+
+
+    public void sethBak(File hBak) {
+        this.hBak = hBak;
     }
 
 }

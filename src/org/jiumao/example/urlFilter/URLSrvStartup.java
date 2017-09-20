@@ -6,6 +6,7 @@ import java.io.InputStream;
 import java.util.Properties;
 
 import org.jiumao.example.urlFilter.tree.CatalogFile;
+import org.jiumao.example.urlFilter.tree.CatalogFileHeader;
 
 
 public class URLSrvStartup {
@@ -26,8 +27,25 @@ public class URLSrvStartup {
 
 
     public static void startup() {
+        try{
+            URLSrvConfig config = new URLSrvConfig();
+            CatalogFile catalogFile =  CatalogFile.getInstance();
+            config.setCatalogFile(catalogFile);
+            CatalogFileHeader catalogFileHeader = readConfig(catalogFile);
+            config.setCatalogFile(catalogFile);
+            
+            catalogFile.setFileFromOffset(catalogFileHeader.getWrotePostion().get());
+            
+        }catch (Exception e) {
+            throw e;
+        }
         
-        CatalogFile.getInstance(0);
+    }
+    
+    
+    public static CatalogFileHeader readConfig(CatalogFile catalogFile) {
+        return null;
+        
     }
 
 

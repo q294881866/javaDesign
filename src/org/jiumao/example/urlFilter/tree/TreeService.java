@@ -1,8 +1,6 @@
 package org.jiumao.example.urlFilter.tree;
 
 import java.nio.ByteBuffer;
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
@@ -10,15 +8,7 @@ import java.util.concurrent.ConcurrentSkipListSet;
 
 import org.jiumao.example.urlFilter.MixAll;
 
-
-/**
- * url 存储目录
- * 
- * @author ppf@jiumao.org
- * @date 2017年9月15日
- */
-public class Catalog {
-
+public class TreeService {
     private final static Map<String, Set<String>> CATALOGS = new ConcurrentHashMap<>(128);
 
 

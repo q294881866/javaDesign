@@ -4,6 +4,6 @@ package org.jiumao.example.urlFilter.tree;
  * @author ppf@jiumao.org
  * @date 2017年9月15日
  */
-public class URLAnalysis {
+public class TreeUtil {
 
 }

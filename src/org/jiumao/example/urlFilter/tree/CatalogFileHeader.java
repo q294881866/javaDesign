@@ -1,6 +1,8 @@
-package org.jiumao.example.urlFilter;
+package org.jiumao.example.urlFilter.tree;
 
 import java.util.concurrent.atomic.AtomicInteger;
+
+import org.jiumao.example.urlFilter.FileHeader;
 
 
 public class CatalogFileHeader extends FileHeader {

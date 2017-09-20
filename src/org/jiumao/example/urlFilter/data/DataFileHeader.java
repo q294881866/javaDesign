@@ -1,6 +1,8 @@
-package org.jiumao.example.urlFilter;
+package org.jiumao.example.urlFilter.data;
 
 import java.util.concurrent.atomic.AtomicLong;
+
+import org.jiumao.example.urlFilter.FileHeader;
 
 
 public class DataFileHeader extends FileHeader {
