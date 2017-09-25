@@ -1,11 +1,11 @@
 package javaSe.designPattern.adapter;
 /**
- * ½Ó¿Ú2
- * ÊÊÅäÆ÷
+ * æ¥å£2
+ * é€‚é…å™¨
  * @author Administrator
  *
  */
 public interface ITargetable {
-	void ½ÓÍ¨µçÔ´();
-	void method2();
+    void æ¥é€šç”µæº();
+    void method2();
 }

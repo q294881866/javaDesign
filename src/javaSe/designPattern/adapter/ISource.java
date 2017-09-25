@@ -1,10 +1,10 @@
 package javaSe.designPattern.adapter;
 
 /**
- * ½Ó¿Ú1
+ * æ¥å£1
  * @author ppf@jiumao.org
- * @date 2016Äê12ÔÂ20ÈÕ
+ * @date 2016å¹´12æœˆ20æ—¥
  */
 public interface ISource {
-	public void ½ÓÍ¨µçÔ´();
+    public void æ¥é€šç”µæº();
 }

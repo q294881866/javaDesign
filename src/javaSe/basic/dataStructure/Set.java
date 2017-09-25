@@ -1,22 +1,22 @@
 package javaSe.basic.dataStructure;
 /**
- * set¼¯ºÏµÄÊµÏÖÒª±£Ö¤ÔªËØµÄÎ¨Ò»ĞÔ<br>
- * hashCode ºÍequals·½·¨ÊÇÖØÒªµÄÊµÏÖ
+ * seté›†åˆçš„å®ç°è¦ä¿è¯å…ƒç´ çš„å”¯ä¸€æ€§<br>
+ * hashCode å’Œequalsæ–¹æ³•æ˜¯é‡è¦çš„å®ç°
  */
 public interface Set extends Collection {
-	/**
-	 * ¶¨ÒåÄÚÈİÏàµÈµÄ¹æÔò
-	 * @param object
-	 * @return
-	 */
-	boolean equals(Object object);
-	
-	
-	/**
-	 * ¶¨ÒåÊı¾İµÄhash code¹æÔò
-	 */
-	int hashCode(); 
-	
-	
-	
+    /**
+     * å®šä¹‰å†…å®¹ç›¸ç­‰çš„è§„åˆ™
+     * @param object
+     * @return
+     */
+    boolean equals(Object object);
+    
+    
+    /**
+     * å®šä¹‰æ•°æ®çš„hash codeè§„åˆ™
+     */
+    int hashCode(); 
+    
+    
+    
 }

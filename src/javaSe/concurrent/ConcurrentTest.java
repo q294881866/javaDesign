@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 /**
- * ²¢·¢Àà¿âAPI²âÊÔ
+ * å¹¶å‘ç±»åº“APIæµ‹è¯•
  */
 import java.util.Collection;
 import java.util.Iterator;
@@ -33,248 +33,228 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 import org.junit.Test;
 
 public class ConcurrentTest  {
-	
-	static int count = 0;
-	final static Lock lock = new ReentrantLock();
-	public static void runTest(Runnable target) throws Exception {
-		for (int i = 0; i < 10000; i++) {
-			new Thread(target).start();
-		}
-		Thread.sleep(20*1000);
-		System.out.println("count: "+count);
-	}
-	@Test
-	public void tryLockTest() throws Exception {
-		Runnable target = 
-				()->{if(lock.tryLock()){try{ ++count; }finally{ lock.unlock();}}};
-		runTest(target);// tryLock <= 10000			
-	}
-	
-	@Test
-	public void lockTest() throws Exception {
-		Runnable target = ()->{try{lock.lock(); ++count; }finally{ lock.unlock();}};
-		runTest(target); // 10000
-	}
-	
-	
+    
+    static int count = 0;
+    final static Lock lock = new ReentrantLock();
+    public static void runTest(Runnable target) throws Exception {
+        for (int i = 0; i < 10000; i++) {
+            new Thread(target).start();
+        }
+        Thread.sleep(20*1000);
+        System.out.println("count: "+count);
+    }
+    @Test
+    public void tryLockTest() throws Exception {
+        Runnable target = 
+                ()->{if(lock.tryLock()){try{ ++count; }finally{ lock.unlock();}}};
+        runTest(target);// tryLock <= 10000         
+    }
+    
+    @Test
+    public void lockTest() throws Exception {
+        Runnable target = ()->{try{lock.lock(); ++count; }finally{ lock.unlock();}};
+        runTest(target); // 10000
+    }
+    
+    
 
-	@Test
-	public void copyOnWriteArrayListTest() throws Exception {
-		Collection<String> c = new CopyOnWriteArrayList<String>(new String[] { "a", "b", "c" });
-		Iterator<String> it = c.iterator();
-		while (it.hasNext()) {
-			String s = it.next();
-			try {
-				it.remove();
-			} catch (UnsupportedOperationException e) {
-				System.out.println("µü´úÆ÷²»Ö§³ÖÒì³££¬É¾³ı£º" + s);
-				c.remove(s);
-			}
-		}
-	}
+    @Test
+    public void copyOnWriteArrayListTest() throws Exception {
+        Collection<String> c = new CopyOnWriteArrayList<String>(new String[] { "a", "b", "c" });
+        Iterator<String> it = c.iterator();
+        while (it.hasNext()) {
+            String s = it.next();
+            try {
+                it.remove();
+            } catch (UnsupportedOperationException e) {
+                System.out.println("è¿­ä»£å™¨ä¸æ”¯æŒå¼‚å¸¸ï¼Œåˆ é™¤ï¼š" + s);
+                c.remove(s);
+            }
+        }
+    }
 
-	@Test
-	public void semaphoreTest() throws Exception {
-		ExecutorService service = Executors.newCachedThreadPool();
-		final Semaphore sp = new Semaphore(3);
-		for (int i = 0; i < 10; ++i) {
-			Runnable runnable = new Runnable() {
-				public void run() {
-					try {
-						sp.acquire();
-						Thread.sleep((long) (Math.random() * 1000));// do something
-						System.out.println(Thread.currentThread().getName() + "¹¤×÷");
-						sp.release();
-						System.err.println("»¹¿É½øÈë¶àÉÙÏß³Ì£º" + sp.availablePermits());
-					} catch (Exception e) {
-					}
-				}
-			};
-			service.execute(runnable);
-		}
-	}
 
-	@Test
-	public void callableAndFutureTest() throws Exception {
-		class OneCallable implements Callable<String>{
-			@Override
-			public String call() throws Exception {
-				Thread.sleep(new Random().nextInt(1000));
-				return "²âÊÔ£ºCallable½Ó¿Ú";
-			}
-		}
-		
-		FutureTask<String> fu = new FutureTask<>(new OneCallable());
-		new Thread(fu).start();
-		System.out.println(fu.get(1, TimeUnit.SECONDS));
-		
-		ExecutorService service = Executors.newCachedThreadPool();
-		List<Future<String>> futures = new ArrayList<>(10);
-		for (int i = 0; i < 10; i++) {
-			futures.add(service.submit(new OneCallable()));
-		}
-		for (Future<String> f : futures) {
-			while (!f.isDone()) {
-				Thread.sleep(500);
-			} 
-			System.out.println(""+f.get());
-		}
-	}
-	
-	
-	@Test
-	public void conditionTest() throws Exception {
-		BoundedBuffer buffer = new BoundedBuffer();
-		Runnable w = () -> {
-			for (int i = 0; i < 200; i++) {
-				try {
-					buffer.put("adc");
-				} catch (InterruptedException e) {}
-			}
-		};
-		Runnable r = () -> {
-			for (int i = 0; i < 200; i++) {
-				try {
-					buffer.take();
-				}catch (InterruptedException e) {}
-			}
-		};
-		new Thread(r).start();new Thread(w).start();
-	}
-	
-	
-	@Test
-	public void rwLockTest() throws Exception {
-		// ²âÊÔ 1
-		System.out.println(Util.getCache());
-		// ²âÊÔ 2
-		final RWTreeMap data = new RWTreeMap();
-		ExecutorService service = Executors.newCachedThreadPool();
-		for (int i = 0; i < 100000; i++) {
-			final int count = i;
-			if (0 == count % 3) {
-				service.execute(new Runnable() {
-					@Override
-					public void run() {
-						for (int j = 0; j < 3; j++) {
-							data.put("key" + (count+j), "value" + (count+j));
-						}
-					}
-				});
-			}else { 
-				service.execute(new Runnable() {
-					@Override
-					public void run() { // ÎŞÒâÒå key1-3 
-						System.out.println(data.get("key" + count % 4));
-					}
-				});
-			}
-		}
-		service.shutdown();// µÈ´ıÈÎÎñÍê³É£¬¹Ø±ÕÏß³Ì³Ø
-	}
+    @Test
+    public void callableAndFutureTest() throws Exception {
+        class OneCallable implements Callable<String>{
+            @Override
+            public String call() throws Exception {
+                Thread.sleep(new Random().nextInt(1000));
+                return "æµ‹è¯•ï¼šCallableæ¥å£";
+            }
+        }
+        
+        FutureTask<String> fu = new FutureTask<>(new OneCallable());
+        new Thread(fu).start();
+        System.out.println(fu.get(1, TimeUnit.SECONDS));
+        
+        ExecutorService service = Executors.newCachedThreadPool();
+        List<Future<String>> futures = new ArrayList<>(10);
+        for (int i = 0; i < 10; i++) {
+            futures.add(service.submit(new OneCallable()));
+        }
+        for (Future<String> f : futures) {
+            while (!f.isDone()) {
+                Thread.sleep(500);
+            } 
+            System.out.println(""+f.get());
+        }
+    }
+    
+    
+    @Test
+    public void conditionTest() throws Exception {
+        BoundedBuffer buffer = new BoundedBuffer();
+        Runnable w = () -> {
+            for (int i = 0; i < 200; i++) {
+                try {
+                    buffer.put("adc");
+                } catch (InterruptedException e) {}
+            }
+        };
+        Runnable r = () -> {
+            for (int i = 0; i < 200; i++) {
+                try {
+                    buffer.take();
+                }catch (InterruptedException e) {}
+            }
+        };
+        new Thread(r).start();new Thread(w).start();
+    }
+    
+    
+    @Test
+    public void rwLockTest() throws Exception {
+        // æµ‹è¯• 1
+        System.out.println(Util.getCache());
+        // æµ‹è¯• 2
+        final RWTreeMap data = new RWTreeMap();
+        ExecutorService service = Executors.newCachedThreadPool();
+        for (int i = 0; i < 100000; i++) {
+            final int count = i;
+            if (0 == count % 3) {
+                service.execute(new Runnable() {
+                    @Override
+                    public void run() {
+                        for (int j = 0; j < 3; j++) {
+                            data.put("key" + (count+j), "value" + (count+j));
+                        }
+                    }
+                });
+            }else { 
+                service.execute(new Runnable() {
+                    @Override
+                    public void run() { // æ— æ„ä¹‰ key1-3 
+                        System.out.println(data.get("key" + count % 4));
+                    }
+                });
+            }
+        }
+        service.shutdown();// ç­‰å¾…ä»»åŠ¡å®Œæˆï¼Œå…³é—­çº¿ç¨‹æ± 
+    }
 
-	
-	@Test
-	public void timerTest() throws Exception {
-		long initialDelay = 0, period = 1;// µ¥Î»ÎªÃë
-		ScheduledExecutorService scheduled = new ScheduledThreadPoolExecutor(1);
-		Runnable r = () -> {System.out.println("do something");};
-		scheduled.scheduleAtFixedRate(r, initialDelay, period, TimeUnit.SECONDS);
+    
+    @Test
+    public void timerTest() throws Exception {
+        long initialDelay = 0, period = 1;// å•ä½ä¸ºç§’
+        ScheduledExecutorService scheduled = new ScheduledThreadPoolExecutor(1);
+        Runnable r = () -> {System.out.println("do something");};
+        scheduled.scheduleAtFixedRate(r, initialDelay, period, TimeUnit.SECONDS);
 
-		class Task extends TimerTask {
-			@Override
-			public void run() {System.out.println("¶¨Ê±ÈÎÎñ");}
-		}
-		new Timer().schedule(new Task(), initialDelay * 1000, period * 1000);
-		Util.sleep();
-	}
+        class Task extends TimerTask {
+            @Override
+            public void run() {System.out.println("å®šæ—¶ä»»åŠ¡");}
+        }
+        new Timer().schedule(new Task(), initialDelay * 1000, period * 1000);
+        Util.sleep();
+    }
 
-	
+    
 }
 
 class Util{
-	/**
-	 * ¼ä¸ô1sÓÀ¾ÃĞİÃß£¬ÓÃÓÚ×èÈûµÈ´ıÈÎÎñÍê³É
-	 */
-	public static void sleep() {
-		while (true) {
-			try {
-				Thread.sleep(1*1000);
-			} catch (Exception e) {}
-		}
-	}
-	
-	public static String getCache() {
-		String cache = null;
-		ReadWriteLock rwLock = new ReentrantReadWriteLock();
-		rwLock.readLock().lock();// ¼Ó¶ÁËø
-		if (null == cache) {
-			rwLock.readLock().unlock();
-			rwLock.writeLock().lock();// ¼ÓĞ´Ëø
-			cache = "data";
-			rwLock.writeLock().unlock();// unlockĞ´Ëø
-			rwLock.readLock().lock();
-		}
-		rwLock.readLock().unlock();// unlock¶ÁËø
-		return cache;
-	}
+    /**
+     * é—´éš”1sæ°¸ä¹…ä¼‘çœ ï¼Œç”¨äºé˜»å¡ç­‰å¾…ä»»åŠ¡å®Œæˆ
+     */
+    public static void sleep() {
+        while (true) {
+            try {
+                Thread.sleep(1*1000);
+            } catch (Exception e) {}
+        }
+    }
+    
+    public static String getCache() {
+        String cache = null;
+        ReadWriteLock rwLock = new ReentrantReadWriteLock();
+        rwLock.readLock().lock();// åŠ è¯»é”
+        if (null == cache) {
+            rwLock.readLock().unlock();
+            rwLock.writeLock().lock();// åŠ å†™é”
+            cache = "data";
+            rwLock.writeLock().unlock();// unlockå†™é”
+            rwLock.readLock().lock();
+        }
+        rwLock.readLock().unlock();// unlockè¯»é”
+        return cache;
+    }
 }
 
 
 class RWTreeMap {
-	private final Map<String, String> data = new TreeMap<String, String>();
-	private final ReentrantReadWriteLock rwLock = new ReentrantReadWriteLock();
-	private final Lock r = rwLock.readLock();// Ğ´Ëø
-	private final Lock w = rwLock.writeLock();// ¶ÁËø
-	
-	public String get(String key) {
-		r.lock();
-		try {
-			return data.get(key);
-		} finally { r.unlock(); }
-	}
-	
-	public String put(String key, String value) {
-		w.lock();
-		try {
-			return data.put(key, value);
-		} finally { w.unlock(); }
-	}
+    private final Map<String, String> data = new TreeMap<String, String>();
+    private final ReentrantReadWriteLock rwLock = new ReentrantReadWriteLock();
+    private final Lock r = rwLock.readLock();// å†™é”
+    private final Lock w = rwLock.writeLock();// è¯»é”
+    
+    public String get(String key) {
+        r.lock();
+        try {
+            return data.get(key);
+        } finally { r.unlock(); }
+    }
+    
+    public String put(String key, String value) {
+        w.lock();
+        try {
+            return data.put(key, value);
+        } finally { w.unlock(); }
+    }
 }
 
 
-class BoundedBuffer { // ÓĞ½ç¶ÓÁĞ Àı×ÓÀ´×Ôjdk Ô­ÀíÍ¬ ArrayBlockingQueue
-	final Lock lock = new ReentrantLock();
-	final Condition notFull = lock.newCondition();
-	final Condition notEmpty = lock.newCondition();
+class BoundedBuffer { // æœ‰ç•Œé˜Ÿåˆ— ä¾‹å­æ¥è‡ªjdk åŸç†åŒ ArrayBlockingQueue
+    final Lock lock = new ReentrantLock();
+    final Condition notFull = lock.newCondition();
+    final Condition notEmpty = lock.newCondition();
 
-	final Object[] items = new Object[100];
-	int putIndex, takeIndex, count;
+    final Object[] items = new Object[100];
+    int putIndex, takeIndex, count;
 
-	public void put(Object x) throws InterruptedException {
-		lock.lock();
-		try {
-			while (count == items.length) notFull.await();
-			items[putIndex] = x;
-			if (++putIndex == items.length) putIndex = 0;
-			++count; // ÔªËØÊı¼Ó1
-			notEmpty.signal();// Í¨ÖªÈ¡Ïß³Ì
-		} finally {
-			lock.unlock();
-		}
-	}
+    public void put(Object x) throws InterruptedException {
+        lock.lock();
+        try {
+            while (count == items.length) notFull.await();
+            items[putIndex] = x;
+            if (++putIndex == items.length) putIndex = 0;
+            ++count; // å…ƒç´ æ•°åŠ 1
+            notEmpty.signal();// é€šçŸ¥å–çº¿ç¨‹
+        } finally {
+            lock.unlock();
+        }
+    }
 
-	public Object take() throws InterruptedException {
-		lock.lock();
-		try {
-			while (count == 0) notEmpty.await();
-			Object x = items[takeIndex];
-			if (++takeIndex == items.length) takeIndex = 0;
-			--count; // È¡Ò»¸ö£¬´Ó0Ñ­»·È¡
-			notFull.signal(); // Í¨ÖªÌí¼ÓÏß³Ì
-			return x;
-		} finally {
-			lock.unlock();
-		}
-	}
+    public Object take() throws InterruptedException {
+        lock.lock();
+        try {
+            while (count == 0) notEmpty.await();
+            Object x = items[takeIndex];
+            if (++takeIndex == items.length) takeIndex = 0;
+            --count; // å–ä¸€ä¸ªï¼Œä»0å¾ªç¯å–
+            notFull.signal(); // é€šçŸ¥æ·»åŠ çº¿ç¨‹
+            return x;
+        } finally {
+            lock.unlock();
+        }
+    }
 }

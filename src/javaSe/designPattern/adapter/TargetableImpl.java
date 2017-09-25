@@ -1,14 +1,14 @@
 package javaSe.designPattern.adapter;
 /**
- * ÊÊÅäÆ÷
+ * é€‚é…å™¨
  * @author Administrator
  */
 public class  TargetableImpl implements ITargetable{
-	ISource source = new SourceImpl();
-	public void ½ÓÍ¨µçÔ´() {
-		source.½ÓÍ¨µçÔ´();
-	}
-	public void method2() {
-		System.out.println("method2");
-	}
+    ISource source = new SourceImpl();
+    public void æ¥é€šç”µæº() {
+        source.æ¥é€šç”µæº();
+    }
+    public void method2() {
+        System.out.println("method2");
+    }
 }

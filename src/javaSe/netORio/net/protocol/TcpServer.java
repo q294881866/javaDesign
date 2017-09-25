@@ -9,25 +9,25 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 public class TcpServer {
-	public static void main(String[] args) throws Exception {
-		ServerSocket ss = new ServerSocket(10002);
-		Socket s = ss.accept();
-		String tmp = s.getInetAddress().getHostAddress();
-		System.out.println(tmp);
+    public static void main(String[] args) throws Exception {
+        ServerSocket ss = new ServerSocket(10002);
+        Socket s = ss.accept();
+        String tmp = s.getInetAddress().getHostAddress();
+        System.out.println(tmp);
 
-		// ÓÃ»º³åÁ÷£¬»ñÈ¡Êı¾İ
-		BufferedReader in = new BufferedReader(
-				new InputStreamReader(s.getInputStream()));
-		tmp = in.readLine();
-		System.out.println(tmp);
+        // ç”¨ç¼“å†²æµï¼Œè·å–æ•°æ®
+        BufferedReader in = new BufferedReader(
+                new InputStreamReader(s.getInputStream()));
+        tmp = in.readLine();
+        System.out.println(tmp);
 
-		// ·µ»ØÊı¾İ£¬×Ô¶¯Ë¢ĞÂÊı¾İ
-		PrintWriter out = new PrintWriter(s.getOutputStream(), true);
-		out.println("TcpServer");
-		in.close();
-		out.close();
-		s.close();
-		ss.close();
-	}
+        // è¿”å›æ•°æ®ï¼Œè‡ªåŠ¨åˆ·æ–°æ•°æ®
+        PrintWriter out = new PrintWriter(s.getOutputStream(), true);
+        out.println("TcpServer");
+        in.close();
+        out.close();
+        s.close();
+        ss.close();
+    }
 
 }

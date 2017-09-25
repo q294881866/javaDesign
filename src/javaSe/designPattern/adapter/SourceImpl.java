@@ -1,7 +1,7 @@
 package javaSe.designPattern.adapter;
 
 public class SourceImpl implements ISource{
-	public void ½ÓÍ¨µçÔ´() {
-		System.out.println("½ÓÍ¨µçÔ´ÁË");
-	}
+    public void æ¥é€šç”µæº() {
+        System.out.println("æ¥é€šç”µæºäº†");
+    }
 }

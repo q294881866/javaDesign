@@ -5,11 +5,48 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.CyclicBarrier;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.Semaphore;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.LockSupport;
 
 import org.junit.Test;
 
 public class TaskThreadTest {
+    
+    @Test
+    public void semaphoreTest() throws Exception {
+        ExecutorService service = Executors.newCachedThreadPool();
+        final Semaphore sp = new Semaphore(3);
+        for (int i = 0; i < 10; ++i) {
+            Runnable runnable = new Runnable() {
+                public void run() {
+                    try {
+                        sp.acquire();
+                        Thread.sleep((long) (Math.random() * 1000));// do something
+                        System.out.println(Thread.currentThread().getName() + "工作");
+                        sp.release();
+                        System.err.println("还可进入多少线程：" + sp.availablePermits());
+                    } catch (Exception e) {
+                    }
+                }
+            };
+            service.execute(runnable);
+        }
+        
+        blocking();
+    }
+    
+    
+    public static void blocking() {
+        while(true){
+            try {
+                TimeUnit.SECONDS.sleep(10);
+            }
+            catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    } 
 
 	@Test// 多次，CyclicBarrier 关注多个线程
 	public void cyclicBarrierTest() throws Exception {
@@ -38,6 +75,7 @@ public class TaskThreadTest {
 		}
 	}
 	
+	
 	@Test
 	public void waitAnother() throws Exception {
 		final int N = 3;
@@ -53,8 +91,9 @@ public class TaskThreadTest {
 	public void workTogether() throws Exception {
 		final int N = 3;
 		CountDownLatch done = new CountDownLatch(N);
-		for (int i = 0; i < N; i++)
-			new Thread(new WorkerSteps(done, N)).start();
+		WorkerSteps bigProject = new WorkerSteps(done, N);
+		for (int i = 0; i < N; i++) 
+			new Thread(bigProject).start();
 		done.await();// 等待完成
 	}
 
