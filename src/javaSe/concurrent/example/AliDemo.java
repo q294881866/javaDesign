@@ -6,7 +6,7 @@ import java.util.concurrent.TimeUnit;
 
 
 /**
- * 阿里 测试题
+ * 测试题
  * <p>
  * A，B两个线程按序输出0-100，A输出质数，B输出其它
  * 
