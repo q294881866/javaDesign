@@ -10,12 +10,13 @@ import java.util.concurrent.locks.LockSupport;
  * 测试题
  * <p>
  * A，B两个线程按序输出0-100，A输出质数，B输出其它
+ * <p>
+ * 利用Locksuppot挂起和唤醒
  * 
  * @author ppf@jiumao.org
  * @date 2017年9月25日
  */
 public class AliDemo2 implements Runnable {
-    final Set<Integer> PrimeNumber = new HashSet<>();
 
     int end;
     volatile int i;
@@ -28,6 +29,7 @@ public class AliDemo2 implements Runnable {
     }
 
 
+    final Set<Integer> PrimeNumber = new HashSet<>();
     public boolean isPrimeNumber(int c) {
         if (0 == c)
             return false;
@@ -43,17 +45,6 @@ public class AliDemo2 implements Runnable {
         return true;
     }
     
-    public boolean isPrime(int num) {
-        if (num == 1) return false;
-        for (int i = 2; i <= Math.sqrt(num); i++) {
-            if (num % i == 0)
-                return false;
-        }
-        return true;
-    }
-
-
-
     public static void main(String[] args) throws Exception {
 
         AliDemo2 demo = new AliDemo2(0, 100);

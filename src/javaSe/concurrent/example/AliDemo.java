@@ -9,6 +9,8 @@ import java.util.concurrent.TimeUnit;
  * 测试题
  * <p>
  * A，B两个线程按序输出0-100，A输出质数，B输出其它
+ * <P>
+ * 使用 隐式队列 每次都唤醒所有线程同时执行，不符合条件的线程等待。
  * 
  * @author ppf@jiumao.org
  * @date 2017年9月25日
