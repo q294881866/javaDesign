@@ -23,9 +23,9 @@ public class TaskThreadTest {
                     try {
                         sp.acquire();
                         Thread.sleep((long) (Math.random() * 1000));// do something
-                        System.out.println(Thread.currentThread().getName() + "¹¤×÷");
+                        System.out.println(Thread.currentThread().getName() + "å·¥ä½œ");
                         sp.release();
-                        System.err.println("»¹¿É½øÈë¶àÉÙÏß³Ì£º" + sp.availablePermits());
+                        System.err.println("è¿˜å¯è¿›å…¥å¤šå°‘çº¿ç¨‹ï¼š" + sp.availablePermits());
                     } catch (Exception e) {
                     }
                 }
@@ -48,99 +48,99 @@ public class TaskThreadTest {
         }
     } 
 
-	@Test// ¶à´Î£¬CyclicBarrier ¹Ø×¢¶à¸öÏß³Ì
-	public void cyclicBarrierTest() throws Exception {
-		ExecutorService service = Executors.newFixedThreadPool(3);
-		final CyclicBarrier cb = new CyclicBarrier(3);
-		Runnable runnable = () -> {
-			try {
-				doSomething(cb);
-				cb.await();// µÈ´ı¶¼×öÍê
-				doSomething(cb);
-				cb.await();// µÚ¶ş´Î¼¯ºÏ
-			} catch (Throwable a) {}
-		};
-		for (int i = 0; i < 3; i++) {
-			service.execute(runnable);
-		}
-		service.shutdown();
-	}
-	 
-	static int taskCount = 0;
-	private static void doSomething(CyclicBarrier cb) throws InterruptedException {
-		Thread.sleep((long) (Math.random() * 1000));
-		System.out.println("Ïß³Ì£º" + Thread.currentThread().getName() + "À´ÁË");
-		if (2 == cb.getNumberWaiting()) {// Ä¿Ç°ÒÑ¾­µÈ´ı2¸ö£¬µ½µÄÊÇµÚÈı¸ö£¬¼¯ºÏÍê³É
-			System.out.println("Íê³ÉÈÎÎñ£º"+(++taskCount));
-		}
-	}
-	
-	
-	@Test
-	public void waitAnother() throws Exception {
-		final int N = 3;
-		CountDownLatch start = new CountDownLatch(1);
-		CountDownLatch done = new CountDownLatch(N);
-		for (int i = 0; i < N; ++i)
-			new Thread(new Worker(start, done)).start();
-		start.countDown();// ¿ªÊ¼ĞÅºÅ
-		done.await();// µÈ´ıÍê³É
-	}
+    @Test// å¤šæ¬¡ï¼ŒCyclicBarrier å…³æ³¨å¤šä¸ªçº¿ç¨‹
+    public void cyclicBarrierTest() throws Exception {
+        ExecutorService service = Executors.newFixedThreadPool(3);
+        final CyclicBarrier cb = new CyclicBarrier(3);
+        Runnable runnable = () -> {
+            try {
+                doSomething(cb);
+                cb.await();// ç­‰å¾…éƒ½åšå®Œ
+                doSomething(cb);
+                cb.await();// ç¬¬äºŒæ¬¡é›†åˆ
+            } catch (Throwable a) {}
+        };
+        for (int i = 0; i < 3; i++) {
+            service.execute(runnable);
+        }
+        service.shutdown();
+    }
+     
+    static int taskCount = 0;
+    private static void doSomething(CyclicBarrier cb) throws InterruptedException {
+        Thread.sleep((long) (Math.random() * 1000));
+        System.out.println("çº¿ç¨‹ï¼š" + Thread.currentThread().getName() + "æ¥äº†");
+        if (2 == cb.getNumberWaiting()) {// ç›®å‰å·²ç»ç­‰å¾…2ä¸ªï¼Œåˆ°çš„æ˜¯ç¬¬ä¸‰ä¸ªï¼Œé›†åˆå®Œæˆ
+            System.out.println("å®Œæˆä»»åŠ¡ï¼š"+(++taskCount));
+        }
+    }
+    
+    
+    @Test
+    public void waitAnother() throws Exception {
+        final int N = 3;
+        CountDownLatch start = new CountDownLatch(1);
+        CountDownLatch done = new CountDownLatch(N);
+        for (int i = 0; i < N; ++i)
+            new Thread(new Worker(start, done)).start();
+        start.countDown();// å¼€å§‹ä¿¡å·
+        done.await();// ç­‰å¾…å®Œæˆ
+    }
 
-	@Test
-	public void workTogether() throws Exception {
-		final int N = 3;
-		CountDownLatch done = new CountDownLatch(N);
-		WorkerSteps bigProject = new WorkerSteps(done, N);
-		for (int i = 0; i < N; i++) 
-			new Thread(bigProject).start();
-		done.await();// µÈ´ıÍê³É
-	}
+    @Test
+    public void workTogether() throws Exception {
+        final int N = 3;
+        CountDownLatch done = new CountDownLatch(N);
+        WorkerSteps bigProject = new WorkerSteps(done, N);
+        for (int i = 0; i < N; i++) 
+            new Thread(bigProject).start();
+        done.await();// ç­‰å¾…å®Œæˆ
+    }
 
-	static void doWork(Object o) throws Exception {
-		Thread.sleep(new Random().nextInt(10));
-		System.out.println("I am single lady" + (null == o ? "" : o));
-	}
+    static void doWork(Object o) throws Exception {
+        Thread.sleep(new Random().nextInt(10));
+        System.out.println("I am single lady" + (null == o ? "" : o));
+    }
 }
-// CountDownLatch Ò»´Î£¬¹Ø×¢Ò»¸öÏß³Ì
+// CountDownLatch ä¸€æ¬¡ï¼Œå…³æ³¨ä¸€ä¸ªçº¿ç¨‹
 class Worker implements Runnable {
-	private final CountDownLatch start;
-	private final CountDownLatch done;
+    private final CountDownLatch start;
+    private final CountDownLatch done;
 
-	Worker(CountDownLatch start, CountDownLatch done) {
-		super();
-		this.start = start;
-		this.done = done;
-	}
+    Worker(CountDownLatch start, CountDownLatch done) {
+        super();
+        this.start = start;
+        this.done = done;
+    }
 
-	@Override
-	public void run() {
-		try {
-			start.await(); // ×èÈûµÈ´ıĞÅºÅÖ´ĞĞ
-			TaskThreadTest.doWork(null);// do something
-			done.countDown();// ¼ÆÊı¼õÒ»
-		} catch (Exception e) {
-		}
-	}
+    @Override
+    public void run() {
+        try {
+            start.await(); // é˜»å¡ç­‰å¾…ä¿¡å·æ‰§è¡Œ
+            TaskThreadTest.doWork(null);// do something
+            done.countDown();// è®¡æ•°å‡ä¸€
+        } catch (Exception e) {
+        }
+    }
 }
 
 class WorkerSteps implements Runnable {
-	private final CountDownLatch done;
-	private static int steps;
+    private final CountDownLatch done;
+    private static int steps;
 
-	WorkerSteps(CountDownLatch done, int steps) {
-		super();
-		this.done = done;
-		WorkerSteps.steps = steps;
-	}
+    WorkerSteps(CountDownLatch done, int steps) {
+        super();
+        this.done = done;
+        WorkerSteps.steps = steps;
+    }
 
-	@Override
-	public void run() {
-		try {
-			TaskThreadTest.doWork(steps--);// do something
-			done.countDown();
-		} catch (Exception e) {
-		}
-	}
+    @Override
+    public void run() {
+        try {
+            TaskThreadTest.doWork(steps--);// do something
+            done.countDown();
+        } catch (Exception e) {
+        }
+    }
 
 }
