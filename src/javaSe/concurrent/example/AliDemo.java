@@ -3,7 +3,6 @@ package javaSe.concurrent.example;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
-import java.util.concurrent.locks.LockSupport;
 
 
 /**
@@ -20,6 +19,8 @@ public class AliDemo implements Runnable {
     int end;
     volatile int i;
     Node exec;
+    Object lock = new Object();
+
 
     public AliDemo(int begin, int end) {
         super();
@@ -42,34 +43,23 @@ public class AliDemo implements Runnable {
         PrimeNumber.add(c);
         return true;
     }
-    
-    public boolean isPrime(int num) {
-        if (num == 1) return false;
-        for (int i = 2; i <= Math.sqrt(num); i++) {
-            if (num % i == 0)
-                return false;
-        }
-        return true;
-    }
-
 
 
     public static void main(String[] args) throws Exception {
-
+        
         AliDemo demo = new AliDemo(0, 100);
 
-        Thread a = new Thread(demo, "A");
+        Thread a = new Thread(demo,"A");
         Node A = new Node(true, a);
-        Thread b = new Thread(demo, "B");
+        Thread b = new Thread(demo,"B");
         Node B = new Node(false, b);
 
         A.next = B;
-        B.next = A;
         demo.exec = A;
 
         a.start();
         b.start();
-        for (;;) {
+        for(;;){
             TimeUnit.SECONDS.sleep(1);
         }
     }
@@ -77,19 +67,25 @@ public class AliDemo implements Runnable {
 
     @Override
     public void run() {
-        for (; i < end + 1;) {
-            if (Thread.currentThread() == exec.thread && isPrimeNumber(i) == exec.status) {// A线程
-                System.out.println(Thread.currentThread().getName() + " : " + i);
-                i++;
-            }
-            else if (Thread.currentThread() == exec.next.thread && isPrimeNumber(i) == exec.next.status) {// B线程
-                System.out.println(Thread.currentThread().getName() + " : " + i);
-                i++;
-            }
-            else {// 状态不匹配
-                Thread unpark = Thread.currentThread() == exec.thread? exec.next.thread:exec.thread;
-                LockSupport.unpark(unpark);
-                LockSupport.park();
+        synchronized (lock) {
+            for (; i < end+1; ) {
+                if (Thread.currentThread() == exec.thread && isPrimeNumber(i) == exec.status) {// A 线程
+                    System.out.println(Thread.currentThread().getName()+" : "+i);
+                    i++;
+                }
+                else if (Thread.currentThread() == exec.next.thread && isPrimeNumber(i) == exec.next.status) {// B 线程
+                    System.out.println(Thread.currentThread().getName()+" : "+i);
+                    i++;
+                }
+                else {// 状态不匹配
+                    try {
+                        lock.wait();
+                    }
+                    catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+                lock.notifyAll();
             }
         }
     }
