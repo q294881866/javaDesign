@@ -14,14 +14,14 @@ import java.util.concurrent.locks.LockSupport;
  * @author ppf@jiumao.org
  * @date 2017年9月25日
  */
-public class AliDemo implements Runnable {
+public class AliDemo2 implements Runnable {
     final Set<Integer> PrimeNumber = new HashSet<>();
 
     int end;
     volatile int i;
     Node exec;
 
-    public AliDemo(int begin, int end) {
+    public AliDemo2(int begin, int end) {
         super();
         this.i = begin;
         this.end = end;
@@ -56,7 +56,7 @@ public class AliDemo implements Runnable {
 
     public static void main(String[] args) throws Exception {
 
-        AliDemo demo = new AliDemo(0, 100);
+        AliDemo2 demo = new AliDemo2(0, 100);
 
         Thread a = new Thread(demo, "A");
         Node A = new Node(true, a);
@@ -97,16 +97,3 @@ public class AliDemo implements Runnable {
 }
 
 
-class Node {
-    boolean status;
-    Thread thread;
-    Node next;
-
-
-    public Node(boolean prime, Thread thread) {
-        super();
-        this.status = prime;
-        this.thread = thread;
-    }
-
-}
