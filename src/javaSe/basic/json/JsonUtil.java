@@ -17,7 +17,7 @@ public final class JsonUtil {
     // ============================json-javaBean==================================
 
     /**
-     * ÊäÈëºÍÊä³ö¶¼ÓĞ¿ÉÄÜÎªnull£¬ ×¢Òânull¼ì²é
+     * è¾“å…¥å’Œè¾“å‡ºéƒ½æœ‰å¯èƒ½ä¸ºnullï¼Œ æ³¨æ„nullæ£€æŸ¥
      */
     public static <E> E json2Bean(ObjectMapper m, String json, Class<E> type) {
 
@@ -31,7 +31,7 @@ public final class JsonUtil {
     
 
     /**
-     * ÊäÈëºÍÊä³ö¶¼ÓĞ¿ÉÄÜÎªnull£¬ ×¢Òânull¼ì²é
+     * è¾“å…¥å’Œè¾“å‡ºéƒ½æœ‰å¯èƒ½ä¸ºnullï¼Œ æ³¨æ„nullæ£€æŸ¥
      */
     public static <E> String bean2Json(ObjectMapper m, E e) {
         try {
@@ -59,7 +59,7 @@ public final class JsonUtil {
     }
 
     /**
-     * µ±thisÎª{@link NullNode}Öµ»òÕß¼üÖµ²»´æÔÚ£¬»á·µ»Ønull
+     * å½“thisä¸º{@link NullNode}å€¼æˆ–è€…é”®å€¼ä¸å­˜åœ¨ï¼Œä¼šè¿”å›null
      */
     public static String getValue(JsonNode node, String name) {
         JsonNode nodeThis = getJsonNode(node, name);
@@ -83,7 +83,7 @@ public final class JsonUtil {
     }
 
     /**
-     * null»òÕßµ±{@code JsonNode}ÊÇ{@link NullNode}
+     * nullæˆ–è€…å½“{@code JsonNode}æ˜¯{@link NullNode}
      */
     public static boolean isNull(JsonNode node) {
         return null == node || NULL_NODE == node;
