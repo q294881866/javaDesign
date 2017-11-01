@@ -1,78 +1,74 @@
 package javaSe.netORio.file;
 
-import static org.junit.Assert.*;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
-import java.io.IOException;
 import java.io.Reader;
 import java.io.Writer;
-import java.net.URISyntaxException;
-import java.util.Date;
 
 import org.junit.Test;
 
 /**
- * ÎÄ¼ş¡¢ÎÄ¼ş¼ĞµÄ´´½¨¡¢¶ÁĞ´
+ * æ–‡ä»¶ã€æ–‡ä»¶å¤¹çš„åˆ›å»ºã€è¯»å†™
  * 
  * @author ppf
- * @since 2017Äê3ÔÂ2ÈÕ
+ * @since 2017å¹´3æœˆ2æ—¥
  */
 public class FileDemo {
-	/** ÎÄ¼ş¼ĞÃû³Æ */
-	final static String dir = "test";
-	final static String disk = "D:";
-	final static String filename = "test.txt";
-	final static String path = disk + File.separator + dir;
-	final static String file = path + File.separator + filename;
+    /** æ–‡ä»¶å¤¹åç§° */
+    final static String dir = "test";
+    final static String disk = "D:";
+    final static String filename = "test.txt";
+    final static String path = disk + File.separator + dir;
+    final static String file = path + File.separator + filename;
 
-	/** ×¢Òâ£ºcharÀàĞÍÓëStringÀàĞÍ */
-	@Test
-	public void params() {
-		String useString = File.separator + File.pathSeparator;
-		String useChar = "" + File.separatorChar + File.pathSeparatorChar;
-		System.out.println(useString.equals(useChar));
-	}
+    /** æ³¨æ„ï¼šcharç±»å‹ä¸Stringç±»å‹ */
+    @Test
+    public void params() {
+        String useString = File.separator + File.pathSeparator;
+        String useChar = "" + File.separatorChar + File.pathSeparatorChar;
+        System.out.println(useString.equals(useChar));
+    }
 
-	@Test
-	public void createFileWithTmpFile() throws Exception {
-		File f1 = new File(path + File.separator + dir + File.separator + filename);
-		File f2 = new File(File.separator + filename);
-		// ´´½¨Ò»¸öÎÄ¼ş
-		boolean b1 = f1.createNewFile();// ´´½¨³öÀ´µÄÊÇÎÄ¼ş¶ø²»ÊÇÎÄ¼ş¼Ğ
-		boolean b2 = f2.createNewFile();// ´´½¨³öÀ´µÄÊÇÎÄ¼ş¶ø²»ÊÇÎÄ¼ş¼Ğ
-		System.out.println(b1 + " || " + b2);
-		// String ·µ»Ø×Ö·û´®
-		System.out.println(f1.getAbsolutePath() + " || " + f2.getAbsolutePath() );
-		//Èç¹ûÂ·¾¶ÊÇ¿Õ£¬·µ»Ø¸ù¾İÏµÍ³²ÎÊıuser.dirµ±Ç°ÓÃ»§Â·¾¶
-		System.out.println(new File("").getAbsolutePath().equals(System.getProperty("user.dir")));
-		// File ·µ»ØÎÄ¼ş
-		System.out.println(f1.getAbsoluteFile() + " || " + f2.getAbsoluteFile());
-		// Ïà¶ÔÂ·¾¶
-		System.out.println(f1.getPath() + " || " + f2.getPath());
-		
-		File tmp = File.createTempFile("test", null, null);
-		System.out.println(tmp.getAbsolutePath());
-		tmp.deleteOnExit();
+    @Test
+    public void createFileWithTmpFile() throws Exception {
+        File f1 = new File(path + File.separator + dir + File.separator + filename);
+        File f2 = new File(File.separator + filename);
+        // åˆ›å»ºä¸€ä¸ªæ–‡ä»¶
+        boolean b1 = f1.createNewFile();// åˆ›å»ºå‡ºæ¥çš„æ˜¯æ–‡ä»¶è€Œä¸æ˜¯æ–‡ä»¶å¤¹
+        boolean b2 = f2.createNewFile();// åˆ›å»ºå‡ºæ¥çš„æ˜¯æ–‡ä»¶è€Œä¸æ˜¯æ–‡ä»¶å¤¹
+        System.out.println(b1 + " || " + b2);
+        // String è¿”å›å­—ç¬¦ä¸²
+        System.out.println(f1.getAbsolutePath() + " || " + f2.getAbsolutePath() );
+        //å¦‚æœè·¯å¾„æ˜¯ç©ºï¼Œè¿”å›æ ¹æ®ç³»ç»Ÿå‚æ•°user.dirå½“å‰ç”¨æˆ·è·¯å¾„
+        System.out.println(new File("").getAbsolutePath().equals(System.getProperty("user.dir")));
+        // File è¿”å›æ–‡ä»¶
+        System.out.println(f1.getAbsoluteFile() + " || " + f2.getAbsoluteFile());
+        // ç›¸å¯¹è·¯å¾„
+        System.out.println(f1.getPath() + " || " + f2.getPath());
+        
+        File tmp = File.createTempFile("test", null, null);
+        System.out.println(tmp.getAbsolutePath());
+        tmp.deleteOnExit();
 
-	}
-	
-	@Test
-	public void charFile() throws Exception {
-		File f = new File(file);
-		Writer fw = new BufferedWriter(new FileWriter(f));
-		fw.write("×Ö½ÚÁ÷ÎÄ¼ş¶ÁÈ¡");
-		fw.close();
+    }
+    
+    @Test
+    public void charFile() throws Exception {
+        File f = new File(file);
+        Writer fw = new BufferedWriter(new FileWriter(f));
+        fw.write("å­—èŠ‚æµæ–‡ä»¶è¯»å–");
+        fw.close();
 
-		Reader fr = new BufferedReader(new FileReader(f));
-		int i=-1;
-		while ((i = fr.read())!=-1) {
-			System.out.print((char)i);
-		}
-		fr.close();
-	}
+        Reader fr = new BufferedReader(new FileReader(f));
+        int i=-1;
+        while ((i = fr.read())!=-1) {
+            System.out.print((char)i);
+        }
+        fr.close();
+    }
 
 }
