@@ -1,6 +1,5 @@
 package javaSe.basic.json;
 
-import java.lang.Throwable;
 import java.lang.reflect.Field;
 import java.util.Arrays;
 
@@ -14,7 +13,7 @@ public class JsonTest {
 	private static int byteArrayBaseOffset;
 
 	public static void main(String[] args) throws Exception {
-		Field theUnsafe = Unsafe.class.getDeclaredField("theUnsafe");
+		Field theUnsafe = Json.class.getDeclaredField("theUnsafe");
 		theUnsafe.setAccessible(true);
 		Unsafe UNSAFE = (Unsafe) theUnsafe.get(null);
 		System.out.println(UNSAFE);

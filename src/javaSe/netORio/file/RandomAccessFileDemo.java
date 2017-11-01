@@ -6,60 +6,60 @@ import java.nio.MappedByteBuffer;
 import java.nio.channels.FileChannel;
 
 public class RandomAccessFileDemo {
-	public static void main(String[] args) throws Exception {
-		// write("data.txt");
-		// read("data.txt");
-		nioRA("data.txt");
-	}
+    public static void main(String[] args) throws Exception {
+        // write("data.txt");
+        // read("data.txt");
+        nioRA("data.txt");
+    }
 
-	public static void read(String filename) throws IOException {
-		RandomAccessFile raf = new RandomAccessFile(filename, "r");
-		System.out.println(raf.readBoolean());
-		raf.seek(3);// ÎÄ¼şÖ¸Õë¾ø¶ÔÎ»ÖÃ
-		System.out.println(raf.readInt());
-		System.out.println(raf.getFilePointer());
-		raf.skipBytes(4);// ÎÄ¼şÖ¸ÕëÏà¶ÔÎ»ÖÃ
-		System.out.println(raf.readLong());
-		raf.close();
-	}
+    public static void read(String filename) throws IOException {
+        RandomAccessFile raf = new RandomAccessFile(filename, "r");
+        System.out.println(raf.readBoolean());
+        raf.seek(3);// æ–‡ä»¶æŒ‡é’ˆç»å¯¹ä½ç½®
+        System.out.println(raf.readInt());
+        System.out.println(raf.getFilePointer());
+        raf.skipBytes(4);// æ–‡ä»¶æŒ‡é’ˆç›¸å¯¹ä½ç½®
+        System.out.println(raf.readLong());
+        raf.close();
+    }
 
-	/**
-	 * ÏàÎÄ¼şÀïËæ»úĞ´ÈëÊı¾İ
-	 * 
-	 * @param filename
-	 *            Ä¿±êÎÄ¼ş
-	 * @throws IOException
-	 */
-	public static void write(String filename) throws IOException {
-		RandomAccessFile raf = new RandomAccessFile(filename, "rw");
-		raf.setLength(1024);// ÎÄ¼ş´óĞ¡Ô¤·ÖÅä
-		raf.writeBoolean(true);// true (byte)1£¬false (byte)0
-		raf.writeShort(2);// 2 ×Ö½Ú£¬ÓëÊı¾İÀàĞÍÏà¹Ø£¬ÏÂÍ¬
-		raf.writeInt(5);
-		raf.writeFloat(1F);
-		raf.writeLong(2L);
-		raf.writeDouble(3.33);
-		raf.writeChar('ÖĞ');
-		raf.writeUTF("»ª");
-		raf.write("ÈËÃñ¹²ºÍ¹ú".getBytes());
-		System.out.print("ÎÄ¼şÖ¸Õë£º" + raf.getFilePointer());
-		System.out.println(" ÎÄ¼şÈİÁ¿£º" + raf.length());
+    /**
+     * ç›¸æ–‡ä»¶é‡Œéšæœºå†™å…¥æ•°æ®
+     * 
+     * @param filename
+     *            ç›®æ ‡æ–‡ä»¶
+     * @throws IOException
+     */
+    public static void write(String filename) throws IOException {
+        RandomAccessFile raf = new RandomAccessFile(filename, "rw");
+        raf.setLength(1024);// æ–‡ä»¶å¤§å°é¢„åˆ†é…
+        raf.writeBoolean(true);// true (byte)1ï¼Œfalse (byte)0
+        raf.writeShort(2);// 2 å­—èŠ‚ï¼Œä¸æ•°æ®ç±»å‹ç›¸å…³ï¼Œä¸‹åŒ
+        raf.writeInt(5);
+        raf.writeFloat(1F);
+        raf.writeLong(2L);
+        raf.writeDouble(3.33);
+        raf.writeChar('ä¸­');
+        raf.writeUTF("å");
+        raf.write("äººæ°‘å…±å’Œå›½".getBytes());
+        System.out.print("æ–‡ä»¶æŒ‡é’ˆï¼š" + raf.getFilePointer());
+        System.out.println(" æ–‡ä»¶å®¹é‡ï¼š" + raf.length());
 
-		raf.close();
-	}
+        raf.close();
+    }
 
-	@SuppressWarnings("resource")
-	public static void nioRA(String filename) throws IOException {
-		FileChannel fc = new RandomAccessFile(filename, "rw").getChannel();
-		MappedByteBuffer out = fc.map(// ÎÄ¼şÔÚÄÚ´æÖĞÓ³Éä
-				FileChannel.MapMode.READ_WRITE, // ¶Á»òĞ´Ä£Ê½
-				0, // ÎÄ¼şÓ³Éä¿ªÊ¼Î»ÖÃ
-				Math.max(fc.size(), 1 << 10));// ½áÊøÎ»ÖÃ
-		for (int i = 0; i < 1 << 10; i++) {
-			out.put((byte) i);// Ğ´0-1023
-		}
-		System.out.println(out.get(2) + out.get(3));// 5
-		System.out.println(out.limit());// 1024
-		fc.close();
-	}
+    @SuppressWarnings("resource")
+    public static void nioRA(String filename) throws IOException {
+        FileChannel fc = new RandomAccessFile(filename, "rw").getChannel();
+        MappedByteBuffer out = fc.map(// æ–‡ä»¶åœ¨å†…å­˜ä¸­æ˜ å°„
+                FileChannel.MapMode.READ_WRITE, // è¯»æˆ–å†™æ¨¡å¼
+                0, // æ–‡ä»¶æ˜ å°„å¼€å§‹ä½ç½®
+                Math.max(fc.size(), 1 << 10));// ç»“æŸä½ç½®
+        for (int i = 0; i < 1 << 10; i++) {
+            out.put((byte) i);// å†™0-1023
+        }
+        System.out.println(out.get(2) + out.get(3));// 5
+        System.out.println(out.limit());// 1024
+        fc.close();
+    }
 }

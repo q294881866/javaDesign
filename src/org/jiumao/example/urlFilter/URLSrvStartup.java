@@ -11,7 +11,7 @@ import org.jiumao.example.urlFilter.tree.CatalogFileHeader;
 
 public class URLSrvStartup {
     private static Properties config = null;
-    private static final String configPath = MixAll.projectPath + "URLSrv.properties";
+    private static final String configPath = MixAll.ProjectPath + "URLSrv.properties";
 
     static {
         config = new Properties();
@@ -22,7 +22,7 @@ public class URLSrvStartup {
             throw new RuntimeException(e);
         }
         String home = config.getProperty(MixAll.USR_HOME);
-        System.setProperty(MixAll.URLSRV_HOME, null == home ? MixAll.projectPath : home);
+        System.setProperty(MixAll.URLSRV_HOME, null == home ? MixAll.ProjectPath : home);
     }
 
 

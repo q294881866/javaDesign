@@ -1,115 +1,115 @@
 package javaSe.concurrent;
+
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 
+
 public class BlockingQueueTest {
-	public static void main(String[] args) {
-//			put();
-			take();
-	}
-	
-	/**
-	 * ArrayBlockingQueue
-	 * ÌáÈ¡Êý¾Ý
-	 */
-	public static void take(){
-		 final BlockingQueue<String> queue = new ArrayBlockingQueue<String>(1);
-			for(int i=0;i<4;i++){
-				new Thread(new Runnable(){
-					@Override
-					public void run() {
-						while(true){
-							try {
-								String log = queue.take();
-								parseLog(log);
-							} catch (InterruptedException e) {
-								// TODO Auto-generated catch block
-								e.printStackTrace();
-							}
-						}
-					}
-					
-				}).start();
-			}
-			
-			System.out.println("begin:"+(System.currentTimeMillis()/1000));
-			/*Ä£Äâ´¦Àí16ÐÐÈÕÖ¾£¬ÏÂÃæµÄ´úÂë²úÉúÁË16¸öÈÕÖ¾¶ÔÏó£¬µ±Ç°´úÂëÐèÒªÔËÐÐ16Ãë²ÅÄÜ´òÓ¡ÍêÕâÐ©ÈÕÖ¾¡£
-			ÐÞ¸Ä³ÌÐò´úÂë£¬¿ªËÄ¸öÏß³ÌÈÃÕâ16¸ö¶ÔÏóÔÚ4ÃëÖÓ´òÍê¡£
-			*/
-			for(int i=0;i<16;i++){  //ÕâÐÐ´úÂë²»ÄÜ¸Ä¶¯
-				final String log = ""+(i+1);//ÕâÐÐ´úÂë²»ÄÜ¸Ä¶¯
-				{
-						try {
-							queue.put(log);
-						} catch (InterruptedException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
-		     			//Test.parseLog(log);
-				}
-			}
-	}
-	
-	/**
-	 * ArrayBlockingQueue
-	 * Ìí¼ÓÊý¾Ý
-	 */
-	public static void put(){
-		final BlockingQueue queue = new ArrayBlockingQueue(3);
-		for(int i=0;i<2;i++){
-			new Thread(){
-				public void run(){
-					while(true){
-						try {
-							Thread.sleep((long)(Math.random()*1000));
-							System.out.println(Thread.currentThread().getName() + "×¼±¸·ÅÊý¾Ý!");							
-							queue.put(1);
-							System.out.println(Thread.currentThread().getName() + "ÒÑ¾­·ÅÁËÊý¾Ý£¬" + 							
-										"¶ÓÁÐÄ¿Ç°ÓÐ" + queue.size() + "¸öÊý¾Ý");
-						} catch (InterruptedException e) {
-							e.printStackTrace();
-						}
+    public static void main(String[] args) {
+        // put();
+        take();
+    }
 
-					}
-				}
-				
-			}.start();
-		}
-		
-		new Thread(){
-			public void run(){
-				while(true){
-					try {
-						//½«´Ë´¦µÄË¯ÃßÊ±¼ä·Ö±ð¸ÄÎª100ºÍ1000£¬¹Û²ìÔËÐÐ½á¹û
-						Thread.sleep(1000);
-						System.out.println(Thread.currentThread().getName() + "×¼±¸È¡Êý¾Ý!");
-						queue.take();
-						System.out.println(Thread.currentThread().getName() + "ÒÑ¾­È¡×ßÊý¾Ý£¬" + 							
-								"¶ÓÁÐÄ¿Ç°ÓÐ" + queue.size() + "¸öÊý¾Ý");					
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
-				}
-			}
-			
-		}.start();	
-	}
 
-	
-	
-	
-	/**
-	 * ÈÕÖ¾´òÓ¡
-	 * @param log
-	 */
-		public static void parseLog(String log){
-			System.out.println(log+":"+(System.currentTimeMillis()/1000));
-			
-			try {
-				Thread.sleep(1000);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}		
-		}
-	
+    /**
+     * æå–æ•°æ®
+     */
+    public static void take() {
+        final BlockingQueue<String> queue = new ArrayBlockingQueue<String>(1);
+        for (int i = 0; i < 4; i++) {
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    while (true) {
+                        try {
+                            String log = queue.take();
+                            parseLog(log);
+                        }
+                        catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+
+            }).start();
+        }
+
+        System.out.println("begin:" + (System.currentTimeMillis() / 1000));
+        /*
+         * æ¨¡æ‹Ÿå¤„ç†16è¡Œæ—¥å¿—ï¼Œä¸‹é¢çš„ä»£ç äº§ç”Ÿäº†16ä¸ªæ—¥å¿—å¯¹è±¡ï¼Œå½“å‰ä»£ç éœ€è¦è¿è¡Œ16ç§’æ‰èƒ½æ‰“å°å®Œè¿™äº›æ—¥å¿—ã€‚
+         * ä¿®æ”¹ç¨‹åºä»£ç ï¼Œå¼€å››ä¸ªçº¿ç¨‹è®©è¿™16ä¸ªå¯¹è±¡åœ¨4ç§’é’Ÿæ‰“å®Œã€‚
+         */
+        for (int i = 0; i < 16; i++) { // è¿™è¡Œä»£ç ä¸èƒ½æ”¹åŠ¨
+            final String log = "" + (i + 1);// è¿™è¡Œä»£ç ä¸èƒ½æ”¹åŠ¨
+            {
+                try {
+                    queue.put(log);
+                }
+                catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                // Test.parseLog(log);
+            }
+        }
+    }
+
+
+    /**
+     * æ·»åŠ æ•°æ®
+     */
+    public static void put() {
+        final BlockingQueue queue = new ArrayBlockingQueue(3);
+        for (int i = 0; i < 2; i++) {
+            new Thread() {
+                public void run() {
+                    while (true) {
+                        try {
+                            Thread.sleep((long) (Math.random() * 1000));
+                            System.out.println(Thread.currentThread().getName() + "å‡†å¤‡æ”¾æ•°æ®!");
+                            queue.put(1);
+                            System.out.println(Thread.currentThread().getName() + "å·²ç»æ”¾äº†æ•°æ®ï¼Œ" + "é˜Ÿåˆ—ç›®å‰æœ‰"
+                                    + queue.size() + "ä¸ªæ•°æ®");
+                        }
+                        catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                }
+
+            }.start();
+        }
+
+        new Thread() {
+            public void run() {
+                while (true) {
+                    try {
+                        // å°†æ­¤å¤„çš„ç¡çœ æ—¶é—´åˆ†åˆ«æ”¹ä¸º100å’Œ1000ï¼Œè§‚å¯Ÿè¿è¡Œç»“æžœ
+                        Thread.sleep(1000);
+                        System.out.println(Thread.currentThread().getName() + "å‡†å¤‡å–æ•°æ®!");
+                        queue.take();
+                        System.out.println(
+                            Thread.currentThread().getName() + "å·²ç»å–èµ°æ•°æ®ï¼Œ" + "é˜Ÿåˆ—ç›®å‰æœ‰" + queue.size() + "ä¸ªæ•°æ®");
+                    }
+                    catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+
+        }.start();
+    }
+
+
+    public static void parseLog(String log) {
+        System.out.println(log + ":" + (System.currentTimeMillis() / 1000));
+
+        try {
+            Thread.sleep(1000);
+        }
+        catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

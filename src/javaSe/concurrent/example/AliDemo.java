@@ -16,7 +16,7 @@ import java.util.concurrent.TimeUnit;
  * @date 2017年9月25日
  */
 public class AliDemo implements Runnable {
-    final Set<Integer> PrimeNumber = new HashSet<>();
+    final static Set<Integer> PrimeNumber = new HashSet<>();
 
     int end;
     volatile int i;
@@ -31,12 +31,15 @@ public class AliDemo implements Runnable {
     }
 
 
-    public boolean isPrimeNumber(int c) {
+    public static boolean isPrimeNumber(int c) {
         if (0 == c)
             return false;
         if (1 == c)
             return true;
 
+        if (PrimeNumber.contains(c)) {
+            return true;
+        }
         for (Integer prime : PrimeNumber) {
             if (c % prime == 0) {
                 return false;

@@ -1,8 +1,13 @@
 package javaSe.basic.dataStructure;
+
 /**
  * µü´úÆ÷½Ó¿Ú
  */
-public interface Iterator {
-		Object next();
-		boolean hasNext();
+public interface Iterator<T> {
+    
+    /**next element*/
+    T next();
+
+    /**have next element*/
+    boolean hasNext();
 }

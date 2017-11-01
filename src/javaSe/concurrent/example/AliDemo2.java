@@ -29,13 +29,16 @@ public class AliDemo2 implements Runnable {
     }
 
 
-    final Set<Integer> PrimeNumber = new HashSet<>();
-    public boolean isPrimeNumber(int c) {
+    final static Set<Integer> PrimeNumber = new HashSet<>();
+    public static boolean isPrimeNumber(int c) {
         if (0 == c)
             return false;
         if (1 == c)
             return true;
 
+        if (PrimeNumber.contains(c)) {
+            return true;
+        }
         for (Integer prime : PrimeNumber) {
             if (c % prime == 0) {
                 return false;
