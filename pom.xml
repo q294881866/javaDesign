@@ -24,13 +24,13 @@
 	</developers>
 
 	<properties>
-		<project.build.sourceEncoding>GBK</project.build.sourceEncoding>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.test.skip>true</maven.test.skip>
 		<maven.jdoc.skip>true</maven.jdoc.skip>
 		<downloadSources>true</downloadSources>
 		<java_source_version>1.8</java_source_version>
 		<java_target_version>1.8</java_target_version>
-		<file_encoding>GBK</file_encoding>
+		<file_encoding>UTF-8</file_encoding>
 	</properties>
 	<name>java</name>
 	<url>http://maven.apache.org</url>
