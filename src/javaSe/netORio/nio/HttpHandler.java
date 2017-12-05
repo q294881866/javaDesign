@@ -4,15 +4,15 @@ import java.io.IOException;
 import java.nio.channels.SelectionKey;
 
 public interface HttpHandler {
-	/** 处理{@link SelectionKey#OP_CONNECT}事件 */
+	/** 澶勭悊{@link SelectionKey#OP_CONNECT}浜嬩欢 */
 	void connect(SelectionKey key) throws IOException;
 	
-	/** 处理{@link SelectionKey#OP_ACCEPT}事件 */
+	/** 澶勭悊{@link SelectionKey#OP_ACCEPT}浜嬩欢 */
 	void accept(SelectionKey key) throws IOException;
 
-	/** 处理{@link SelectionKey#OP_READ}事件 */
+	/** 澶勭悊{@link SelectionKey#OP_READ}浜嬩欢 */
 	void read(SelectionKey key) throws IOException;
 
-	/** 处理{@link SelectionKey#OP_WRITE}事件 */
+	/** 澶勭悊{@link SelectionKey#OP_WRITE}浜嬩欢 */
 	void write(SelectionKey key) throws IOException;
 }

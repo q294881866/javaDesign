@@ -21,8 +21,8 @@ public class NIOUdpServer {
 		socket.bind(new InetSocketAddress(11111));
 		channel.register(selector, SelectionKey.OP_READ);
 		while (selector.select() > 0) {
-			System.out.println("ÓĞĞÂchannel¼ÓÈë");
-			/* µÃµ½ÒÑ¾­±»²¶»ñÁËµÄSelectionKeyµÄ¼¯ºÏ */
+			System.out.println("æœ‰æ–°channelåŠ å…¥");
+			/* å¾—åˆ°å·²ç»è¢«æ•è·äº†çš„SelectionKeyçš„é›†åˆ */
 			Iterator<SelectionKey> iterator = selector.selectedKeys().iterator();
 			while (iterator.hasNext()) {
 				SelectionKey key = (SelectionKey) iterator.next();
@@ -38,20 +38,20 @@ public class NIOUdpServer {
 		DatagramChannel channel = (DatagramChannel) key.channel();
 		String content = "";
 		// create buffer with capacity of 48 bytes
-		ByteBuffer buf = ByteBuffer.allocate(1024);// javaÀïÒ»¸ö(utf-8)ÖĞÎÄ3×Ö½Ú,gbkÖĞÎÄÕ¼2¸ö×Ö½Ú
+		ByteBuffer buf = ByteBuffer.allocate(1024);// javaé‡Œä¸€ä¸ª(utf-8)ä¸­æ–‡3å­—èŠ‚,gbkä¸­æ–‡å 2ä¸ªå­—èŠ‚
 		buf.clear();
 		SocketAddress address = channel.receive(buf); // read into buffer.
-														// ·µ»Ø¿Í»§¶ËµÄµØÖ·ĞÅÏ¢
+														// è¿”å›å®¢æˆ·ç«¯çš„åœ°å€ä¿¡æ¯
 		String clientAddress = address.toString().replace("/", "").split(":")[0];
 		String clientPost = address.toString().replace("/", "").split(":")[1];
 
 
-		// µÚ¶ş´Î·¢
+		// ç¬¬äºŒæ¬¡å‘
 		ByteBuffer buf3 = ByteBuffer.allocate(65507);
 		buf3.clear();
-		buf3.put("ÈÎÎñÍê³É".getBytes());
+		buf3.put("ä»»åŠ¡å®Œæˆ".getBytes());
 		buf3.flip();
-		channel.send(buf3, new InetSocketAddress(clientAddress, Integer.parseInt(clientPost))); // ½«ÏûÏ¢»ØËÍ¸ø¿Í»§¶Ë
+		channel.send(buf3, new InetSocketAddress(clientAddress, Integer.parseInt(clientPost))); // å°†æ¶ˆæ¯å›é€ç»™å®¢æˆ·ç«¯
 	}
 
 }

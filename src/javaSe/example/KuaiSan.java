@@ -4,124 +4,124 @@ import java.util.Arrays;
 
 public class KuaiSan {
 
-	 /**ÓÃÀ´´æ²úÉúµÄºÅÂë*/
+	 /**ç”¨æ¥å­˜äº§ç”Ÿçš„å·ç */
 	Integer[] jackpot = new Integer[3];
 
 	KuaiSan(Integer... owner) {
 		this.jackpot = owner;
-		System.out.print("±¾ÆÚºÅÂëÎª£º");
+		System.out.print("æœ¬æœŸå·ç ä¸ºï¼š");
 		for (int i : jackpot)
 			System.out.print(i);
 		System.out.println();
 	}
 
 	/**
-	 * ²úÉúËæ»úºÅÂë
+	 * äº§ç”Ÿéšæœºå·ç 
 	 */
-	private void randomSan() {
+	void randomSan() {
 		for (int i = 0; i < 3; i++)
 			jackpot[i] = (int) ((Math.random() * 300 % 6) + 1);
 		Arrays.sort(jackpot);
 	}
 
 	/**
-	 * ºË¶ÔºÅÂë£¬ÊÇ·ñÖĞ½±
+	 * æ ¸å¯¹å·ç ï¼Œæ˜¯å¦ä¸­å¥–
 	 * 
 	 * @param a
-	 *            ÓÃÀ´±íÊ¾Áù´óÀàµÄÖĞ½±·½Ê½
+	 *            ç”¨æ¥è¡¨ç¤ºå…­å¤§ç±»çš„ä¸­å¥–æ–¹å¼
 	 * @param b
-	 *            ÓÃÀ´±íÊ¾Ã¿¸ö´óÀàµÄÖĞ½±·½Ê½ÏÂµÄĞ¡Àà±ğ
+	 *            ç”¨æ¥è¡¨ç¤ºæ¯ä¸ªå¤§ç±»çš„ä¸­å¥–æ–¹å¼ä¸‹çš„å°ç±»åˆ«
 	 * @param number
-	 *            ÒªºËÊµµÄÏÂ×¢ºÅÂë
+	 *            è¦æ ¸å®çš„ä¸‹æ³¨å·ç 
 	 */
 	void check(int a, int b, Integer[] number) {
 
 		Arrays.sort(number); 
-		System.out.print("ÏÂ×¢ºÅÂëÎª£º");
+		System.out.print("ä¸‹æ³¨å·ç ä¸ºï¼š");
 		for (int i : number)
 			System.out.print(i);
 		System.out.println();
 
-		int numSum = jackpot[0] + jackpot[1] + jackpot[2]; // ÖĞ½±ºÅÂëºÍ
-		int numberSum = number[0] + number[1] + number[2]; // ÓÃ»§ºÅÂëºÍ
+		int numSum = jackpot[0] + jackpot[1] + jackpot[2]; // ä¸­å¥–å·ç å’Œ
+		int numberSum = number[0] + number[1] + number[2]; // ç”¨æˆ·å·ç å’Œ
 		switch (a) {
-		// Ñ¡ÔñÈı¸öÊıµÄºÍÖµÎªÖĞ½±±ê×¼
+		// é€‰æ‹©ä¸‰ä¸ªæ•°çš„å’Œå€¼ä¸ºä¸­å¥–æ ‡å‡†
 		case 1:
 			switch (b) {
-			case 1:// ºÍÖµÏàÍ¬ÖĞ½±
+			case 1:// å’Œå€¼ç›¸åŒä¸­å¥–
 				if (numberSum == numSum)
-					System.out.println("¹§Ï²Äã£¬(ÈıÊıºÍ)ÖĞ½±À²£¡");
+					System.out.println("æ­å–œä½ ï¼Œ(ä¸‰æ•°å’Œ)ä¸­å¥–å•¦ï¼");
 				else
-					System.out.println("ºÜÒÅº¶£¬(ÈıÊıºÍ)ÄãÃ»ÖĞ£¡");
+					System.out.println("å¾ˆé—æ†¾ï¼Œ(ä¸‰æ•°å’Œ)ä½ æ²¡ä¸­ï¼");
 				break;
-			case 2:// ºÍÖµµ¥Ë«ÏàÍ¬ÖĞ½±
+			case 2:// å’Œå€¼å•åŒç›¸åŒä¸­å¥–
 				if ((numberSum % 2) == (numSum % 2))
-					System.out.println("¹§Ï²Äã£¬(ÈıÊıºÍµ¥Ë«)ÖĞ½±À²£¡");
+					System.out.println("æ­å–œä½ ï¼Œ(ä¸‰æ•°å’Œå•åŒ)ä¸­å¥–å•¦ï¼");
 				else
-					System.out.println("ºÜÒÅº¶£¬(ÈıÊıºÍµ¥Ë«)ÄãÃ»ÖĞ£¡");
+					System.out.println("å¾ˆé—æ†¾ï¼Œ(ä¸‰æ•°å’Œå•åŒ)ä½ æ²¡ä¸­ï¼");
 				break;
-			case 3:// ºÍÖµ´óĞ¡ÖĞ½±
+			case 3:// å’Œå€¼å¤§å°ä¸­å¥–
 				if ((numberSum < 11 && numSum < 11) || (numberSum > 10 && numSum > 10))
-					System.out.println("¹§Ï²Äã£¬(ÈıÊıºÍ´óĞ¡)ÖĞ½±À²£¡");
+					System.out.println("æ­å–œä½ ï¼Œ(ä¸‰æ•°å’Œå¤§å°)ä¸­å¥–å•¦ï¼");
 				else
-					System.out.println("ºÜÒÅº¶£¬(ÈıÊıºÍ´óĞ¡)ÄãÃ»ÖĞ£¡");
+					System.out.println("å¾ˆé—æ†¾ï¼Œ(ä¸‰æ•°å’Œå¤§å°)ä½ æ²¡ä¸­ï¼");
 				break;
 			}
 			break;
-		case 2:// ÈıÍ¬ºÅÖĞ½±·½Ê½
+		case 2:// ä¸‰åŒå·ä¸­å¥–æ–¹å¼
 			switch (b) {
-			// Ö»ÒªÖĞ½±ºÅÂëÎªÈı¸öÍ¬ºÅ£¬¾ÍÖĞ½±
+			// åªè¦ä¸­å¥–å·ç ä¸ºä¸‰ä¸ªåŒå·ï¼Œå°±ä¸­å¥–
 			case 1:
 				if (jackpot[0] == jackpot[2]) 
-					System.out.println("¹§Ï²Äã£¬(ÈıÍ¬ºÅ)ÖĞ½±À²£¡");
+					System.out.println("æ­å–œä½ ï¼Œ(ä¸‰åŒå·)ä¸­å¥–å•¦ï¼");
 				else
-					System.out.println("ºÜÒÅº¶£¬(ÈıÍ¬ºÅ)ÄãÃ»ÖĞ£¡");
+					System.out.println("å¾ˆé—æ†¾ï¼Œ(ä¸‰åŒå·)ä½ æ²¡ä¸­ï¼");
 				break;
-			// ÖĞ½±ºÅÎªÈıÍ¬ºÅ£¬ÇÒºÍÄãÂòµÄÈıÍ¬ºÅÒ»Ñù
+			// ä¸­å¥–å·ä¸ºä¸‰åŒå·ï¼Œä¸”å’Œä½ ä¹°çš„ä¸‰åŒå·ä¸€æ ·
 			case 2:
 				if (((jackpot[0] == jackpot[2]) && (number[0] == number[2])) && (jackpot[1] == number[1]))
-					System.out.println("¹§Ï²Äã£¬(ÈıÍ¬ºÅ)ÖĞ½±À²£¡");
+					System.out.println("æ­å–œä½ ï¼Œ(ä¸‰åŒå·)ä¸­å¥–å•¦ï¼");
 				else
-					System.out.println("ºÜÒÅº¶£¬(ÈıÍ¬ºÅ)ÄãÃ»ÖĞ£¡");
+					System.out.println("å¾ˆé—æ†¾ï¼Œ(ä¸‰åŒå·)ä½ æ²¡ä¸­ï¼");
 				break;
 			}
 			break;
-		case 3:// ¶şÍ¬ºÅÖĞ½±·½Ê½
+		case 3:// äºŒåŒå·ä¸­å¥–æ–¹å¼
 			switch (b) {
-			case 1:// Èç¹ûÊÇÁ½Á¬ºÅ£¬ÔòÖĞ½±ºÅºÍÏÂ×¢ºÅµÄÖĞ¼äÊı×Ö±Ø¶¨ÏàµÈ
+			case 1:// å¦‚æœæ˜¯ä¸¤è¿å·ï¼Œåˆ™ä¸­å¥–å·å’Œä¸‹æ³¨å·çš„ä¸­é—´æ•°å­—å¿…å®šç›¸ç­‰
 				if ((number[1] == jackpot[1]) && ((jackpot[1] == jackpot[0]) || (jackpot[1] == jackpot[2])))
-					System.out.println("¹§Ï²Äã£¬(¶şÍ¬ºÅ¸´µÈ)ÖĞ½±À²£¡");
+					System.out.println("æ­å–œä½ ï¼Œ(äºŒåŒå·å¤ç­‰)ä¸­å¥–å•¦ï¼");
 				else
-					System.out.println("ºÜÒÅº¶£¬(¶şÍ¬ºÅ¸´µÈ)ÄãÃ»ÖĞ£¡");
+					System.out.println("å¾ˆé—æ†¾ï¼Œ(äºŒåŒå·å¤ç­‰)ä½ æ²¡ä¸­ï¼");
 				break;
-			case 2:// ¶şÍ¬ºÅµ¥Ë«
+			case 2:// äºŒåŒå·å•åŒ
 				if ((number[1] == jackpot[1]) && ((number[0] == jackpot[0]) || (number[2] == jackpot[2])))
-					System.out.println("¹§Ï²Äã£¬(¶şÍ¬ºÅµ¥Ë«)ÖĞ½±À²£¡");
+					System.out.println("æ­å–œä½ ï¼Œ(äºŒåŒå·å•åŒ)ä¸­å¥–å•¦ï¼");
 				else
-					System.out.println("ºÜÒÅº¶£¬(¶şÍ¬ºÅµ¥Ë«)ÄãÃ»ÖĞ£¡");
+					System.out.println("å¾ˆé—æ†¾ï¼Œ(äºŒåŒå·å•åŒ)ä½ æ²¡ä¸­ï¼");
 				break;
 			}
 			break;
-		case 4:// Èı²»Í¬ºÅÖĞ½±·½Ê½
-			if ((jackpot[0] != jackpot[1]) && (jackpot[1] != jackpot[2])) // µÈ½±ºÅÂë¶¼²»Í¬
-				if (((jackpot[0] == number[0]) && (jackpot[1] == number[1])) && (jackpot[2] == number[2])) // ÏÂ×¢ºÅÂëÓë¿ª½±ºÅÂëÒ»µÈ
-					System.out.println("¹§Ï²Äã£¬(Èı²»Í¬ºÅ)ÖĞ½±À²£¡");
+		case 4:// ä¸‰ä¸åŒå·ä¸­å¥–æ–¹å¼
+			if ((jackpot[0] != jackpot[1]) && (jackpot[1] != jackpot[2])) // ç­‰å¥–å·ç éƒ½ä¸åŒ
+				if (((jackpot[0] == number[0]) && (jackpot[1] == number[1])) && (jackpot[2] == number[2])) // ä¸‹æ³¨å·ç ä¸å¼€å¥–å·ç ä¸€ç­‰
+					System.out.println("æ­å–œä½ ï¼Œ(ä¸‰ä¸åŒå·)ä¸­å¥–å•¦ï¼");
 				else
-					System.out.println("ºÜÒÅº¶£¬(Èı²»µÈ)ÄãÃ»ÖĞ£¡");
+					System.out.println("å¾ˆé—æ†¾ï¼Œ(ä¸‰ä¸ç­‰)ä½ æ²¡ä¸­ï¼");
 			break;
-		case 5:// ¶ş²»Í¬ºÅÖĞ½±·½Ê½
+		case 5:// äºŒä¸åŒå·ä¸­å¥–æ–¹å¼
 			if (((number[0] == jackpot[0]) && ((number[1] == jackpot[1]) || (number[1] == jackpot[2])))
 					|| ((number[0] == jackpot[1]) && (number[1] == jackpot[2])))
-				System.out.println("¹§Ï²Äã£¬(¶ş²»Í¬ºÅ)ÖĞ½±À²£¡");
+				System.out.println("æ­å–œä½ ï¼Œ(äºŒä¸åŒå·)ä¸­å¥–å•¦ï¼");
 			else
-				System.out.println("ºÜÒÅº¶£¬(¶ş²»Í¬ºÅ)ÄãÃ»ÖĞ£¡");
+				System.out.println("å¾ˆé—æ†¾ï¼Œ(äºŒä¸åŒå·)ä½ æ²¡ä¸­ï¼");
 			break;
-		case 6:// ÈıÁ¬ºÅ
+		case 6:// ä¸‰è¿å·
 			int num1 = 100 * jackpot[0] + 10 * jackpot[1] + jackpot[2];
 			if (((num1 == 123 || num1 == 234) || num1 == 345) || num1 == 456)
-				System.out.println("¹§Ï²Äã£¬(ÈıÁ¬ºÅ)ÖĞ½±À²£¡");
+				System.out.println("æ­å–œä½ ï¼Œ(ä¸‰è¿å·)ä¸­å¥–å•¦ï¼");
 			else
-				System.out.println("ºÜÒÅº¶£¬(ÈıÁ¬ºÅ)ÄãÃ»ÖĞ£¡");
+				System.out.println("å¾ˆé—æ†¾ï¼Œ(ä¸‰è¿å·)ä½ æ²¡ä¸­ï¼");
 			break;
 		default:
 			System.out.println("Input Error");

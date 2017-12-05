@@ -1,25 +1,25 @@
 package javaSe.other.jdbc;
 
 /**
- * JavaÒì³£´´½¨Á·Ï°
- * example Êı¾İ¿âÒì³£
+ * Javaå¼‚å¸¸åˆ›å»ºç»ƒä¹ 
+ * example æ•°æ®åº“å¼‚å¸¸
  * @author Administrator
  *
  */
 public class DaoException extends RuntimeException {
 
 	/**
-	 * ¹¹Ôì·½·¨ÓÖ³Æ¹¹ÔìÆ÷£¬²»Ğ´Ä¬ÈÏÔÚÀà¼ÓÔØÊ±×¢ÈëÒ»¸öÎŞ²Î¹¹³É·½·¨
-	 * Ä¬ÈÏµÄ¹¹Ôì·½·¨½¨ÒéÃ¿´Î¶¼Ğ´ÉÏ
-	 * Èç¹ûÓĞÓĞ²ÎÊıµÄ¹¹Ôì·½·¨£¬Ôò²»Ä¬ÈÏÉú³ÉÎŞ²Î¹¹³É·½·¨
+	 * æ„é€ æ–¹æ³•åˆç§°æ„é€ å™¨ï¼Œä¸å†™é»˜è®¤åœ¨ç±»åŠ è½½æ—¶æ³¨å…¥ä¸€ä¸ªæ— å‚æ„æˆæ–¹æ³•
+	 * é»˜è®¤çš„æ„é€ æ–¹æ³•å»ºè®®æ¯æ¬¡éƒ½å†™ä¸Š
+	 * å¦‚æœæœ‰æœ‰å‚æ•°çš„æ„é€ æ–¹æ³•ï¼Œåˆ™ä¸é»˜è®¤ç”Ÿæˆæ— å‚æ„æˆæ–¹æ³•
 	 */
 	public DaoException() {
-		// TODO Õâ¸ö×¢ÊÍ±íÃ÷ÕâÀïÃ»ÓĞÍê³É ÔÚTaskÈÎÎñÀ¸¿ÉÒÔÕÒµ½
+		// TODO è¿™ä¸ªæ³¨é‡Šè¡¨æ˜è¿™é‡Œæ²¡æœ‰å®Œæˆ åœ¨Taskä»»åŠ¡æ å¯ä»¥æ‰¾åˆ°
 		
 	}
 
 	/**
-	 * ²Î¿¼super¸¸ÀàµÄ×¢ÊÍ
+	 * å‚è€ƒsuperçˆ¶ç±»çš„æ³¨é‡Š
 	 * @param message
 	 */
 	public DaoException(String message) {
@@ -28,7 +28,7 @@ public class DaoException extends RuntimeException {
 	}
 
 	/**
-	 * ²Î¿¼super¸¸ÀàµÄ×¢ÊÍ
+	 * å‚è€ƒsuperçˆ¶ç±»çš„æ³¨é‡Š
 	 * @param message
 	 */
 	public DaoException(Throwable cause) {
@@ -36,7 +36,7 @@ public class DaoException extends RuntimeException {
 	}
 
 	/**
-	 * ²Î¿¼super¸¸ÀàµÄ×¢ÊÍ
+	 * å‚è€ƒsuperçˆ¶ç±»çš„æ³¨é‡Š
 	 * @param message
 	 */
 	public DaoException(String message, Throwable cause) {

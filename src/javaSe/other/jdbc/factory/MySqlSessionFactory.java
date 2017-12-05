@@ -5,8 +5,8 @@ package javaSe.other.jdbc.factory;
 public class MySqlSessionFactory {
 	
 	/**
-	 * 设计模式的一种facade
-	 * 外观设计模式
+	 * 璁捐妯″紡鐨勪竴绉峟acade
+	 * 澶栬璁捐妯″紡
 	 * @param url
 	 * @param user
 	 * @param password

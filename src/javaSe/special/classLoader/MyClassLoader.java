@@ -7,7 +7,7 @@ import java.io.InputStream;
 
 public class MyClassLoader extends ClassLoader {
 
-	/** Class文件目录 */
+	/** Class鏂囦欢鐩綍 */
 	private String classDir;
 	public MyClassLoader() {}
 
@@ -22,7 +22,7 @@ public class MyClassLoader extends ClassLoader {
 				+ name.replace('.', File.separatorChar))+".class");){
 			b = new byte[in.available()];
 			in.read(b);
-		} catch (IOException e) {//二次调用
+		} catch (IOException e) {//浜屾璋冪敤
 			return super.loadClass(name/*java.lang.ClassLoader*/);
 		}
 		return super.defineClass(name, b, 0, b.length,null);

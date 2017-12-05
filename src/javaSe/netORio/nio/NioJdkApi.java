@@ -32,7 +32,7 @@ public class NioJdkApi {
 
 	public static void main(String[] args) {
 		/*
-		 * Íâ²¿
+		 * å¤–éƒ¨
 		 */
 		Channels channels;
 		Pipe pipe;
@@ -40,7 +40,7 @@ public class NioJdkApi {
 		Selector selector;
 
 		/*
-		 * ³éÏóÀà
+		 * æŠ½è±¡ç±»
 		 */
 		FileChannel channel1;
 		SelectableChannel channel2;
@@ -49,7 +49,7 @@ public class NioJdkApi {
 		DatagramChannel channel5;
 
 		/*
-		 * ½Ó¿Ú
+		 * æ¥å£
 		 */
 		Channel channel0;
 		InterruptibleChannel channel6;

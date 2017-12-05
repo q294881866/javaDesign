@@ -12,7 +12,7 @@ public class Test<K,V> implements Map.Entry<K,V>{
 	 int hash;
 	 
 	 /**
-	  * ´´½¨Ò»¸öĞÂµÄentryÀàËÆÊ÷½á¹¹
+	  * åˆ›å»ºä¸€ä¸ªæ–°çš„entryç±»ä¼¼æ ‘ç»“æ„
 	  */
 	Test(int h,K k,V v) {
 			value = v;

@@ -3,10 +3,10 @@ package javaSe.special.annotation;
 import java.lang.reflect.Method;
 import java.util.Arrays;
 
-@Example(msg = "ÃÅÇ°´óÇÅÏÂ")
+@Example(msg = "é—¨å‰å¤§æ¡¥ä¸‹")
 public class AnnotationTest {
 
-	@Example( msg = "ÓÎ¹ıÒ»ÈºÑ¼")
+	@Example( msg = "æ¸¸è¿‡ä¸€ç¾¤é¸­")
 	public static void main(String[] args) throws Exception{
 		Method m = AnnotationTest.class.getMethod("main", String[].class);
 		if(AnnotationTest.class.isAnnotationPresent(Example.class)){

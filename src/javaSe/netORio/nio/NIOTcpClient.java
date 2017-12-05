@@ -15,17 +15,17 @@ public class NIOTcpClient {
 
 	private static void init() throws IOException {
 		SocketChannel sc = SocketChannel.open(new InetSocketAddress("localhost", 9999));
-		sc.configureBlocking(false);// ÉèÖÃ×èÈûÄ£Ê½Îªfalse
-		// »º³åÇø 	»ñÈ¡ÉêÇë¶ÑÍâÄÚ´æ allocateDirect
+		sc.configureBlocking(false);// è®¾ç½®é˜»å¡æ¨¡å¼ä¸ºfalse
+		// ç¼“å†²åŒº 	è·å–ç”³è¯·å †å¤–å†…å­˜ allocateDirect
 		ByteBuffer bb = ByteBuffer.allocate(512);
-		// 1.·¢ËÍÊı¾İ
+		// 1.å‘é€æ•°æ®
 		sc.write(ByteBuffer.wrap("Hi NIO!".getBytes()));
-		// 2.Êı¾İ
+		// 2.æ•°æ®
 		bb.clear();
 		
 		sc.read(bb);
 		bb.flip();
-		// ¶ÑÍâÄÚ´æÃ»ÓĞ Êı×éĞèÒªÅĞ¶Ï hasArray
+		// å †å¤–å†…å­˜æ²¡æœ‰ æ•°ç»„éœ€è¦åˆ¤æ–­ hasArray
 		System.out.println(new String(bb.array()));
 		sc.close();
 	}

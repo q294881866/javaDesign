@@ -2,9 +2,9 @@ package javaSe.basic.dataStructure.base;
 
 public class TreeNode implements Comparable<TreeNode> {
 
-	public TreeNode right;//ÓÒº¢×Ó
-	public TreeNode left;//×óº¢×Ó
-	public int data;//Êı¾İ £ºÕâÀïµÄÊı¾İ¿ÉÒÔÊÇÆäËûÀàĞÍ
+	public TreeNode right;//å³å­©å­
+	public TreeNode left;//å·¦å­©å­
+	public int data;//æ•°æ® ï¼šè¿™é‡Œçš„æ•°æ®å¯ä»¥æ˜¯å…¶ä»–ç±»å‹
 
 	public TreeNode(TreeNode right, TreeNode left, int data) {
 		super();

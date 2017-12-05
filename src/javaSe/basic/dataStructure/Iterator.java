@@ -1,7 +1,7 @@
 package javaSe.basic.dataStructure;
 
 /**
- * µü´úÆ÷½Ó¿Ú
+ * è¿­ä»£å™¨æ¥å£
  */
 public interface Iterator<T> {
     

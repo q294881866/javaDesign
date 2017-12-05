@@ -1,6 +1,6 @@
 package javaSe.designPattern.Facede;
 /**
- * 外观设计模式
+ * 澶栬璁捐妯″紡
  * @author Administrator
  *
  */

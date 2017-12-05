@@ -1,8 +1,8 @@
 package oop;
 
 public class Learner implements Animal{
-	private Action act; //²»Í¬µÄĞĞ¶¯
-	private Art art;//²»Í¬µÄ±íÏÖÁ¦
+	private Action act; //ä¸åŒçš„è¡ŒåŠ¨
+	private Art art;//ä¸åŒçš„è¡¨ç°åŠ›
 	public Learner(Action act,Art art) {
 		this.act= act; this.art= art;
 	}

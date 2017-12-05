@@ -6,10 +6,10 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 /**
- *  * ÎÊÌâÃèÊö£º
- * ´òÓ¡ 'A', 'B', 'C', 'D', 'E', 'F' 
- * Èı¸ö×ÖÄ¸ÈÎÒâ×éºÏ£¬Ë³Ğò²»ÏŞ£¬ÈçAAB=BAA
- * ·½·¨¶ş£ºÀûÓÃÅÅĞòºÍhashmap²»ÖØ¸´keyµÄĞÔÖÊ
+ *  * é—®é¢˜æè¿°ï¼š
+ * æ‰“å° 'A', 'B', 'C', 'D', 'E', 'F' 
+ * ä¸‰ä¸ªå­—æ¯ä»»æ„ç»„åˆï¼Œé¡ºåºä¸é™ï¼Œå¦‚AAB=BAA
+ * æ–¹æ³•äºŒï¼šåˆ©ç”¨æ’åºå’Œhashmapä¸é‡å¤keyçš„æ€§è´¨
  * @author Administrator
  *
  */
@@ -20,10 +20,10 @@ public class ThreeLetter {
 	char[] letter= {'A','B','C','D','E','F'};
 	
 	/**
-	 * ´òÓ¡×ÖÄ¸
-	 * Ò»¸ö×ÖÄ¸¶ÔÒ»¸öÊı×éÏÂ±í£¬
-	 * ABCµÈÓÚletter[0]+letter[1]+letter[2]¼´012
-	 * cbaµÈÓÚ210£¬È»¶øÅÅĞò½á¹û¶¼ÊÇ012
+	 * æ‰“å°å­—æ¯
+	 * ä¸€ä¸ªå­—æ¯å¯¹ä¸€ä¸ªæ•°ç»„ä¸‹è¡¨ï¼Œ
+	 * ABCç­‰äºletter[0]+letter[1]+letter[2]å³012
+	 * cbaç­‰äº210ï¼Œç„¶è€Œæ’åºç»“æœéƒ½æ˜¯012
 	 */
 	public void printLetter(){
 		Map hm = new HashMap();
@@ -34,7 +34,7 @@ public class ThreeLetter {
 				
 				for (int j2 = 0; j2 < letter.length;  j2++) {
 					
-					//Èı¸öÊıÅÅĞò
+					//ä¸‰ä¸ªæ•°æ’åº
 					if(i>j){
 						min=j;max=i;
 					}else {
@@ -51,7 +51,7 @@ public class ThreeLetter {
 						max=j2;
 					}
 //					System.out.println(min );
-					//×ÖÄ¸Êä³öÑùÊ½
+					//å­—æ¯è¾“å‡ºæ ·å¼
 					String s = ""+letter[i]+letter[j]+letter[j2];
 					String key = ""+min+middle+max;
 					hm.put(Integer.parseInt(key),s);
@@ -69,7 +69,7 @@ public class ThreeLetter {
 	}
 
 	/**
-	 * ±éÀúhashmap
+	 * éå†hashmap
 	 * @param hm
 	 */
 	private void iteratorHashMap(Map hm) {
@@ -93,8 +93,8 @@ public class ThreeLetter {
 	}
 	
 	/*
-	 * ¶ş·Ö²åÈë
-	 * ´«ÈëÒª²åÈëµÄÊınum
+	 * äºŒåˆ†æ’å…¥
+	 * ä¼ å…¥è¦æ’å…¥çš„æ•°num
 	 */
 	public static int[] binaryInsertSort(int num,int[] array){
 		 
@@ -118,10 +118,10 @@ public class ThreeLetter {
 			
 			while (right>=left) 
 			{
-				middle = ( left + right ) / 2; //¡¡Ö¸ÏòÒÑÅÅĞòºÃµÄÖĞ¼äÎ»ÖÃ
-				if( num < array[middle] )// ¼´½«²åÈëµÄÔªËØÓ¦µ±ÔÚÔÚ×óÇø¼ä
+				middle = ( left + right ) / 2; //ã€€æŒ‡å‘å·²æ’åºå¥½çš„ä¸­é—´ä½ç½®
+				if( num < array[middle] )// å³å°†æ’å…¥çš„å…ƒç´ åº”å½“åœ¨åœ¨å·¦åŒºé—´
 					right = middle-1;
-				else                    //¡¡¼´½«²åÈëµÄÔªËØÓ¦µ±ÔÚÓÒÇø¼ä
+				else                    //ã€€å³å°†æ’å…¥çš„å…ƒç´ åº”å½“åœ¨å³åŒºé—´
 					left = middle+1;    
 			}
 			
@@ -144,8 +144,8 @@ public class ThreeLetter {
 	 }
 	
 	/**
-	 * ÖÊÊıËã·¨
-	 * ·ÇÖÊÊı±ØÈ»ÊÇÖÊÊıÓëÆäËüÊıµÄÓĞÏŞ»ı
+	 * è´¨æ•°ç®—æ³•
+	 * éè´¨æ•°å¿…ç„¶æ˜¯è´¨æ•°ä¸å…¶å®ƒæ•°çš„æœ‰é™ç§¯
 	 */
 	public static void prime(int n){
 		int[] prime=new int[3];
@@ -153,13 +153,13 @@ public class ThreeLetter {
 		prime[0]=3;
 		prime[0]=5;
 		for (int i = 0; i < n; i++) {
-			//TODO ÖÊÊıËã·¨
+			//TODO è´¨æ•°ç®—æ³•
 		}
 	}
 	
 	/**
-	 * Êı×é×ª»»³É×Ö·û´®
-	 * ±ÈÈç[1,2,3] ½á¹ûÊä³ö123
+	 * æ•°ç»„è½¬æ¢æˆå­—ç¬¦ä¸²
+	 * æ¯”å¦‚[1,2,3] ç»“æœè¾“å‡º123
 	 * @param array
 	 * @return
 	 */

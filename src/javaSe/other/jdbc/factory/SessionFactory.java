@@ -1,7 +1,7 @@
 package javaSe.other.jdbc.factory;
 /**
- * ÇÅ½ÓÄ£Ê½
- * ¶ÔÓ¦²»Í¬µÄÊı¾İÔ´Ìá¹©²»Í¬µÄÊı¾İ¿âÁ¬½Ó
+ * æ¡¥æ¥æ¨¡å¼
+ * å¯¹åº”ä¸åŒçš„æ•°æ®æºæä¾›ä¸åŒçš„æ•°æ®åº“è¿æ¥
  */
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -32,15 +32,15 @@ public class SessionFactory {
 	}
 	
 	/**
-	 * °ÑÁ¬½Ó·Å»ØÈ¥
+	 * æŠŠè¿æ¥æ”¾å›å»
 	 */
 	public void close(){
 		dataSource.free(connection);
 	}
 	
 	/**
-	 * ¿ªÆôÊÂÎñ
-	 * ²¢ÉèÖÃÊÂÎñ¸ôÀë¼¶±ğ
+	 * å¼€å¯äº‹åŠ¡
+	 * å¹¶è®¾ç½®äº‹åŠ¡éš”ç¦»çº§åˆ«
 	 * level one of the following Connection constants: 
 	 * Connection.TRANSACTION_READ_UNCOMMITTED, 
 	 * Connection.TRANSACTION_READ_COMMITTED, 
@@ -55,19 +55,19 @@ public class SessionFactory {
 			connection.setAutoCommit(false);
 			connection.setTransactionIsolation(level);
 		} catch (SQLException e) {
-			new DaoException("ÊÂÎñ¿ªÆôÊ±Òì³£", e);
+			new DaoException("äº‹åŠ¡å¼€å¯æ—¶å¼‚å¸¸", e);
 		}
 	}
 	
 	
 	/**
-	 * Ìá½»ÊÂÎñ
+	 * æäº¤äº‹åŠ¡
 	 */
 	public void commit() {
 		try {
 			connection.commit();
 		} catch (SQLException e) {
-			new DaoException("ÊÂÎñÌá½»Òì³£", e);
+			new DaoException("äº‹åŠ¡æäº¤å¼‚å¸¸", e);
 		}
 	}
 }

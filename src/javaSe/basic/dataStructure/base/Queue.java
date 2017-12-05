@@ -1,24 +1,24 @@
 package javaSe.basic.dataStructure.base;
 /**
- * ÓÃjavaÊµÏÖÒ»¸ö¼òµ¥µÄ¶ÓÁĞ<br>
- * ÓÃÊı×éÊµÏÖµÄ¶ÓÁĞ¡£
- * 1.¶ÁÕß¿ÉÒÔÏëÏëÔõÑùÓÃÁ´±íÊµÏÖ¶ÓÁĞ
- * 2.¶ÁÕß¿ÉÒÔ²é¿´JDK¶ÓÁĞµÄÊµÏÖ
+ * ç”¨javaå®ç°ä¸€ä¸ªç®€å•çš„é˜Ÿåˆ—<br>
+ * ç”¨æ•°ç»„å®ç°çš„é˜Ÿåˆ—ã€‚
+ * 1.è¯»è€…å¯ä»¥æƒ³æƒ³æ€æ ·ç”¨é“¾è¡¨å®ç°é˜Ÿåˆ—
+ * 2.è¯»è€…å¯ä»¥æŸ¥çœ‹JDKé˜Ÿåˆ—çš„å®ç°
  */
 public class Queue {
-	private int head,tail;//Í·Î²ÏÂ±ê
-	private int num;//¶ÓÁĞÔªËØ¸öÊı
+	private int head,tail;//å¤´å°¾ä¸‹æ ‡
+	private int num;//é˜Ÿåˆ—å…ƒç´ ä¸ªæ•°
 	private Object[] data;
 	
-	public Queue(int size){//´«ÈëÉèÖÃ¶ÓÁĞµÄ´óĞ¡
-		//³õÊ¼»¯
+	public Queue(int size){//ä¼ å…¥è®¾ç½®é˜Ÿåˆ—çš„å¤§å°
+		//åˆå§‹åŒ–
 		head=0;
 		tail=0;	
-		num=0;//¼ÇÂ¼¶ÓÁĞÖĞÔªËØ¸öÊı
+		num=0;//è®°å½•é˜Ÿåˆ—ä¸­å…ƒç´ ä¸ªæ•°
 		setData(new Object[size]);
 	}
 	public void queueput(Object a){
-		//¶ÓÎ²¼ÓÈëÔªËØ
+		//é˜Ÿå°¾åŠ å…¥å…ƒç´ 
 		tail=(tail+1) % this.data.length;
 		if (num==this.data.length){
 			System.out.println("the queue is full");
@@ -29,7 +29,7 @@ public class Queue {
 		
 	}
 	public Object queueout(){
-		//¶ÓÊ×µ¯³öÔªËØ
+		//é˜Ÿé¦–å¼¹å‡ºå…ƒç´ 
 		Object temp=this.getData()[head];
 		if (num==0){
 			System.out.println("the queue is empty"+head+" "+tail);

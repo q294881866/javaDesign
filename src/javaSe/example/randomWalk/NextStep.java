@@ -1,7 +1,7 @@
 package javaSe.example.randomWalk;
 /**
- * ÏÂÒ»²½ÔËËã
- * Í¨¹ıµ÷ÓÃ·½Ïòº¯Êı£¬×÷³öÏÂÒ»²½µÄÔËËã
+ * ä¸‹ä¸€æ­¥è¿ç®—
+ * é€šè¿‡è°ƒç”¨æ–¹å‘å‡½æ•°ï¼Œä½œå‡ºä¸‹ä¸€æ­¥çš„è¿ç®—
  * @author liuyuchen
  *
  */
@@ -15,11 +15,11 @@ public class NextStep {
 		this.direction= direction;
 	}
 	/**
-	 * ´«Èëµ±Ç°µãµÄ×ø±ê£¬·µ»ØÏÂÒ»²½µãµÄ×ø±ê
+	 * ä¼ å…¥å½“å‰ç‚¹çš„åæ ‡ï¼Œè¿”å›ä¸‹ä¸€æ­¥ç‚¹çš„åæ ‡
 	 * @return
 	 */
 	public int[] nextStep() {
-		int step = 5;					//²½·¥´óĞ¡
+		int step = 5;					//æ­¥ä¼å¤§å°
 		
 		switch(direction) {
 			case 1:	x += step;	break;

@@ -1,246 +1,259 @@
 package javaSe.basic.dataStructure.base;
 
-import static org.junit.Assert.*;
-
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
-
-import javax.print.attribute.IntegerSyntax;
-import javax.print.attribute.standard.NumberUpSupported;
 
 import org.junit.Test;
 
+
 /**
- * ×¢ÒâÔ½½ç¼ì²é
+ * æ³¨æ„è¶Šç•Œæ£€æŸ¥
  * 
  * @author ppf
- * @since 2017Äê3ÔÂ31ÈÕ
+ * @since 2017å¹´3æœˆ31æ—¥
  */
 public class SortTest {
 
-	private static int[] arr/* = { 2, 1, 3 } */;
-	private static final int SIZE = 30;// Õ»ÉÏ·ÖÅä
-	@FunctionalInterface
-	interface Sort {
-		void sort();// invokedynamic Ö¸Áî
-	}
+    private static int[] arr/* = { 2, 1, 3 } */;
+    private static final int SIZE = 30;// æ ˆä¸Šåˆ†é…
 
-	public static int[] generateArray(int size) {
-		int[] arr = new int[size];
-		Random r = new Random();
-		for (int i = 0; i < size; i++) {
-			arr[i] = r.nextInt(100);
-		}
-		return arr;
-	}
+    @FunctionalInterface
+    interface Sort {
+        void sort();// invokedynamic æŒ‡ä»¤
+    }
 
-	public static void printArray(int[] arr) {
-		for (int i = 0; i < arr.length; i++) {
-			System.out.print(arr[i] + " ");
-		}
-		System.out.println();
-	}
 
-	public static void runTest(Sort s) {
-		arr = generateArray(SIZE);
-		printArray(arr);
-		// --execute--
-		s.sort();
-		printArray(arr);
-	}
+    public static int[] generateArray(int size) {
+        int[] arr = new int[size];
+        Random r = new Random();
+        for (int i = 0; i < size; i++) {
+            arr[i] = r.nextInt(100);
+        }
+        return arr;
+    }
 
-	// ===========================sorting_algorithm=========================================
 
-	@Test
-	public void bubble() throws Exception {
-		Sort bubble = () -> {
-			int max;
-			for (int i = 0; i < arr.length; i++) {
-				for (int j = 0; j < arr.length - i; j++) {
-					max = arr[j];// ÁÙÊ±±£´æ
-					if (j + 1 < arr.length - i && arr[j + 1] < max) {// ½»»»
-						arr[j] = arr[j + 1];
-						arr[j + 1] = max;
-					}
-				}
-			}
-		};
-		runTest(bubble);
-	}
+    public static void printArray(int[] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i] + " ");
+        }
+        System.out.println();
+    }
 
-	@Test
-	public void select() throws Exception {
-		Sort select = () -> {
-			// ±éÀú£¬ÕÒ×î´ó×îĞ¡
-			selectSort(0, SIZE - 1);
-		};
-		runTest(select);
-	}
 
-	int[] tmp = new int[SIZE];
-	int limit, index2, index1, k = 0, gap, num;
-	@Test
-	public void merge() throws Exception {
-		Sort merge = () -> {
-			// ·Ö×é °´Êı×é³¤¶È·Ö×é£¬ÏÈ2 2^2 2^4 Ö±µ½ >length/2,ÒÀ´ÎºÏ²¢Êı×é
-			for (gap = 1; arr.length / gap > 0; gap = gap << 1) {
-				mergeSort();
-			}
-		};
-		runTest(merge);
-	}
+    public static void runTest(Sort s) {
+        arr = generateArray(SIZE);
+        printArray(arr);
+        // --execute--
+        s.sort();
+        printArray(arr);
+    }
 
-	private void mergeSort() {
-		// ==============Ã¿´Î»®·Ö¶àÉÙ¸öÊı×é==============
-		num = arr.length / gap;
-		if (arr.length % gap != 0) {
-			num = num + 1;
-		}
-		// ==============Õı³£ºÏ²¢==============
-		for (int i = 0; i < num; i += 2) {
-			index1 = gap * i;
-			index2 = gap * i + gap;
-			limit = index2;
-			copyValues(limit, Math.min(SIZE, limit + gap));
-		}
-		// ==============×îºóÒ»¸öÊı×é¹é²¢=================
-		if (1 == num) {
-			index2 += gap;
-			limit = index2;
-			copyValues(limit, arr.length);
-		}
-		// ==============½»»»Êı×é=================
-		int[] swap = arr;
-		arr = tmp;
-		tmp = swap;
-		k = 0;// »¹Ô­ÁÙÊ±Êı×é
-	}
 
-	private void copyValues(int begin, int end) {
-		while (index1 < begin && index2 < end) {
-			if (arr[index1] > arr[index2]) {
-				tmp[k++] = arr[index2++];
-			} else if (arr[index1] < arr[index2]) {
-				tmp[k++] = arr[index1++];
-			} else {// ÏàµÈÈ«²¿¿½±´
-				tmp[k++] = arr[index1++];
-				tmp[k++] = arr[index2++];
-			}
-		}
-		// Ê£ÓàÔªËØ
-		if (index1 < begin) {
-			System.arraycopy(arr, index1, tmp, k, limit - index1);
-			k += limit - index1;
-		} else if (index2 < end) {// ÓÒ±ßÊı×éÓĞÊ£Óà
-			System.arraycopy(arr, index2, tmp, k, limit - index2 + gap);
-			k += limit - index2 + gap;
-		}
-	}
+    // ===========================sorting_algorithm=========================================
 
-	private void selectSort(int begin, int end) {
-		int maxIndex = end, littleIndex = begin;
-		for (int i = begin; i < end; i++) {
-			int tmp = arr[i];
-			if (tmp > arr[maxIndex]) {
-				maxIndex = i;// ±ê×¢×î´ó
-			} else if (tmp < arr[littleIndex]) {
-				littleIndex = i;// ±ê×¢×îĞ¡
-			}
-		}
-		// ½»»»×î´ó×îĞ¡
-		swap(arr, maxIndex, end);
-		swap(arr, littleIndex, begin);
-		if (end - begin > 2)
-			selectSort(begin + 1, end - 1);
-	}
+    @Test
+    public void bubble() throws Exception {
+        Sort bubble = () -> {
+            int max;
+            for (int i = 0; i < arr.length; i++) {
+                for (int j = 0; j < arr.length - i; j++) {
+                    max = arr[j];// ä¸´æ—¶ä¿å­˜
+                    if (j + 1 < arr.length - i && arr[j + 1] < max) {// äº¤æ¢
+                        arr[j] = arr[j + 1];
+                        arr[j + 1] = max;
+                    }
+                }
+            }
+        };
+        runTest(bubble);
+    }
 
-	@Test
-	public void insert() throws Exception {
-		Sort insert = () -> {
-			// ±éÀúÔªËØ²¢²åÈë
-			for (int i = 1; i < arr.length; i++) {
-				int tmp = arr[i];
-				// ²éÕÒ²åÈëÎ»ÖÃ
-				int index = SearchTest.binarySearch(arr, tmp, 0, i);
-				// ºóÒÆ,´Ó×îºó¿ªÊ¼
-				for (int j = i; j > index - 1 && j > 0; j--) {
-					arr[j] = arr[j - 1];
-				}
-				// ²åÈëºÏÊÊÎ»ÖÃ
-				arr[index] = tmp;
-			}
-		};
-		runTest(insert);
-	}
 
-	@Test
-	public void quick() throws Exception {
-		Sort quick = () -> {
-			quickSort(0, SIZE - 1);
-		};
-		runTest(quick);
-	}
+    @Test
+    public void select() throws Exception {
+        Sort select = () -> {
+            // éå†ï¼Œæ‰¾æœ€å¤§æœ€å°
+            selectSort(0, SIZE - 1);
+        };
+        runTest(select);
+    }
 
-	// =======================================static_tools==============================================
-	/**
-	 * @param base
-	 *            »ùÊı£¬×îÀíÏë±È½Ï»ù×¼
-	 * @param range
-	 *            Îó²î·¶Î§£¬Ìá¸ß»ùÊıÑ¡ÔñĞ§ÂÊ
-	 * @return »ùÊı
-	 */
-	public static int selectBase(int[] arr, int begin, int end, int base, int range) {
-		int gap/* ²î¾àÇó×îĞ¡ */ = base, index/* ÒªÇóµÄ»ùÊı */ = 0;
-		for (int j = begin; j < end; j++) {
-			int k = arr[j];
-			int newGap = Math.abs(base - k);
-			if (newGap < range) {
-				return j;
-			}
-			if (gap > newGap) {// ĞèÒª½»»»
-				index = j;
-				gap = newGap;
-			}
-		}
-		return index;
-	}
+    int[] tmp = new int[SIZE];
+    int limit, index2, index1, k = 0, gap, num;
 
-	private static void quickSort(int begin, int end) {
-		int start = begin;
-		int stop = end;
-		int key = arr[begin];
 
-		while (stop > start) {
-			// ´ÓºóÍùÇ°±È½Ï
-			while (stop > start && arr[stop] >= key)
-				stop--;
-			if (arr[stop] <= key) { // µÈÓÚ£¿ ÄÜ·ñÓÅ»¯
-				swap(arr, start, stop);
-			}
-			// ´ÓÇ°Íùºó±È½Ï
-			while (stop > start && arr[start] <= key)
-				start++;
-			if (arr[start] >= key) {
-				swap(arr, start, stop);
-			}
-		}
-		if (start > begin)
-			quickSort(begin, start - 1);
-		if (stop < end)
-			quickSort(stop + 1, end);
-	}
+    @Test
+    public void merge() throws Exception {
+        Sort merge = () -> {
+            // åˆ†ç»„ æŒ‰æ•°ç»„é•¿åº¦åˆ†ç»„ï¼Œå…ˆ2 2^2 2^4 ç›´åˆ° >length/2,ä¾æ¬¡åˆå¹¶æ•°ç»„
+            for (gap = 1; arr.length / gap > 0; gap = gap << 1) {
+                mergeSort();
+            }
+        };
+        runTest(merge);
+    }
 
-	public static void swap(int[] arr, int index1, int index2) {
-		int tmp = arr[index1];
-		arr[index1] = arr[index2];
-		arr[index2] = tmp;
-	}
 
-	public static void main(String[] args) {
-		int[] arr = { 1, 3, 6 };
-		int i = 0;
-		System.out.println(arr[i++] + " | " + arr[++i]);
-	}
+    private void mergeSort() {
+        // ==============æ¯æ¬¡åˆ’åˆ†å¤šå°‘ä¸ªæ•°ç»„==============
+        num = arr.length / gap;
+        if (arr.length % gap != 0) {
+            num = num + 1;
+        }
+        // ==============æ­£å¸¸åˆå¹¶==============
+        for (int i = 0; i < num; i += 2) {
+            index1 = gap * i;
+            index2 = gap * i + gap;
+            limit = index2;
+            copyValues(limit, Math.min(SIZE, limit + gap));
+        }
+        // ==============æœ€åä¸€ä¸ªæ•°ç»„å½’å¹¶=================
+        if (1 == num) {
+            index2 += gap;
+            limit = index2;
+            copyValues(limit, arr.length);
+        }
+        // ==============äº¤æ¢æ•°ç»„=================
+        int[] swap = arr;
+        arr = tmp;
+        tmp = swap;
+        k = 0;// è¿˜åŸä¸´æ—¶æ•°ç»„
+    }
+
+
+    private void copyValues(int begin, int end) {
+        while (index1 < begin && index2 < end) {
+            if (arr[index1] > arr[index2]) {
+                tmp[k++] = arr[index2++];
+            }
+            else if (arr[index1] < arr[index2]) {
+                tmp[k++] = arr[index1++];
+            }
+            else {// ç›¸ç­‰å…¨éƒ¨æ‹·è´
+                tmp[k++] = arr[index1++];
+                tmp[k++] = arr[index2++];
+            }
+        }
+        // å‰©ä½™å…ƒç´ 
+        if (index1 < begin) {
+            System.arraycopy(arr, index1, tmp, k, limit - index1);
+            k += limit - index1;
+        }
+        else if (index2 < end) {// å³è¾¹æ•°ç»„æœ‰å‰©ä½™
+            System.arraycopy(arr, index2, tmp, k, limit - index2 + gap);
+            k += limit - index2 + gap;
+        }
+    }
+
+
+    private void selectSort(int begin, int end) {
+        int maxIndex = end, littleIndex = begin;
+        for (int i = begin; i < end; i++) {
+            int tmp = arr[i];
+            if (tmp > arr[maxIndex]) {
+                maxIndex = i;// æ ‡æ³¨æœ€å¤§
+            }
+            else if (tmp < arr[littleIndex]) {
+                littleIndex = i;// æ ‡æ³¨æœ€å°
+            }
+        }
+        // äº¤æ¢æœ€å¤§æœ€å°
+        swap(arr, maxIndex, end);
+        swap(arr, littleIndex, begin);
+        if (end - begin > 2)
+            selectSort(begin + 1, end - 1);
+    }
+
+
+    @Test
+    public void insert() throws Exception {
+        Sort insert = () -> {
+            // éå†å…ƒç´ å¹¶æ’å…¥
+            for (int i = 1; i < arr.length; i++) {
+                int tmp = arr[i];
+                // æŸ¥æ‰¾æ’å…¥ä½ç½®
+                int index = SearchTest.binarySearch(arr, tmp, 0, i);
+                // åç§»,ä»æœ€åå¼€å§‹
+                for (int j = i; j > index - 1 && j > 0; j--) {
+                    arr[j] = arr[j - 1];
+                }
+                // æ’å…¥åˆé€‚ä½ç½®
+                arr[index] = tmp;
+            }
+        };
+        runTest(insert);
+    }
+
+
+    @Test
+    public void quick() throws Exception {
+        Sort quick = () -> {
+            quickSort(0, SIZE - 1);
+        };
+        runTest(quick);
+    }
+
+
+    // =======================================static_tools==============================================
+    /**
+     * @param base åŸºæ•°ï¼Œæœ€ç†æƒ³æ¯”è¾ƒåŸºå‡†
+     * @param range è¯¯å·®èŒƒå›´ï¼Œæé«˜åŸºæ•°é€‰æ‹©æ•ˆç‡
+     * @return åŸºæ•°
+     */
+    public static int selectBase(int[] arr, int begin, int end, int base, int range) {
+        int gap/* å·®è·æ±‚æœ€å° */ = base, index/* è¦æ±‚çš„åŸºæ•° */ = 0;
+        for (int j = begin; j < end; j++) {
+            int k = arr[j];
+            int newGap = Math.abs(base - k);
+            if (newGap < range) {
+                return j;
+            }
+            if (gap > newGap) {// éœ€è¦äº¤æ¢
+                index = j;
+                gap = newGap;
+            }
+        }
+        return index;
+    }
+
+
+    private static void quickSort(int begin, int end) {
+        int start = begin;
+        int stop = end;
+        int key = arr[begin];
+
+        while (stop > start) {
+            // ä»åå¾€å‰æ¯”è¾ƒ
+            while (stop > start && arr[stop] >= key)
+                stop--;
+            if (arr[stop] <= key) { // ç­‰äºï¼Ÿ èƒ½å¦ä¼˜åŒ–
+                swap(arr, start, stop);
+            }
+            // ä»å‰å¾€åæ¯”è¾ƒ
+            while (stop > start && arr[start] <= key)
+                start++;
+            if (arr[start] >= key) {
+                swap(arr, start, stop);
+            }
+        }
+        if (start > begin)
+            quickSort(begin, start - 1);
+        if (stop < end)
+            quickSort(stop + 1, end);
+    }
+
+
+    public static void swap(int[] arr, int index1, int index2) {
+        int tmp = arr[index1];
+        arr[index1] = arr[index2];
+        arr[index2] = tmp;
+    }
+
+
+    public static void main(String[] args) {
+        int[] arr = { 1, 3, 6 };
+        int i = 0;
+        System.out.println(arr[i++] + " | " + arr[++i]);
+    }
 
 }

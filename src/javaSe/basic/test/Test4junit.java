@@ -10,27 +10,27 @@ import org.junit.Test;
 
 public class Test4junit {
 	
-	@BeforeClass//ÔÚËùÓĞ·½·¨Ö®Ç°Ö´ĞĞ
+	@BeforeClass//åœ¨æ‰€æœ‰æ–¹æ³•ä¹‹å‰æ‰§è¡Œ
 	public void globaInit(){
 		System.out.println("init all method-------");
 	}
-	@AfterClass//ÔÚËùÓĞ·½·¨Ö®ºóÖ´ĞĞ
+	@AfterClass//åœ¨æ‰€æœ‰æ–¹æ³•ä¹‹åæ‰§è¡Œ
 	public void globaFinal(){
 		System.out.println("after all method-------");
 	}
 	
-	@Before//ÔÚÃ¿¸ö²âÊÔ·½·¨Ö®Ç°Ö´ĞĞ
+	@Before//åœ¨æ¯ä¸ªæµ‹è¯•æ–¹æ³•ä¹‹å‰æ‰§è¡Œ
 	public void setUp(){
 		System.out.println("start before method------------");
 	}
 	
-	@After//ÔÚÃ¿¸ö²âÊÔ·½·¨Ö®ºóÖ´ĞĞ
+	@After//åœ¨æ¯ä¸ªæµ‹è¯•æ–¹æ³•ä¹‹åæ‰§è¡Œ
 	public void tearDown(){
 		System.out.println("start after method");
 		
 	}
 	
-	@Test(timeout=50)// ÉèÖÃ²âÊÔÔËĞĞÊ±¼ä Èç¹û³¬³öÔò·µ»Ø´íÎó
+	@Test(timeout=50)// è®¾ç½®æµ‹è¯•è¿è¡Œæ—¶é—´ å¦‚æœè¶…å‡ºåˆ™è¿”å›é”™è¯¯
 	public void testMax(){
 		System.out.println("testMax method---------------");
 		int result = Math.max(2, 3);
@@ -52,7 +52,7 @@ public class Test4junit {
 	@Test(expected = Exception.class )
 	public void testDivision(){
 		System.out.println("testDivision method--------------");
-		fail("³ı·¨²âÊÔÊ§°Ü");
+		fail("é™¤æ³•æµ‹è¯•å¤±è´¥");
 	}
 	
 	public static void main(String[] args) {

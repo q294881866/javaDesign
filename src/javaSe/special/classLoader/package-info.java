@@ -1,8 +1,8 @@
 /**
- * Àà¼ÓÔØÆ÷Ê¾Àı
+ * ç±»åŠ è½½å™¨ç¤ºä¾‹
  */
 /**
  * @author ppf@jiumao.org
- * @date 2017Äê1ÔÂ17ÈÕ 
+ * @date 2017å¹´1æœˆ17æ—¥ 
  */
 package javaSe.special.classLoader;

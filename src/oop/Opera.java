@@ -3,6 +3,6 @@ package oop;
 public class Opera implements Art{
 	@Override
 	public void show() {
-		System.out.println("¹ú¼Ò´ó¾çÔº£¬¾©¾ç¡¶ËÄÀÉÌ½Ä¸¡·");
+		System.out.println("å›½å®¶å¤§å‰§é™¢ï¼Œäº¬å‰§ã€Šå››éƒæ¢æ¯ã€‹");
 	}
 }

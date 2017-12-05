@@ -1,15 +1,15 @@
 package javaSe.basic.dataStructure;
 
 /**
- * Ä£Äâ Á´±íµÄÊµÏÖ<br>
- * ·ÖÎªÁ½²¿·Ö£º
- * 1.Êı¾İµÄ´æ´¢NodeÀà
- * 2.Êı¾İµÄ¹ÜÀíLinkedList
+ * æ¨¡æ‹Ÿ é“¾è¡¨çš„å®ç°<br>
+ * åˆ†ä¸ºä¸¤éƒ¨åˆ†ï¼š
+ * 1.æ•°æ®çš„å­˜å‚¨Nodeç±»
+ * 2.æ•°æ®çš„ç®¡ç†LinkedList
  */
 public class LinkedList implements Collection{
-	Node head = null;//Í·Ö¸Õë
-	Node tail = null;//Î²Ö¸Õë
-	int size = 0;//ÔªËØ¸öÊı
+	Node head = null;//å¤´æŒ‡é’ˆ
+	Node tail = null;//å°¾æŒ‡é’ˆ
+	int size = 0;//å…ƒç´ ä¸ªæ•°
 	@Override
 	public void add(Object object) {
 		if (null == head) {

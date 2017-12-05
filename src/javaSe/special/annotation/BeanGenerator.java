@@ -21,14 +21,14 @@ import javax.lang.model.util.ElementFilter;
 import javax.lang.model.util.Elements;
 
 /**
- * Ò»¸öÉú³É×Ö½ÚÂëÎÄ¼şµÄ×¢½â
+ * ä¸€ä¸ªç”Ÿæˆå­—èŠ‚ç æ–‡ä»¶çš„æ³¨è§£
  * @author ppf@jiumao.org
- * @date 2017Äê1ÔÂ25ÈÕ
+ * @date 2017å¹´1æœˆ25æ—¥
  */
 public class BeanGenerator extends AbstractProcessor{
 
 
-    // ÔªËØ²Ù×÷µÄ¸¨ÖúÀà  
+    // å…ƒç´ æ“ä½œçš„è¾…åŠ©ç±»  
     Elements elementUtils;  
   
     @Override  
@@ -39,25 +39,25 @@ public class BeanGenerator extends AbstractProcessor{
   
     @Override  
     public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv) {  
-        // »ñµÃ±»¸Ã×¢½âÉùÃ÷µÄÔªËØ  
+        // è·å¾—è¢«è¯¥æ³¨è§£å£°æ˜çš„å…ƒç´   
         Set<? extends Element> elememts = roundEnv.getElementsAnnotatedWith(ClassAnno.class);  
-        TypeElement classElement = null;// ÉùÃ÷ÀàÔªËØ  
-        List<VariableElement> fields = null;// ÉùÃ÷Ò»¸ö´æ·Å³ÉÔ±±äÁ¿µÄÁĞ±í  
-        // ´æ·Å¶şÕß  
+        TypeElement classElement = null;// å£°æ˜ç±»å…ƒç´   
+        List<VariableElement> fields = null;// å£°æ˜ä¸€ä¸ªå­˜æ”¾æˆå‘˜å˜é‡çš„åˆ—è¡¨  
+        // å­˜æ”¾äºŒè€…  
         Map<String, List<VariableElement>> maps = new HashMap<String, List<VariableElement>>();  
-        // ±éÀú  
+        // éå†  
         for (Element ele : elememts) {  
-            // ÅĞ¶Ï¸ÃÔªËØÊÇ·ñÎªÀà  
+            // åˆ¤æ–­è¯¥å…ƒç´ æ˜¯å¦ä¸ºç±»  
             if (ele.getKind() == ElementKind.CLASS) {  
                 classElement = (TypeElement) ele;  
                 maps.put(classElement.getQualifiedName().toString(), fields = new ArrayList<VariableElement>());  
   
-            } else if (ele.getKind() == ElementKind.FIELD) // ÅĞ¶Ï¸ÃÔªËØÊÇ·ñÎª³ÉÔ±±äÁ¿  
+            } else if (ele.getKind() == ElementKind.FIELD) // åˆ¤æ–­è¯¥å…ƒç´ æ˜¯å¦ä¸ºæˆå‘˜å˜é‡  
             {  
                 VariableElement varELe = (VariableElement) ele;  
-                // »ñÈ¡¸ÃÔªËØ·â×°ÀàĞÍ  
+                // è·å–è¯¥å…ƒç´ å°è£…ç±»å‹  
                 TypeElement enclosingElement = (TypeElement) varELe.getEnclosingElement();  
-                // ÄÃµ½key  
+                // æ‹¿åˆ°key  
                 String key = enclosingElement.getQualifiedName().toString();  
                 fields = maps.get(key);  
                 if (fields == null) {  
@@ -84,14 +84,14 @@ public class BeanGenerator extends AbstractProcessor{
         File dir = new File(BeanGenerator.class.getResource("/").getPath());  
         if (!dir.exists())  
             dir.mkdirs();  
-        // ±éÀúmap  
+        // éå†map  
         for (String key : maps.keySet()) {  
   
-            // ´´½¨ÎÄ¼ş  
+            // åˆ›å»ºæ–‡ä»¶  
             File file = new File(dir, key.replaceAll("\\.", "_") + ".txt");  
             try {  
                 /** 
-                 * ±àĞ´ÎÄ¼şÄÚÈİ 
+                 * ç¼–å†™æ–‡ä»¶å†…å®¹ 
                  */  
                 FileWriter fw = new FileWriter(file);  
                 fw.append("{").append("class:").append("\"" + key + "\"").append(",\n ");  

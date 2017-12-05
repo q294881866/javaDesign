@@ -1,25 +1,25 @@
 package oop;
 /**
- * ²âÊÔ¼Ì³ĞµÄ¸¸Àà
+ * æµ‹è¯•ç»§æ‰¿çš„çˆ¶ç±»
  * @author ppf@jiumao.org
- * @date 2017Äê2ÔÂ14ÈÕ
+ * @date 2017å¹´2æœˆ14æ—¥
  */
 public class Base {
 
 	public static class Inner{
 		public static void say() {
-			System.out.println("ÄÚ²¿Àà");
+			System.out.println("å†…éƒ¨ç±»");
 		}
 	}
 	
 	public static void say() {
-		System.out.println("ÆÕÍ¨·½·¨");
+		System.out.println("æ™®é€šæ–¹æ³•");
 	}
 }
 
 class NotPublicClazz{
 	
 	public void say() {
-		System.out.println("Íâ²¿Àà");
+		System.out.println("å¤–éƒ¨ç±»");
 	}
 }

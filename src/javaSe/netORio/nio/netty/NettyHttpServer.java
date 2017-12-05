@@ -22,11 +22,11 @@ public class NettyHttpServer {
                     .childHandler(new ChannelInitializer<SocketChannel>() {
                                 @Override
                                 public void initChannel(SocketChannel ch) throws Exception {
-                                	// Http±àÂëÆ÷
+                                	// Httpç¼–ç å™¨
                                     ch.pipeline().addLast(new HttpResponseEncoder());
-                                    // Http½âÂëÆ÷
+                                    // Httpè§£ç å™¨
                                     ch.pipeline().addLast(new HttpRequestDecoder());
-                                    // ÇëÇó´¦ÀíÆ÷
+                                    // è¯·æ±‚å¤„ç†å™¨
                                     ch.pipeline().addLast(new HttpServerInboundHandler());
                                 }
                             }).option(ChannelOption.SO_BACKLOG, 128) 

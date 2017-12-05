@@ -1,9 +1,9 @@
 package javaSe.special.enums;
 
 /**
- * Ã¶¾ÙÊ¾Àı<br>
+ * æšä¸¾ç¤ºä¾‹<br>
  * @author ppf@jiumao.org
- * @date 2017Äê1ÔÂ17ÈÕ
+ * @date 2017å¹´1æœˆ17æ—¥
  */
 public class EnumTest {
 	public static void main(String[] args) {
@@ -17,7 +17,7 @@ public class EnumTest {
 		MAN(1),
 		WOMEN(0),
 		UNKNOWN();
-		/**Ëù¶ÔÓ¦µÄÖµ*/
+		/**æ‰€å¯¹åº”çš„å€¼*/
 		private Integer value;
 		Human() {System.out.println("default");}
 		private Human(Integer value) {

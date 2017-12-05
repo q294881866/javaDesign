@@ -4,9 +4,9 @@ import java.util.Collection;
 import java.util.Objects;
 
 /**
- * Óï·¨ÌÇ
+ * è¯­æ³•ç³–
  * @author ppf@jiumao.org
- * @date 2017Äê1ÔÂ25ÈÕ
+ * @date 2017å¹´1æœˆ25æ—¥
  */
 public class AssertTest {
 	public static void main(String[] args){

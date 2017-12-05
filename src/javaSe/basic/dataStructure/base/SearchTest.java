@@ -3,25 +3,25 @@ package javaSe.basic.dataStructure.base;
 public class SearchTest {
 
 	/**
-	 * ×¢ÒâÊı×é¼ì²é£¨¿Õ£©,ÉıĞò<br>
+	 * æ³¨æ„æ•°ç»„æ£€æŸ¥ï¼ˆç©ºï¼‰,å‡åº<br>
 	 * 
 	 * @param arr
 	 * @param dest
-	 * @return Ó¦¸Ã²åÈëµÄÎ»ÖÃ£¨Êı×éÏÂ±ê£©
+	 * @return åº”è¯¥æ’å…¥çš„ä½ç½®ï¼ˆæ•°ç»„ä¸‹æ ‡ï¼‰
 	 */
 	public static int binarySearch(int[] arr, int dest, int begin, int end) {
 		int index, tmp, left = begin, right = end;
 		if (arr[begin] > dest)
 			return 0;
-		do {// ×îºóÖµreturnÅĞ¶Ï´óĞ¡
+		do {// æœ€åå€¼returnåˆ¤æ–­å¤§å°
 			index = (left + right) / 2;
 			tmp = arr[index];
-			if (dest > tmp) {// ´óÓÚÍùºóÕÒ
-				left = index;// ×ó±ß½çÊÕËõ
+			if (dest > tmp) {// å¤§äºå¾€åæ‰¾
+				left = index;// å·¦è¾¹ç•Œæ”¶ç¼©
 			} else if (dest == tmp) {
 				return index;
-			} else {// Ğ¡ÓÚÍùÇ°ÕÒ
-				right = index;// ÓÒ±ß½çÊÕËõ
+			} else {// å°äºå¾€å‰æ‰¾
+				right = index;// å³è¾¹ç•Œæ”¶ç¼©
 			}
 		} while (right - left > 1);
 		return dest > arr[index] ? index + 1 : index;

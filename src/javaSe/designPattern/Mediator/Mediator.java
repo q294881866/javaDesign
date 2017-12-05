@@ -1,7 +1,7 @@
 package javaSe.designPattern.Mediator;
 /**
- * 中介者模式：解决类与类之间关联，
- * 类似spring容器
+ * 涓粙鑰呮ā寮忥細瑙ｅ喅绫讳笌绫讳箣闂村叧鑱旓紝
+ * 绫讳技spring瀹瑰櫒
  * @author Administrator
  *
  */

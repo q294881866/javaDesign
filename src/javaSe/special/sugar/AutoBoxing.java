@@ -28,7 +28,7 @@ public class AutoBoxing {
 		System.out.println((i1==i2)+" | "+(i3==i4));
 		
 		Object o = null;//requireNonNull
-		int i = (Integer) o;//²»ÊÇ0
+		int i = (Integer) o;//ä¸æ˜¯0
 	}
 	
 	

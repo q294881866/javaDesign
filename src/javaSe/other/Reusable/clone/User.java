@@ -5,7 +5,7 @@ public class User implements Cloneable{
 	private User u;
 	private String name;
 	public User() {
-		System.out.println("ĞÂ¶ÔÏóÊµÀı");
+		System.out.println("æ–°å¯¹è±¡å®ä¾‹");
 	}
 	public User getU() {
 		return u;

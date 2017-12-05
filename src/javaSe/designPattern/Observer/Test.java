@@ -119,7 +119,7 @@ class PropertyMgr {
 	
 	static {
 		try {
-			props.load(Test.class.getClassLoader().getResourceAsStream("com/bjsxt/dp/observer/observer.properties"));
+			props.load(Test.class.getClassLoader().getResourceAsStream("javaSe/designPattern/Observer/observer.properties"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

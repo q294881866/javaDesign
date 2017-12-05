@@ -2,9 +2,7 @@ package javaSe.designPattern.Facede;
 
 
 /**
- * 测试外观设计模式的优缺点
- * @author Administrator
- *
+ * 娴嬭瘯澶栬璁捐妯″紡鐨勪紭缂虹偣
  */
 public class Test {
 

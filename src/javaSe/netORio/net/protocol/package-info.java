@@ -1,9 +1,9 @@
 /**
- * net ÖĞµÄĞ­Òé£º<br>
- * tcp¡¢udp ...
+ * net ä¸­çš„åè®®ï¼š<br>
+ * tcpã€udp ...
  */
 /**
  * @author ppf@jiumao.org
- * @date 2017Äê1ÔÂ10ÈÕ 
+ * @date 2017å¹´1æœˆ10æ—¥ 
  */
 package javaSe.netORio.net.protocol;

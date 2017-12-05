@@ -1,17 +1,17 @@
 package javaSe.basic.dataStructure.matrix;
 import java.util.concurrent.atomic.AtomicInteger;
 /**
- * ÆÓËØ¾ØÕó¼ÆËã<br>
- * Ä¬ÈÏ¹¹½¨8*8·½Õó
+ * æœ´ç´ çŸ©é˜µè®¡ç®—<br>
+ * é»˜è®¤æ„å»º8*8æ–¹é˜µ
  */
 public class SimpleMatrix {
-	int[][] matrix1;//¾ØÕó1
-	int[][] matrix2;//¾ØÕó2
-	int[][] result;//¾ØÕó1*2
+	int[][] matrix1;//çŸ©é˜µ1
+	int[][] matrix2;//çŸ©é˜µ2
+	int[][] result;//çŸ©é˜µ1*2
 	int m, n, k;
 	static int threadCount = 0;
-//	int index = -1;// ¾ØÕóµ±Ç°¼ÆËãµ½¶àÉÙĞĞ
-	AtomicInteger index;//Ô­×ÓÀà²Ù×÷
+//	int index = -1;// çŸ©é˜µå½“å‰è®¡ç®—åˆ°å¤šå°‘è¡Œ
+	AtomicInteger index;//åŸå­ç±»æ“ä½œ
 
 	public SimpleMatrix() {
 		this(8, 8, 8);
@@ -19,7 +19,7 @@ public class SimpleMatrix {
 
 	public SimpleMatrix(int m, int n, int k) {
 		super();
-		// 1.¹¹Ôì¾ØÕó
+		// 1.æ„é€ çŸ©é˜µ
 		this.m = m;
 		this.n = n;
 		this.k = k;
@@ -41,23 +41,23 @@ public class SimpleMatrix {
 	 
 
 	/**
-	 * µ¥Ïß³Ì¼ÆËã
+	 * å•çº¿ç¨‹è®¡ç®—
 	 */
 	public void singleThread() {
 		int line;
 		while ((line = getLine()) >-1) {
-			System.out.println("µ±Ç°Ïß³Ì£º" + Thread.currentThread().getName()
-					+ " ´¦ÀíĞĞÊı£º" + line);
+			System.out.println("å½“å‰çº¿ç¨‹ï¼š" + Thread.currentThread().getName()
+					+ " å¤„ç†è¡Œæ•°ï¼š" + line);
 			System.out.println(line);
 			computerByLine(n, k, line);
 		}
 	}
 
 	/**
-	 * ¶àÏß³Ì¼ÆËã
+	 * å¤šçº¿ç¨‹è®¡ç®—
 	 * 
 	 * @param size
-	 *            Ïß³ÌÊı
+	 *            çº¿ç¨‹æ•°
 	 */
 	public void multiThread(int size) {
 		if (1 > size) {
@@ -73,7 +73,7 @@ public class SimpleMatrix {
 		final SimpleMatrix matrix;
 
 		public MyThread(SimpleMatrix matrix) {
-			this.matrix = matrix;//¿ÉÑ¡ÔñÏß³Ì¼ÆËãµÄ¾ØÕó¶ÔÏó
+			this.matrix = matrix;//å¯é€‰æ‹©çº¿ç¨‹è®¡ç®—çš„çŸ©é˜µå¯¹è±¡
 		}
 
 		@Override
@@ -96,8 +96,8 @@ public class SimpleMatrix {
 	}
 
 	/**
-	 * ¹¤¾ßÀà£º´òÓ¡½á¹û£¬
-	 * ´òÓ¡´«Èë¾ØÕó
+	 * å·¥å…·ç±»ï¼šæ‰“å°ç»“æœï¼Œ
+	 * æ‰“å°ä¼ å…¥çŸ©é˜µ
 	 * @param x
 	 */
 	public static void printResult(int[][] x) {
@@ -111,8 +111,8 @@ public class SimpleMatrix {
 	}
 
 	/**
-	 * ¹¤¾ßÀà£º´«ÈëÒ»¸ö¿ÕµÄmĞĞnÁĞ¾ØÕó<br>
-	 * Ã¿¸öÔªËØÌî³äÒ»¸ö0µ½99µÄËæ»ú×ÔÈ»Êı
+	 * å·¥å…·ç±»ï¼šä¼ å…¥ä¸€ä¸ªç©ºçš„mè¡Œnåˆ—çŸ©é˜µ<br>
+	 * æ¯ä¸ªå…ƒç´ å¡«å……ä¸€ä¸ª0åˆ°99çš„éšæœºè‡ªç„¶æ•°
 	 * @param mn
 	 * @return 
 	 */
@@ -128,19 +128,19 @@ public class SimpleMatrix {
 	public static void main(String[] args) throws Exception {
 		SimpleMatrix s = new SimpleMatrix();
 		long begin = System.currentTimeMillis();
-		// 1.µ¥Ïß³Ì¼ÆËã
-		 s.singleThread();//ÓÃÊ±13367ºÁÃë
+		// 1.å•çº¿ç¨‹è®¡ç®—
+		 s.singleThread();//ç”¨æ—¶13367æ¯«ç§’
 		 s.printResult(s.result);
 
-		// 2.¶àÏß³Ì¼ÆËã
-//		s.multiThread(4);//4731ºÁÃë
-//		// µÈ´ı½áÊøºóÊä³ö
-//		while (threadCount != 0) {//µ±Ç°ÔËĞĞµÄÏß³Ì¼ÆÊıÆ÷
+		// 2.å¤šçº¿ç¨‹è®¡ç®—
+//		s.multiThread(4);//4731æ¯«ç§’
+//		// ç­‰å¾…ç»“æŸåè¾“å‡º
+//		while (threadCount != 0) {//å½“å‰è¿è¡Œçš„çº¿ç¨‹è®¡æ•°å™¨
 //			Thread.sleep(20);
 //		}
 
 //		s.printResult(s.result);
 		long end = System.currentTimeMillis();
-		System.out.println("¼ÆËãÍê³É,ÓÃÊ±" + (end - begin) + "ºÁÃë");
+		System.out.println("è®¡ç®—å®Œæˆ,ç”¨æ—¶" + (end - begin) + "æ¯«ç§’");
 	}
 }

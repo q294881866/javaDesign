@@ -1,9 +1,9 @@
 package oop;
 
 /**
- * ¼Ì³Ğ²âÊÔ
+ * ç»§æ‰¿æµ‹è¯•
  * @author ppf@jiumao.org
- * @date 2017Äê2ÔÂ14ÈÕ
+ * @date 2017å¹´2æœˆ14æ—¥
  */
 public class ExtendTest extends Base{
 

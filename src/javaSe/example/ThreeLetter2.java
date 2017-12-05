@@ -5,10 +5,10 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 /**
- * ÎÊÌâÃèÊö£º
- * ´òÓ¡ 'A', 'B', 'C', 'D', 'E', 'F' 
- * Èı¸ö×ÖÄ¸ÈÎÒâ×éºÏ£¬Ë³Ğò²»ÏŞ£¬ÈçAAB=BAA
- * ·½·¨Ò»£ºÀûÓÃËØÊıÃ»ÓĞ¹«ÓÃÊıµÄĞÔÖÊ
+ * é—®é¢˜æè¿°ï¼š
+ * æ‰“å° 'A', 'B', 'C', 'D', 'E', 'F' 
+ * ä¸‰ä¸ªå­—æ¯ä»»æ„ç»„åˆï¼Œé¡ºåºä¸é™ï¼Œå¦‚AAB=BAA
+ * æ–¹æ³•ä¸€ï¼šåˆ©ç”¨ç´ æ•°æ²¡æœ‰å…¬ç”¨æ•°çš„æ€§è´¨
  * @author Administrator
  *
  */
@@ -23,9 +23,9 @@ public class ThreeLetter2 {
 	static char[] prime = {2 ,3 ,5 ,7 ,11 ,13 };
 
 	/**
-	 * ´òÓ¡×ÖÄ¸ Ò»¸ö×ÖÄ¸¶ÔÒ»¸öÖÊÊı£¬ 
-	 * ABCµÈÓÚCBA,¶ÔÓ¦ÖÊÊı³Ë»ı
-	 * ÓÉÓÚÖÊÊıÌØĞÔ²»»á³öÏÖÖØ¸´
+	 * æ‰“å°å­—æ¯ ä¸€ä¸ªå­—æ¯å¯¹ä¸€ä¸ªè´¨æ•°ï¼Œ 
+	 * ABCç­‰äºCBA,å¯¹åº”è´¨æ•°ä¹˜ç§¯
+	 * ç”±äºè´¨æ•°ç‰¹æ€§ä¸ä¼šå‡ºç°é‡å¤
 	 * 
 	 */
 	public static void printLetter() {
@@ -38,7 +38,7 @@ public class ThreeLetter2 {
 				for (int j2 = 0; j2 < letter.length; j2++) {
 
 					
-					// ×ÖÄ¸Êä³öÑùÊ½
+					// å­—æ¯è¾“å‡ºæ ·å¼
 					String s = "" + letter[i] + letter[j] + letter[j2];
 					int key = prime[i]*prime[j]*prime[j2];
 					hm.put(key, s);
@@ -53,7 +53,7 @@ public class ThreeLetter2 {
 	}
 
 	/**
-	 * ±éÀúhashmap
+	 * éå†hashmap
 	 * 
 	 * @param hm
 	 */

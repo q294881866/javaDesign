@@ -6,32 +6,32 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * ×¢½â¼òµ¥ÊµÓÃ
+ * æ³¨è§£ç®€å•å®žç”¨
  * <ul>
  * public enum RetentionPolicy { SOURCE, CLASS, RUNTIME }
- * <li>SOURCE±íÊ¾Õâ¸öAnnotationÀàÐÍµÄÐÅÏ¢Ö»»á±£ÁôÔÚÔ´ÂëÀï£¬Ô´Âë¾­¹ý±àÒëÖ®ºó£¬AnnotationµÄÊý¾Ý¾Í»áÏûÊ§£¬²¢²»»á±£ÁôÔÚ±àÒëºÃµÄ.
- * classÎÄ¼þÀï£»
- * <li>CLASS±íÊ¾Õâ¸öAnnotationÀàÐÍµÄÐÅÏ¢ÔÚÔ´Âë±£Áô£¬ÔÚ.classÎÄ¼þÒ²±£Áô£¬µ«²»»á°ÑÕâÐ©ÐÅÏ¢¼ÓÔØµ½ÐéÄâ»ú£¨JVM£©ÖÐ£¬Èç¹û²»ÉèÖÃ£¬
- * ÏµÍ³Ä¬ÈÏÖµÊÇCLASS£»
- * <li>RUNTIME±íÊ¾ÔÚÔ´Âë£¬±àÒëºóµÄ.class¶¼±£´æÐÅÏ¢£¬ÔÚÖ´ÐÐµÄÊ±ºòÒ²»á°ÑÕâÐ©ÐÅÏ¢¼ÓÔØµ½JVMÖÐ
+ * <li>SOURCEè¡¨ç¤ºè¿™ä¸ªAnnotationç±»åž‹çš„ä¿¡æ¯åªä¼šä¿ç•™åœ¨æºç é‡Œï¼Œæºç ç»è¿‡ç¼–è¯‘ä¹‹åŽï¼ŒAnnotationçš„æ•°æ®å°±ä¼šæ¶ˆå¤±ï¼Œå¹¶ä¸ä¼šä¿ç•™åœ¨ç¼–è¯‘å¥½çš„.
+ * classæ–‡ä»¶é‡Œï¼›
+ * <li>CLASSè¡¨ç¤ºè¿™ä¸ªAnnotationç±»åž‹çš„ä¿¡æ¯åœ¨æºç ä¿ç•™ï¼Œåœ¨.classæ–‡ä»¶ä¹Ÿä¿ç•™ï¼Œä½†ä¸ä¼šæŠŠè¿™äº›ä¿¡æ¯åŠ è½½åˆ°è™šæ‹Ÿæœºï¼ˆJVMï¼‰ä¸­ï¼Œå¦‚æžœä¸è®¾ç½®ï¼Œ
+ * ç³»ç»Ÿé»˜è®¤å€¼æ˜¯CLASSï¼›
+ * <li>RUNTIMEè¡¨ç¤ºåœ¨æºç ï¼Œç¼–è¯‘åŽçš„.classéƒ½ä¿å­˜ä¿¡æ¯ï¼Œåœ¨æ‰§è¡Œçš„æ—¶å€™ä¹Ÿä¼šæŠŠè¿™äº›ä¿¡æ¯åŠ è½½åˆ°JVMä¸­
  * <p>
- * Ïë°ÑannotationµÄÊý¾Ý¼Ì³Ð¸ø×ÓÀà£¬ ÄÇ¾ÍÐèÒªÓÃµ½@Inherited
+ * æƒ³æŠŠannotationçš„æ•°æ®ç»§æ‰¿ç»™å­ç±»ï¼Œ é‚£å°±éœ€è¦ç”¨åˆ°@Inherited
  * <ul>
  * ElementType
  * <li>
- * TYPE(ÀàÐÍ)¿ÉÒÔÓÃÔÚclass£¬ interface £¬eumn£¬annotationÉÏÃæ
+ * TYPE(ç±»åž‹)å¯ä»¥ç”¨åœ¨classï¼Œ interface ï¼Œeumnï¼Œannotationä¸Šé¢
  * <li>
- * FILED(×Ö¶Î)
- * <li>METHOD(·½·¨)
- * <li>PARAMETER(²ÎÊý)
+ * FILED(å­—æ®µ)
+ * <li>METHOD(æ–¹æ³•)
+ * <li>PARAMETER(å‚æ•°)
  * <li>
- * CONSTRUCTOR£¨¹¹ÔìÆ÷£©
+ * CONSTRUCTORï¼ˆæž„é€ å™¨ï¼‰
  * <li>
- * LOCAL_VARIABLE(¾Ö²¿±äÁ¿)
+ * LOCAL_VARIABLE(å±€éƒ¨å˜é‡)
  * <li>
- * ANNITATION_TYPE£¨×¢½â£©
+ * ANNITATION_TYPEï¼ˆæ³¨è§£ï¼‰
  * <li>
- * PACKAGE£¨°ü£©ÆäÖÐTYPEÊÇÖ¸£¬Èç¹ûÃ»ÓÐÖÆ¶¨£¬ ÄÇÃ´Ëü¿ÉÒÔÓÃÔÚÈÎºÎÉÏÃæ
+ * PACKAGEï¼ˆåŒ…ï¼‰å…¶ä¸­TYPEæ˜¯æŒ‡ï¼Œå¦‚æžœæ²¡æœ‰åˆ¶å®šï¼Œ é‚£ä¹ˆå®ƒå¯ä»¥ç”¨åœ¨ä»»ä½•ä¸Šé¢
  * 
  */
 @Retention(RetentionPolicy.RUNTIME)
@@ -39,5 +39,5 @@ import java.lang.annotation.Target;
 public @interface Example {
 	String msg();
 	int[] iArr() default { 2, 4, 6, 7, 8 };
-	Base anno() default @Base("¿ìÀ´¿ìÀ´ÊýÒ»Êý");
+	Base anno() default @Base("å¿«æ¥å¿«æ¥æ•°ä¸€æ•°");
 }

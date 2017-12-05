@@ -1,15 +1,15 @@
 package javaSe.designPattern.Observer;
 
 public interface Subject {
-	/* Ôö¼Ó¹Û²ìÕß */
+	/* å¢åŠ è§‚å¯Ÿè€… */
 	void add(Observer observer);
 
-	/* É¾³ı¹Û²ìÕß */
+	/* åˆ é™¤è§‚å¯Ÿè€… */
 	void del(Observer observer);
 
-	/* Í¨ÖªËùÓĞµÄ¹Û²ìÕß */
+	/* é€šçŸ¥æ‰€æœ‰çš„è§‚å¯Ÿè€… */
 	void notifyObservers();
 
-	/* ×ÔÉíµÄ²Ù×÷ */
+	/* è‡ªèº«çš„æ“ä½œ */
 	void operation();
 }

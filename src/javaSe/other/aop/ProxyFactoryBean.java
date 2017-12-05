@@ -38,7 +38,7 @@ public class ProxyFactoryBean {
 							throws Throwable {
 
 						advice.beforeMethod(method);
-						Object retVal = method.invoke(target, args);//ִ�з���
+						Object retVal = method.invoke(target, args);//о┤ллийие
 						advice.afterMethod(method);
 						return retVal;						
 						

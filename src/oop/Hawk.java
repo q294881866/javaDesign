@@ -1,6 +1,6 @@
 package oop;
 /**
- * 一直会唱京剧的老鹰
+ * 涓�鐩翠細鍞变含鍓х殑鑰侀拱
  */
 public class Hawk extends BigBird{
 	Opera opera = new Opera();

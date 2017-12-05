@@ -1,8 +1,8 @@
 /**
- * ·´ÉäÊ¾Àı
+ * åå°„ç¤ºä¾‹
  */
 /**
  * @author ppf@jiumao.org
- * @date 2017Äê1ÔÂ18ÈÕ 
+ * @date 2017å¹´1æœˆ18æ—¥ 
  */
 package javaSe.special.reflect;

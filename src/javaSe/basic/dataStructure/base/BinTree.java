@@ -4,87 +4,87 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * Æ½ºâ¶ş²æÊ÷<br>
- * Ç°ÖĞºó¸ùĞò±éÀú
+ * å¹³è¡¡äºŒå‰æ ‘<br>
+ * å‰ä¸­åæ ¹åºéå†
  */
 public class BinTree {
 
 	private int[] array = { 1, 2, 3, 4, 5, 6, 7, 8 ,9};
-	/** ÓÃÓÚ´æ´¢Ê÷½Úµã */	private List<TreeNode> nodeList = null;
-	/** Ä¬ÈÏ¹¹Ôì·½·¨ */	public BinTree() {	this(null);	}
+	/** ç”¨äºå­˜å‚¨æ ‘èŠ‚ç‚¹ */	private List<TreeNode> nodeList = null;
+	/** é»˜è®¤æ„é€ æ–¹æ³• */	public BinTree() {	this(null);	}
 
 	public BinTree(int[] array) {
-		if (null == array) {// Êı×éÎª¿Õ£¬ÓÃÄ¬ÈÏµÄÀı×Ó
+		if (null == array) {// æ•°ç»„ä¸ºç©ºï¼Œç”¨é»˜è®¤çš„ä¾‹å­
 			array = this.array;
 		}
-		// 1.³õÊ¼»¯ Êı×é½ÚµãÌí¼Óµ½¼¯ºÏ
+		// 1.åˆå§‹åŒ– æ•°ç»„èŠ‚ç‚¹æ·»åŠ åˆ°é›†åˆ
 		nodeList = new LinkedList<TreeNode>();
 		for (int i = 0; i < array.length; i++) {
 			nodeList.add(new TreeNode(array[i]));
 		}
 
-		// 2.¹¹½¨¶ş²æÊ÷ ¸¸½ÚµãÊı:7/2 =3
+		// 2.æ„å»ºäºŒå‰æ ‘ çˆ¶èŠ‚ç‚¹æ•°:7/2 =3
 		for (int i = 0; i < array.length / 2 ; i++) {
-			// ×óº¢×Ó
+			// å·¦å­©å­
 			nodeList.get(i).left = nodeList.get(i * 2 + 1);
-			// ÓÒº¢×Ó
+			// å³å­©å­
 			if ((i * 2 + 2)<array.length) {
-				// ×îºóÒ»¸ö¸¸½Úµã¿ÉÄÜÃ»ÓĞÓÒº¢×Ó
+				// æœ€åä¸€ä¸ªçˆ¶èŠ‚ç‚¹å¯èƒ½æ²¡æœ‰å³å­©å­
 				nodeList.get(i).right = nodeList.get(i * 2 + 2);
 			}
 		}
 	}
 
 	/**
-	 * ÏÈ¸ùĞò±éÀú<br>
-	 * ¸ù¡¢×ó¡¢ÓÒ
+	 * å…ˆæ ¹åºéå†<br>
+	 * æ ¹ã€å·¦ã€å³
 	 */
 	public static void preorderTraversal(TreeNode node) {
 		if (node == null)
 			return;
-		System.out.print(node.data + " ");// ÏÈ´òÓ¡¸ù½Úµã
+		System.out.print(node.data + " ");// å…ˆæ‰“å°æ ¹èŠ‚ç‚¹
 		preorderTraversal(node.left);
 		preorderTraversal(node.right);
 	}
 
 	/**
-	 * ÖĞ¸ùĞò±éÀú<br>
-	 * ×ó¡¢¸ù¡¢ÓÒ
+	 * ä¸­æ ¹åºéå†<br>
+	 * å·¦ã€æ ¹ã€å³
 	 */
 	public static void inorderTraversal(TreeNode node) {
 		if (node == null)
 			return;
 		inorderTraversal(node.left);
-		System.out.print(node.data + " ");// ÖĞ¼ä´òÓ¡¸ù½Úµã
+		System.out.print(node.data + " ");// ä¸­é—´æ‰“å°æ ¹èŠ‚ç‚¹
 		inorderTraversal(node.right);
 	}
 
 	/**
-	 * ºó¸ùĞò±éÀú<br>
-	 * ×ó¡¢ÓÒ¡¢¸ù
+	 * åæ ¹åºéå†<br>
+	 * å·¦ã€å³ã€æ ¹
 	 */
 	public static void subsequentTraversal(TreeNode node) {
 		if (node == null)
 			return;
 		subsequentTraversal(node.left);
 		subsequentTraversal(node.right);
-		System.out.print(node.data + " ");// ×îºó´òÓ¡¸ù½Úµã
+		System.out.print(node.data + " ");// æœ€åæ‰“å°æ ¹èŠ‚ç‚¹
 	}
 
 	public static void main(String[] args) {
 		BinTree binTree = new BinTree();
-		// nodeListÖĞµÚ0¸öË÷Òı´¦µÄÖµ¼´Îª¸ù½Úµã
+		// nodeListä¸­ç¬¬0ä¸ªç´¢å¼•å¤„çš„å€¼å³ä¸ºæ ¹èŠ‚ç‚¹
 		TreeNode root = binTree.nodeList.get(0);
 
-		System.out.println("ÏÈ¸ùĞò±éÀú£º");
+		System.out.println("å…ˆæ ¹åºéå†ï¼š");
 		preorderTraversal(root);
 		System.out.println();
 
-		System.out.println("ÖĞ¸ùĞò±éÀú£º");
+		System.out.println("ä¸­æ ¹åºéå†ï¼š");
 		inorderTraversal(root);
 		System.out.println();
 
-		System.out.println("ºó¸ùĞò±éÀú£º");
+		System.out.println("åæ ¹åºéå†ï¼š");
 		subsequentTraversal(root);
 	}
 

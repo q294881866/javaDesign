@@ -7,22 +7,22 @@ interface Worker {
 class Programmer implements Worker{
 	@Override
 	public void work() {
-		System.out.println("³ÌĞòÉè¼Æ");
+		System.out.println("ç¨‹åºè®¾è®¡");
 	}
 }
 
 class Coder extends Programmer{
-	private String get = "¼Ó°à coding£¡";
+	private String get = "åŠ ç­ codingï¼";
 	private class BlackTech implements Worker{
 		@Override
 		public void work() {
-			//ÄÚ²¿¿ÉÒÔ·ÃÎÊÍâ²¿ÀàµÄË½ÓĞ³ÉÔ±
+			//å†…éƒ¨å¯ä»¥è®¿é—®å¤–éƒ¨ç±»çš„ç§æœ‰æˆå‘˜
 			System.out.println(get);
 		}
 	}
 	
 	public Worker getBlackTech(){
-		//Í¨¹ı½Ó¿ÚÒıÓÃË½ÓĞ×ÓÀàÊµÀı
+		//é€šè¿‡æ¥å£å¼•ç”¨ç§æœ‰å­ç±»å®ä¾‹
 		return new BlackTech();
 	}
 	public static void main(String[] args) {

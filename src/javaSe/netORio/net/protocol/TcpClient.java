@@ -14,13 +14,13 @@ import java.net.UnknownHostException;
 public class TcpClient {
 	public static void main(String[] args) throws Exception {
 		Socket s = new Socket(InetAddress.getLocalHost().getHostAddress(), 10002);
-		// 1.»ñÈ¡ÊäÈëÊä³öÁ÷£¬Ïòlocalhost:10002·¢Êı¾İ
+		// 1.è·å–è¾“å…¥è¾“å‡ºæµï¼Œå‘localhost:10002å‘æ•°æ®
 		PrintWriter pw = new PrintWriter(s.getOutputStream(), true);
 		BufferedReader in = new BufferedReader(new InputStreamReader(s.getInputStream()));
-		// 2.·¢ËÍÊı¾İ£¬´òÓ¡ÊÕµ½×Ö·û´®¡£
-		pw.println("TcpClient");// ÕâÀïÒª×¢Òâprintln²Å»á×Ô¶¯Ë¢ĞÂ
+		// 2.å‘é€æ•°æ®ï¼Œæ‰“å°æ”¶åˆ°å­—ç¬¦ä¸²ã€‚
+		pw.println("TcpClient");// è¿™é‡Œè¦æ³¨æ„printlnæ‰ä¼šè‡ªåŠ¨åˆ·æ–°
 		System.out.println(in.readLine());
-		// 3.¹Ø±Õ×ÊÔ´¡£
+		// 3.å…³é—­èµ„æºã€‚
 		in.close();
 		pw.close();
 		s.close();

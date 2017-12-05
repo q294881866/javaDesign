@@ -16,7 +16,7 @@ public class DefaultHttpHandlerImpl implements HttpHandler {
 		serverSC = (ServerSocketChannel) key.channel();
 		sc = serverSC.accept();
 		sc.configureBlocking(false);
-		// ×¢²áÎª¶ÁÊÂ¼ş´¦Àí
+		// æ³¨å†Œä¸ºè¯»äº‹ä»¶å¤„ç†
 		sc.register(key.selector(), SelectionKey.OP_READ);
 	}
 
@@ -42,9 +42,9 @@ public class DefaultHttpHandlerImpl implements HttpHandler {
 		ByteBuffer bb = (ByteBuffer) key.attachment();
 //		bb.flip();
 		if (bb.hasArray()) {
-			System.out.println("½ÓÊÜÊı¾İ£º"+new String(bb.array()));
+			System.out.println("æ¥å—æ•°æ®ï¼š"+new String(bb.array()));
 		}
 		sc.close();
-		System.out.println("Á÷³Ì½áÊø£¡");
+		System.out.println("æµç¨‹ç»“æŸï¼");
 	}
 }

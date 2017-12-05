@@ -3,9 +3,9 @@ package javaSe.special.sugar;
 import java.util.Collection;
 
 /**
- * Óï·¨ÌÇ
+ * è¯­æ³•ç³–
  * @author ppf@jiumao.org
- * @date 2017Äê1ÔÂ25ÈÕ
+ * @date 2017å¹´1æœˆ25æ—¥
  */
 public class Foreach {
 	

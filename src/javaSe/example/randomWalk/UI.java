@@ -1,7 +1,7 @@
 package javaSe.example.randomWalk;
 /**
- * Ëæ»úÓÎ×ß½çÃæ<br>
- * Ä£·Â×íººËæ»ú×ßÂ·ÎÊÌâ
+ * éšæœºæ¸¸èµ°ç•Œé¢<br>
+ * æ¨¡ä»¿é†‰æ±‰éšæœºèµ°è·¯é—®é¢˜
  * 
  */
 import java.awt.*;
@@ -9,18 +9,18 @@ import java.awt.event.*;
 import javax.swing.*;
 
 public class UI {
-	//³¡µØ³¤Óë¿í
+	//åœºåœ°é•¿ä¸å®½
 	int length = 500;
 	int width = 500;
 	
-	//¼ÇÂ¼×íººÎ»ÖÃ
+	//è®°å½•é†‰æ±‰ä½ç½®
 	int x = width/2;
 	int y = length/2;
 	
-	int count;	//ÓÃÓÚ¼ÇÂ¼ÎÄ±¾¿òÖĞÊäÈëµÄ²½Êı
+	int count;	//ç”¨äºè®°å½•æ–‡æœ¬æ¡†ä¸­è¾“å…¥çš„æ­¥æ•°
 	
 	private JTextField txt = new JTextField(10);
-	private JButton runButton = new JButton("ÔËĞĞ");
+	private JButton runButton = new JButton("è¿è¡Œ");
 	
 	public UI() {
 		final JFrame frame = new JFrame("Random Walk");
@@ -40,7 +40,7 @@ public class UI {
 				point[0] = x;
 				point[1] = y;
 				
-				frame.getGraphics().drawOval(point[0], point[1], 3, 3);	//»­³ö³õÊ¼Î»ÖÃ
+				frame.getGraphics().drawOval(point[0], point[1], 3, 3);	//ç”»å‡ºåˆå§‹ä½ç½®
 				
 				for(int i=1; i<=count; i++) {
 					int randomDirection = new Direction().direction();
@@ -52,7 +52,7 @@ public class UI {
 			}
 		});
 		
-		frame.addWindowListener(new WindowAdapter(){  //ÉèÖÃ´°¿Ú¹Ø±ÕÊÂ¼ş´¦Àí,È±ÉÙÁË¹Ø±Õ°´Å¥²»»áÏìÓ¦£¬³ÌĞòÃ»·¨¹Ø±Õ
+		frame.addWindowListener(new WindowAdapter(){  //è®¾ç½®çª—å£å…³é—­äº‹ä»¶å¤„ç†,ç¼ºå°‘äº†å…³é—­æŒ‰é’®ä¸ä¼šå“åº”ï¼Œç¨‹åºæ²¡æ³•å…³é—­
 			public void windowClosing(WindowEvent e){
 				System.exit(0);
 			}

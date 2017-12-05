@@ -1,78 +1,86 @@
 package javaSe.basic.dataStructure.base;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+
 /**
- * ºó×º±í´ïÊ½µÄ½âÎöÀıÈç£ºAB+C*
- * ÒÔ¶ººÅ×÷ÎªÒ»¸öÊıµÄ·Ö¸ô ·ÖºÅ½áÊø 4,5,+,3,*,;
+ * åç¼€è¡¨è¾¾å¼çš„è§£æä¾‹å¦‚ï¼šAB+C* ä»¥é€—å·ä½œä¸ºä¸€ä¸ªæ•°çš„åˆ†éš” åˆ†å·ç»“æŸ 4,5,+,3,*,;
  */
 public class SuffixExpression {
-	public static int explain(String suffixExpression){
-		int tmp = 0;
-		Stack stack = new Stack();
-		//½ÓÊÜÊäÈëµÄºó×º±í´ïÊ½£¬¶ººÅ,·Ö¸îÃ¿¸ö×Ö¶Î ·ÖºÅ;½áÊø
-		String[] s = suffixExpression.split(",");
-		for (int i = 0; i < s.length; i++) {
-			if (isNumeric(s[i])) {//1.Èç¹ûÊÇÊı×Ö£¬Ò»Ö±ÈëÕ»
-				stack.add(s[i]);
-			}else if(isComputer(s[i])) {//2.Èç¹ûÊÇ¼ÆËã·û£¬Ö´ĞĞÔËËã£¬³öÕ»Á½¸öÊı
-				int x = Integer.parseInt((String) stack.remove());
-				int y = Integer.parseInt((String) stack.remove());
-				tmp = computer(x, y, s[i]);
-				stack.add(tmp+"");
-				
-			}else if (";".equals(s[i])) {//3.Óöµ½;·ÖºÅ½áÊø·û
-				return Integer.parseInt((String) stack.remove());
-			}
-		}
-		return tmp;
-	}
-	
-	/**
-	 * ¼Ó¼õ³Ë³ı¼ÆËã
-	 */
-	private static int computer(int x,int y,String key){
-		switch (key) {//switch Ìõ¼şÅĞ¶Ï
-		case "*":
-			return x*y;
+    public static int explain(String suffixExpression) {
+        int tmp = 0;
+        Stack stack = new Stack();
+        // æ¥å—è¾“å…¥çš„åç¼€è¡¨è¾¾å¼ï¼Œé€—å·,åˆ†å‰²æ¯ä¸ªå­—æ®µ åˆ†å·;ç»“æŸ
+        String[] s = suffixExpression.split(",");
+        for (int i = 0; i < s.length; i++) {
+            if (isNumeric(s[i])) {// 1.å¦‚æœæ˜¯æ•°å­—ï¼Œä¸€ç›´å…¥æ ˆ
+                stack.add(s[i]);
+            }
+            else if (isComputer(s[i])) {// 2.å¦‚æœæ˜¯è®¡ç®—ç¬¦ï¼Œæ‰§è¡Œè¿ç®—ï¼Œå‡ºæ ˆä¸¤ä¸ªæ•°
+                int x = Integer.parseInt((String) stack.remove());
+                int y = Integer.parseInt((String) stack.remove());
+                tmp = computer(x, y, s[i]);
+                stack.add(tmp + "");
 
-		case "+":
-			return x+y;
-			
-		case "/":
-			return x/y;
-			
-		case "-":
-			return y-x;
-		}
-		return 0;
-	}
-	
-	/**
-	 * ÅĞ¶ÏÊÇ·ñÊÇÊı×Ö
-	 */
-	public static boolean isNumeric(String str) {
-		Pattern pattern = Pattern.compile("[0-9]*");
-		Matcher isNum = pattern.matcher(str);
-		if (!isNum.matches()) {
-			return false;
-		}
-		return true;
-	}
-	
-	/**
-	 * ÅĞ¶ÏÊÇ²»ÊÇ+-/\*
-	 */
-	 public static boolean isComputer(String str) {
-			Pattern pattern = Pattern.compile("[\\+\\-\\*/]");
-			Matcher isNum = pattern.matcher(str);
-			if (!isNum.matches()) {
-				return false;
-			}
-			return true;
-	}
-	
-	public static void main(String[] args) {
-		int i = explain("4,5,+,3,*");
-		System.out.println(i);
-	}
+            }
+            else if (";".equals(s[i])) {// 3.é‡åˆ°;åˆ†å·ç»“æŸç¬¦
+                return Integer.parseInt((String) stack.remove());
+            }
+        }
+        return tmp;
+    }
+
+
+    /**
+     * åŠ å‡ä¹˜é™¤è®¡ç®—
+     */
+    private static int computer(int x, int y, String key) {
+        switch (key) {// switch æ¡ä»¶åˆ¤æ–­
+        case "*":
+            return x * y;
+
+        case "+":
+            return x + y;
+
+        case "/":
+            return x / y;
+
+        case "-":
+            return y - x;
+        }
+        return 0;
+    }
+
+
+    /**
+     * åˆ¤æ–­æ˜¯å¦æ˜¯æ•°å­—
+     */
+    public static boolean isNumeric(String str) {
+        Pattern pattern = Pattern.compile("[0-9]*");
+        Matcher isNum = pattern.matcher(str);
+        if (!isNum.matches()) {
+            return false;
+        }
+        return true;
+    }
+
+
+    /**
+     * åˆ¤æ–­æ˜¯ä¸æ˜¯+-/\*
+     */
+    public static boolean isComputer(String str) {
+        Pattern pattern = Pattern.compile("[\\+\\-\\*/]");
+        Matcher isNum = pattern.matcher(str);
+        if (!isNum.matches()) {
+            return false;
+        }
+        return true;
+    }
+
+
+    public static void main(String[] args) {
+        int i = explain("4,5,+,3,*");
+        System.out.println(i);
+    }
 }

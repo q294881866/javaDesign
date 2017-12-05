@@ -18,12 +18,12 @@ public class NIOTcpServer {
 	}
 
 	private void init() throws Exception {
-		Selector selector = Selector.open(); // ´ò¿ªÑ¡ÔñÆ÷
-		ServerSocketChannel serverSC = ServerSocketChannel.open(); // ´ò¿ªÍ¨µÀ
-		serverSC.configureBlocking(false); // ·Ç×èÈû
+		Selector selector = Selector.open(); // æ‰“å¼€é€‰æ‹©å™¨
+		ServerSocketChannel serverSC = ServerSocketChannel.open(); // æ‰“å¼€é€šé“
+		serverSC.configureBlocking(false); // éžé˜»å¡ž
 		serverSC.socket().bind(new InetSocketAddress("localhost", 9999));
-		serverSC.register(selector, SelectionKey.OP_ACCEPT); // ÏòÍ¨µÀ×¢²áÑ¡ÔñÆ÷ºÍ¶ÔÓ¦ÊÂ¼þ±êÊ¶
-		while (true) { // ÂÖÑ¯
+		serverSC.register(selector, SelectionKey.OP_ACCEPT); // å‘é€šé“æ³¨å†Œé€‰æ‹©å™¨å’Œå¯¹åº”äº‹ä»¶æ ‡è¯†
+		while (true) { // è½®è¯¢
 			int nKeys = selector.select();
 			if (nKeys > 0) {
 				Set<SelectionKey> selectedKeys = selector.selectedKeys();

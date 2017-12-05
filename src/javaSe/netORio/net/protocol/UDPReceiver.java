@@ -8,13 +8,13 @@ import java.lang.*;
 public class UDPReceiver {
 	public static void main(String[] args) throws IOException {
 		DatagramSocket ds = new DatagramSocket(9999);
-		// ½ÓÊÕÊı¾İ£¬µ±È»Ò²¿ÉÒÔ»Ø¸´·¢ËÍ¶ËÊı¾İ
-		byte[] bs = new byte[1024];// »º³åÇø
+		// æ¥æ”¶æ•°æ®ï¼Œå½“ç„¶ä¹Ÿå¯ä»¥å›å¤å‘é€ç«¯æ•°æ®
+		byte[] bs = new byte[1024];// ç¼“å†²åŒº
 		DatagramPacket dp = new DatagramPacket(bs, bs.length);
-		ds.receive(dp);// ×èÈûÊ½µÄ¡£
+		ds.receive(dp);// é˜»å¡å¼çš„ã€‚
 
-		System.out.println("»ñÈ¡·¢ËÍ¶Ë£ºhttp:/" + dp.getAddress() + ":" + dp.getPort()
-				+ " Êı¾İ\n" + new String(dp.getData(), 0, dp.getLength()));
+		System.out.println("è·å–å‘é€ç«¯ï¼šhttp:/" + dp.getAddress() + ":" + dp.getPort()
+				+ " æ•°æ®\n" + new String(dp.getData(), 0, dp.getLength()));
 		ds.close();
 	}
 }

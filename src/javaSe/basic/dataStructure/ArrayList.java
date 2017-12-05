@@ -4,16 +4,16 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * Ä£ÄâÊµÏÖArrayList<br>
- * ±¾ÖÊÊÇÓÃÊı×é´æ´¢ÔªËØ£¬
- * Êı×é²»¹»ÓÃÊ±¸ù¾İ²ÎÊıĞÂ½¨Ò»¸ö´óÊı×é¿½±´¾ÉÊı×éÔªËØ
+ * æ¨¡æ‹Ÿå®ç°ArrayList<br>
+ * æœ¬è´¨æ˜¯ç”¨æ•°ç»„å­˜å‚¨å…ƒç´ ï¼Œ
+ * æ•°ç»„ä¸å¤Ÿç”¨æ—¶æ ¹æ®å‚æ•°æ–°å»ºä¸€ä¸ªå¤§æ•°ç»„æ‹·è´æ—§æ•°ç»„å…ƒç´ 
  */
 public class ArrayList implements Collection{
-	// aka 16 ¾²Ì¬³£Á¿¶¨Òå¹æ·¶£º×ÖÄ¸È«²¿´óĞ´ÓÃÏÂ»®Ïß_Æ´½Ó
+	// aka 16 é™æ€å¸¸é‡å®šä¹‰è§„èŒƒï¼šå­—æ¯å…¨éƒ¨å¤§å†™ç”¨ä¸‹åˆ’çº¿_æ‹¼æ¥
 	private static final int DEFAULT_INITIAL_CAPACITY = 1 << 4; 
 	Object[] objects = new Object[DEFAULT_INITIAL_CAPACITY];
 	
-	int index = 0;//Êı×éµÄÖ¸Õë
+	int index = 0;//æ•°ç»„çš„æŒ‡é’ˆ
 	@Override
 	public void add(Object object) {
 		if (index == objects.length) {

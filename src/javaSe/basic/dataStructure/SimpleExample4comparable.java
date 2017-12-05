@@ -1,7 +1,7 @@
 package javaSe.basic.dataStructure;
 /**
- * ÕâÀï±È½Ï¶ÔÏóµÄvalueÖµ<br>
- * ÓÃ»§ÔÚÊµÏÖÊ±ºò¿ÉÒÔÑ¡ÔñÈÎÒâÀàĞÍµÄ±È½Ï
+ * è¿™é‡Œæ¯”è¾ƒå¯¹è±¡çš„valueå€¼<br>
+ * ç”¨æˆ·åœ¨å®ç°æ—¶å€™å¯ä»¥é€‰æ‹©ä»»æ„ç±»å‹çš„æ¯”è¾ƒ
  */
 public class SimpleExample4comparable implements Comparable{
 

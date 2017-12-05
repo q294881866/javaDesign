@@ -8,53 +8,53 @@ import java.util.Map;
 
 public class PlayKuaiSan {
 
-	/**ÖĞ½±µÄÀàĞÍ³Ø*/
+	/**ä¸­å¥–çš„ç±»å‹æ± */
 	public static final Map<Float, String> pool = new HashMap<>();
-	/**1.Ñ¡ÔñÈı¸öÊıµÄºÍÖµÎªÖĞ½±±ê×¼*/
+	/**1.é€‰æ‹©ä¸‰ä¸ªæ•°çš„å’Œå€¼ä¸ºä¸­å¥–æ ‡å‡†*/
 //	public static final int SUM_RESULT = 1;
-	/**1.1Ñ¡ÔñÈı¸öÊıµÄºÍÖµÎªÖĞ½±±ê×¼  ºÍÖµÏàÍ¬ÖĞ½±*/
+	/**1.1é€‰æ‹©ä¸‰ä¸ªæ•°çš„å’Œå€¼ä¸ºä¸­å¥–æ ‡å‡†  å’Œå€¼ç›¸åŒä¸­å¥–*/
 	public static final float SUM_RESULT_EQUAL = 1.1f;
-	/**1.2Ñ¡ÔñÈı¸öÊıµÄºÍÖµÎªÖĞ½±±ê×¼ ÖĞ ºÍÖµµ¥Ë«ÏàÍ¬ÖĞ½±*/
+	/**1.2é€‰æ‹©ä¸‰ä¸ªæ•°çš„å’Œå€¼ä¸ºä¸­å¥–æ ‡å‡† ä¸­ å’Œå€¼å•åŒç›¸åŒä¸­å¥–*/
 	public static final float SUM_RESULT_ODD_AND_EVEN = 1.2f;
-	/**1.3Ñ¡ÔñÈı¸öÊıµÄºÍÖµÎªÖĞ½±±ê×¼ ÖĞ ºÍÖµ´óĞ¡ÖĞ½±*/
+	/**1.3é€‰æ‹©ä¸‰ä¸ªæ•°çš„å’Œå€¼ä¸ºä¸­å¥–æ ‡å‡† ä¸­ å’Œå€¼å¤§å°ä¸­å¥–*/
 	public static final float SUM_RESULT_BIG_SMALL = 1.3f;
 	
-	/**2.ÈıÍ¬ºÅÖĞ½±·½Ê½*/
-	/**2.1ÈıÍ¬ºÅÖĞ½±·½Ê½  Ö»Òª¿ª½±ºÅÂëÎªÈı¸öÍ¬ºÅ£¬¾ÍÖĞ½±*/
+	/**2.ä¸‰åŒå·ä¸­å¥–æ–¹å¼*/
+	/**2.1ä¸‰åŒå·ä¸­å¥–æ–¹å¼  åªè¦å¼€å¥–å·ç ä¸ºä¸‰ä¸ªåŒå·ï¼Œå°±ä¸­å¥–*/
 	public static final float AAA_ALL = 2.1f;
-	/**2.2ÈıÍ¬ºÅÖĞ½±·½Ê½  ¿ª½±ºÅÎªÈıÍ¬ºÅ£¬ÇÒºÍÄãÂòµÄÈıÍ¬ºÅÒ»Ñù*/
+	/**2.2ä¸‰åŒå·ä¸­å¥–æ–¹å¼  å¼€å¥–å·ä¸ºä¸‰åŒå·ï¼Œä¸”å’Œä½ ä¹°çš„ä¸‰åŒå·ä¸€æ ·*/
 	public static final float AAA_ONE = 2.2f;
 	
 	
-	/**3. ¶şÍ¬ºÅÖĞ½±·½Ê½*/
-	/**3.1 ¶şÍ¬ºÅÖĞ½±·½Ê½  Èç¹ûÊÇÁ½Á¬ºÅ£¬Ôò¿ª½±ºÅºÍÏÂ×¢ºÅµÄÖĞ¼äÊı×Ö±Ø¶¨ÏàµÈ*/
+	/**3. äºŒåŒå·ä¸­å¥–æ–¹å¼*/
+	/**3.1 äºŒåŒå·ä¸­å¥–æ–¹å¼  å¦‚æœæ˜¯ä¸¤è¿å·ï¼Œåˆ™å¼€å¥–å·å’Œä¸‹æ³¨å·çš„ä¸­é—´æ•°å­—å¿…å®šç›¸ç­‰*/
 	public static final float AAB_ALL = 3.1f;
-	/**3.2 ¶şÍ¬ºÅµ¥Ñ¡*/
+	/**3.2 äºŒåŒå·å•é€‰*/
 	public static final float AAB_ONE = 3.2f;
 	 
-	/**4. Èı²»Í¬ºÅÖĞ½±·½Ê½*/
+	/**4. ä¸‰ä¸åŒå·ä¸­å¥–æ–¹å¼*/
 	public static final float THREE_DIFFERENT  = 4f;
 	
-	/**5  ¶ş²»Í¬ºÅÖĞ½±·½Ê½*/
+	/**5  äºŒä¸åŒå·ä¸­å¥–æ–¹å¼*/
 	public static final float TWO_DIFFERENT = 5f;
 	
-	/**6 ÈıÁ¬ºÅ*/
+	/**6 ä¸‰è¿å·*/
 	public static final float ABC = 6f;
 	static{
-		pool.put(SUM_RESULT_EQUAL, "ºÍÖµÏàÍ¬ÖĞ½±");
-		pool.put(SUM_RESULT_ODD_AND_EVEN, "ºÍÖµµ¥Ë«ÏàÍ¬ÖĞ½±");
-		pool.put(SUM_RESULT_BIG_SMALL, "ºÍÖµ´óĞ¡ÖĞ½±");
-		pool.put(AAA_ALL, "Ö»Òª¿ª½±ºÅÂëÎªÈı¸öÍ¬ºÅ£¬¾ÍÖĞ½±");
-		pool.put(AAA_ONE, "¿ª½±ºÅÎªÈıÍ¬ºÅ£¬ÇÒºÍÄãÂòµÄÈıÍ¬ºÅÒ»Ñù");
-		pool.put(AAB_ALL, "Ö»Òª¿ª½±ºÅÂëÎªÁ½¸öÍ¬ºÅ£¬¾ÍÖĞ½±");
-		pool.put(AAB_ONE, " ¶şÍ¬ºÅµ¥Ñ¡");
-		pool.put(THREE_DIFFERENT, "Èı²»Í¬ºÅÖĞ½±·½Ê½");
-		pool.put(TWO_DIFFERENT, " ¶ş²»Í¬ºÅÖĞ½±·½Ê½");
-		pool.put(ABC, " ÈıÁ¬ºÅ");
+		pool.put(SUM_RESULT_EQUAL, "å’Œå€¼ç›¸åŒä¸­å¥–");
+		pool.put(SUM_RESULT_ODD_AND_EVEN, "å’Œå€¼å•åŒç›¸åŒä¸­å¥–");
+		pool.put(SUM_RESULT_BIG_SMALL, "å’Œå€¼å¤§å°ä¸­å¥–");
+		pool.put(AAA_ALL, "åªè¦å¼€å¥–å·ç ä¸ºä¸‰ä¸ªåŒå·ï¼Œå°±ä¸­å¥–");
+		pool.put(AAA_ONE, "å¼€å¥–å·ä¸ºä¸‰åŒå·ï¼Œä¸”å’Œä½ ä¹°çš„ä¸‰åŒå·ä¸€æ ·");
+		pool.put(AAB_ALL, "åªè¦å¼€å¥–å·ç ä¸ºä¸¤ä¸ªåŒå·ï¼Œå°±ä¸­å¥–");
+		pool.put(AAB_ONE, " äºŒåŒå·å•é€‰");
+		pool.put(THREE_DIFFERENT, "ä¸‰ä¸åŒå·ä¸­å¥–æ–¹å¼");
+		pool.put(TWO_DIFFERENT, " äºŒä¸åŒå·ä¸­å¥–æ–¹å¼");
+		pool.put(ABC, " ä¸‰è¿å·");
 	}
 	
 	/**
-	 * ÇëÊäÈëÈı¸ö1µ½6µÄÕûÊı
+	 * è¯·è¾“å…¥ä¸‰ä¸ª1åˆ°6çš„æ•´æ•°
 	 * @param x
 	 * @param y
 	 * @param z
@@ -63,35 +63,35 @@ public class PlayKuaiSan {
 		return inputCheck(x,y,z);
 	}
 	
-	//ÓÃÓÚÑéÖ¤ÊäÈëÊÇ²»ÊÇºÏ¸ñ
+	//ç”¨äºéªŒè¯è¾“å…¥æ˜¯ä¸æ˜¯åˆæ ¼
 	private static List<Float> inputCheck(int... number) {
-		Arrays.sort(number); // ¶ÔÏÂ×¢ºÅÂëÅÅĞò
+		Arrays.sort(number); // å¯¹ä¸‹æ³¨å·ç æ’åº
 		if (number[0]<1||number[2]>6) {
-			return null;//ÊäÈë²»ºÏ·¨£¬ÓĞĞ¡ÓÚ1ºÍ´óÓÚ6µÄÊı
+			return null;//è¾“å…¥ä¸åˆæ³•ï¼Œæœ‰å°äº1å’Œå¤§äº6çš„æ•°
 		}
 		int number2 = 100 * number[0] + 10 * number[1] + number[2];
 		List<Float> list = new ArrayList<>();
-		//1.Ñ¡ÔñÈı¸öÊıµÄºÍÖµÎªÖĞ½±±ê×¼
+		//1.é€‰æ‹©ä¸‰ä¸ªæ•°çš„å’Œå€¼ä¸ºä¸­å¥–æ ‡å‡†
 		list.add(SUM_RESULT_BIG_SMALL);
 		list.add(SUM_RESULT_EQUAL);
 		list.add(SUM_RESULT_ODD_AND_EVEN);
 			
-		//2. ÈıÍ¬ºÅÖĞ½±·½Ê½
-		if (number[0] == number[2]) { // ÅÅĞòºóÈç¹ûµÚÒ»¸öºÍ×îºóÒ»¸öÏàµÈ£¬Ôò±íÊ¾ÊÇÈı¸öÍ¬ºÅ
+		//2. ä¸‰åŒå·ä¸­å¥–æ–¹å¼
+		if (number[0] == number[2]) { // æ’åºåå¦‚æœç¬¬ä¸€ä¸ªå’Œæœ€åä¸€ä¸ªç›¸ç­‰ï¼Œåˆ™è¡¨ç¤ºæ˜¯ä¸‰ä¸ªåŒå·
 			list.add(AAA_ALL);
 			list.add(AAA_ONE);
-		} else 	if // 3. ¶şÍ¬ºÅÖĞ½±·½Ê½
+		} else 	if // 3. äºŒåŒå·ä¸­å¥–æ–¹å¼
 		((number[0] == number[1]) || (number[1] == number[2])) {
 			list.add(AAB_ALL);
 			list.add(AAB_ONE);
-			/** 5 ¶ş²»Í¬ºÅÖĞ½±·½Ê½ */
+			/** 5 äºŒä¸åŒå·ä¸­å¥–æ–¹å¼ */
 			list.add(TWO_DIFFERENT);
-		}else if //6.ÈıÁ¬ºÅ
+		}else if //6.ä¸‰è¿å·
 		(((number2 == 123 || number2 == 234) || number2 == 345)
 				|| number2 == 456) {
 			list.add(ABC);
 		} else{
-			/** 4. Èı²»Í¬ºÅÖĞ½±·½Ê½ */
+			/** 4. ä¸‰ä¸åŒå·ä¸­å¥–æ–¹å¼ */
 			list.add(THREE_DIFFERENT);
 		}
 		return list;
@@ -107,13 +107,13 @@ public class PlayKuaiSan {
 	}
 	
 	/**
-	 * ¸ù¾İÍ¶×¢²é¿´ÊÇ·ñÖĞ½±
+	 * æ ¹æ®æŠ•æ³¨æŸ¥çœ‹æ˜¯å¦ä¸­å¥–
 	 * @param point
-	 * 			Ñ¹µÄ×¢
+	 * 			å‹çš„æ³¨
 	 * @param input
-	 * 			ÓÃ»§ÊäÈëµÄÊı×Ö
+	 * 			ç”¨æˆ·è¾“å…¥çš„æ•°å­—
 	 * @param owner
-	 * 			ÏµÍ³²úÉúµÄ±¾ÆÚÊı×Ö
+	 * 			ç³»ç»Ÿäº§ç”Ÿçš„æœ¬æœŸæ•°å­—
 	 */
 	public static void checkPoint(Float point,Integer[] input,Integer[] owner){
 		String s = point.toString();

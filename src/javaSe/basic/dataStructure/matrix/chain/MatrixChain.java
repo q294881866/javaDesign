@@ -7,16 +7,16 @@ import java.util.Random;
 
 public class MatrixChain {
 	/**
-	 * ´æ·Å¾ØÕó
+	 * å­˜æ”¾çŸ©é˜µ
 	 */
 	private List<Matrix> matrixChain;
 	
 	/**
-	 * ´æ·Å¾ØÕó×ÓÁ´¼ÆËã´ÎÊı
+	 * å­˜æ”¾çŸ©é˜µå­é“¾è®¡ç®—æ¬¡æ•°
 	 */
 	private  double[][] m;
 	/**
-	 * ´æ·Å×ÓÁ´×îÓÅ»®·ÖÎ»ÖÃ
+	 * å­˜æ”¾å­é“¾æœ€ä¼˜åˆ’åˆ†ä½ç½®
 	 */
 	private int[][] s;
 	
@@ -31,9 +31,9 @@ public class MatrixChain {
 	}
 	
 	/**
-	 * Éú³É¾ØÕóÁ´
-	 * @param sizeLimit ÕâÊÇ¾ØÕóµÄĞĞÁĞÊı×é ¸ù¾İ½Ó×ÅµÄÁ½¸öÔªËØ±íÊ¾Ò»¸ö¾ØÕóµÄĞĞÓëÁĞ 
-	 * ¾ØÕóÁ´ÎªÈçÏÂĞÎÊ½£ºA0A1.....An-1
+	 * ç”ŸæˆçŸ©é˜µé“¾
+	 * @param sizeLimit è¿™æ˜¯çŸ©é˜µçš„è¡Œåˆ—æ•°ç»„ æ ¹æ®æ¥ç€çš„ä¸¤ä¸ªå…ƒç´ è¡¨ç¤ºä¸€ä¸ªçŸ©é˜µçš„è¡Œä¸åˆ— 
+	 * çŸ©é˜µé“¾ä¸ºå¦‚ä¸‹å½¢å¼ï¼šA0A1.....An-1
 	 * @return
 	 */
 	private static  List<Matrix> generateMatrixChain(int[] sizeLimit){
@@ -46,8 +46,8 @@ public class MatrixChain {
 		return resultChain;
 	}
 	/**
-	 * Éú³Énumbs¸öÕûÊı±íÊ¾n-1¸ö¾ØÕóµÄĞĞÓëÁĞ´óĞ¡
-	 * ´Ë´¦µÄ15 ²¢Ã»ÓĞÌØÊâº¬Òå£¬Ö»ÊÇÎªÁË±£Ö¤Êı×éÖĞÔªËØÖµ´óĞ¡¶¼²»Îª0
+	 * ç”Ÿæˆnumbsä¸ªæ•´æ•°è¡¨ç¤ºn-1ä¸ªçŸ©é˜µçš„è¡Œä¸åˆ—å¤§å°
+	 * æ­¤å¤„çš„15 å¹¶æ²¡æœ‰ç‰¹æ®Šå«ä¹‰ï¼Œåªæ˜¯ä¸ºäº†ä¿è¯æ•°ç»„ä¸­å…ƒç´ å€¼å¤§å°éƒ½ä¸ä¸º0
 	 * @param nums
 	 */
 	public static int[] generateMatrixDetails(int nums){
@@ -59,7 +59,7 @@ public class MatrixChain {
 		return sizeLimit;
 	}
 	/**
-	 * ÆÕÍ¨ µÄ¾ØÕóÁ´Ö±½ÓË³Ğò³Ë·¨
+	 * æ™®é€š çš„çŸ©é˜µé“¾ç›´æ¥é¡ºåºä¹˜æ³•
 	 * @param matrixChain
 	 * @return
 	 */
@@ -76,7 +76,7 @@ public class MatrixChain {
 		return result;
 	}
 	/**
-	 * ÓÅ»¯µÄ¾ØÕóÁ´³Ë
+	 * ä¼˜åŒ–çš„çŸ©é˜µé“¾ä¹˜
 	 * @param matrixChain
 	 * @return
 	 */
@@ -125,12 +125,12 @@ public class MatrixChain {
 	}
 	
 	/**
-	 * ¼ÆËã×îĞ¡³Ë·¨´ÎÊı£¬½«×ÓÁ´×îĞ¡´ÎÊı·ÅÔÚmÊı×éÖĞ£¬½«¼ÓÀ¨ºÅÎ»ÖÃ·ÅÔÚsÊı×éÖĞ
+	 * è®¡ç®—æœ€å°ä¹˜æ³•æ¬¡æ•°ï¼Œå°†å­é“¾æœ€å°æ¬¡æ•°æ”¾åœ¨mæ•°ç»„ä¸­ï¼Œå°†åŠ æ‹¬å·ä½ç½®æ”¾åœ¨sæ•°ç»„ä¸­
 	 * @param matrixChain
 	 * @param sizeLimit
-	 * Ëã·¨Ë¼Ïë£º
-	 * 1 ¼ÆËã³öm[p][q]µÄÆğÊ¼Öµ²¢½«À¨ºÅÎ»ÖÃ·ÅÔÚpÎ»ÖÃ
-	 * 2ÔÚp qÖ®¼äÈ¡³öÀ¨ºÅÎ»ÖÃ£¬¼ÆËã³ö±ÈÔ­ÖµĞ¡µÄm[p][q]ÖµÌæ»»µôÔ­Öµ£¬²¢Ìæ»»µôÀ¨ºÅÎ»ÖÃ
+	 * ç®—æ³•æ€æƒ³ï¼š
+	 * 1 è®¡ç®—å‡ºm[p][q]çš„èµ·å§‹å€¼å¹¶å°†æ‹¬å·ä½ç½®æ”¾åœ¨pä½ç½®
+	 * 2åœ¨p qä¹‹é—´å–å‡ºæ‹¬å·ä½ç½®ï¼Œè®¡ç®—å‡ºæ¯”åŸå€¼å°çš„m[p][q]å€¼æ›¿æ¢æ‰åŸå€¼ï¼Œå¹¶æ›¿æ¢æ‰æ‹¬å·ä½ç½®
 	 */
 	
 	private void calMinMutiplyTimes(List<Matrix> matrixChain, int[] sizeLimit) {
@@ -167,12 +167,12 @@ public class MatrixChain {
 	}
 	
 	/**
-	 * Ğ£ÑéÊäÈëµÄ¾ØÕóÁ´ÊÇ·ñ·ûºÏ³Ë·¨ÔËËãÌõ¼ş
+	 * æ ¡éªŒè¾“å…¥çš„çŸ©é˜µé“¾æ˜¯å¦ç¬¦åˆä¹˜æ³•è¿ç®—æ¡ä»¶
 	 * @param matrixChain
 	 */
 	private void checkMatrixChain(List<Matrix> matrixChain){
 		if(matrixChain.size()<2){
-			System.out.println("¾ØÕó¸öÊıĞ¡ÓÚ2£¬²»ÄÜ×ö³Ë·¨");
+			System.out.println("çŸ©é˜µä¸ªæ•°å°äº2ï¼Œä¸èƒ½åšä¹˜æ³•");
 			System.exit(0);
 		}
 	}

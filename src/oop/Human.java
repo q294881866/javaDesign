@@ -3,10 +3,10 @@ package oop;
 public class Human implements Animal{
 	@Override
 	public void action() {
-		System.out.println("ÒÀÀµ¹¤¾ß²úÉúÓ°Ïì£¬×ÜÏ£ÍûÆäËûÈËÄÜ°ïÄã×öµÄºÜºÃ");
+		System.out.println("ä¾èµ–å·¥å…·äº§ç”Ÿå½±å“ï¼Œæ€»å¸Œæœ›å…¶ä»–äººèƒ½å¸®ä½ åšçš„å¾ˆå¥½");
 	}
 	@Override
 	public void show() {
-		System.out.println("ÕÜÑ§£º°Ñ³Ô·¹¡¢Ë¯¾õ¡¢¹¤×÷µÄÊ±¼ä¾¡Á¿ÓÃÔÚ³éÏó·½·¨ÂÛÉÏ");
+		System.out.println("å“²å­¦ï¼šæŠŠåƒé¥­ã€ç¡è§‰ã€å·¥ä½œçš„æ—¶é—´å°½é‡ç”¨åœ¨æŠ½è±¡æ–¹æ³•è®ºä¸Š");
 	}
 }

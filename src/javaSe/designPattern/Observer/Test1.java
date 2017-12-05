@@ -6,6 +6,6 @@ public class Test1 {
         sub.add(new Observer1());  
         sub.add(new Observer2());  
           
-        sub.operation();  //¶¯×÷
+        sub.operation();  //åŠ¨ä½œ
     } 
 }

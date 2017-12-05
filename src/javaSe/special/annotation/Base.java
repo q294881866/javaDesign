@@ -6,9 +6,9 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-@Inherited/*×¢½â×÷ÓÃÓÚ¸¸Àà£¬×ÓÀà»á¼Ì³Ğ×¢½â*/
+@Inherited/*æ³¨è§£ä½œç”¨äºçˆ¶ç±»ï¼Œå­ç±»ä¼šç»§æ‰¿æ³¨è§£*/
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.TYPE,ElementType.FIELD})
-public @interface/*×¢½âÉùÃ÷*/ Base {
-	String value() default/*Ä¬ÈÏÖµ*/ "default";
+public @interface/*æ³¨è§£å£°æ˜*/ Base {
+	String value() default/*é»˜è®¤å€¼*/ "default";
 }

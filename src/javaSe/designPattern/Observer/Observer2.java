@@ -4,7 +4,7 @@ public class Observer2 implements Observer {
 
 	@Override
 	public void update() {
-		System.out.println("ÅáÅô·É2ºÅ----------ÊÕµ½");
+		System.out.println("è£´é¹é£2å·----------æ”¶åˆ°");
 	}
 
 }

@@ -1,12 +1,12 @@
 package javaSe.basic.dataStructure;
 /**
- * ´æ´¢Á´±íµ¥Î»Êı¾İ<br>
- * ÓÉÊı¾İºÍÏÂÒ»¸ö½áµãµÄÒıÓÃ×é³É<br>
- * Èç¹ûÊÇË«ÏòÁ´±í¿ÉÒÔ¼ÓÒ»¸öNode prevÇ°Ò»¸ö½áµãµÄÒıÓÃ¡£
+ * å­˜å‚¨é“¾è¡¨å•ä½æ•°æ®<br>
+ * ç”±æ•°æ®å’Œä¸‹ä¸€ä¸ªç»“ç‚¹çš„å¼•ç”¨ç»„æˆ<br>
+ * å¦‚æœæ˜¯åŒå‘é“¾è¡¨å¯ä»¥åŠ ä¸€ä¸ªNode prevå‰ä¸€ä¸ªç»“ç‚¹çš„å¼•ç”¨ã€‚
  */
 public class Node {
-	private Object data;//Êı¾İ
-	private Node next;//ÏÂÒ»¸ö½Úµã
+	private Object data;//æ•°æ®
+	private Node next;//ä¸‹ä¸€ä¸ªèŠ‚ç‚¹
 	
 	public Node(Object data, Node next) {
 		super();

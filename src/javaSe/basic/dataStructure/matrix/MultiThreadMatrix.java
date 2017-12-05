@@ -3,7 +3,7 @@ package javaSe.basic.dataStructure.matrix;
 /**    
 * @Title: MultiThreadMatrix.java 
 * @Package matrix 
-* @Description: ¶àÏß³Ì¼ÆËã¾ØÕó³Ë·¨ 
+* @Description: å¤šçº¿ç¨‹è®¡ç®—çŸ©é˜µä¹˜æ³• 
 * @author Administrator
 * @Date 
 */ 
@@ -23,7 +23,7 @@ public class MultiThreadMatrix {
 	static long startTime;
 
 	public static void main(String[] args) throws InterruptedException {
-		// ¾ØÕóa¸ß¶Èm=100¿í¶Èk=80,¾ØÕób¸ß¶Èk=80¿í¶Èn=50 ==> ¾ØÕóc¸ß¶Èm=100¿í¶Èn=50
+		// çŸ©é˜µaé«˜åº¦m=100å®½åº¦k=80,çŸ©é˜µbé«˜åº¦k=80å®½åº¦n=50 ==> çŸ©é˜µcé«˜åº¦m=100å®½åº¦n=50
 		m = 1024;
 		n = 1024;
 		k = 1024;
@@ -31,16 +31,16 @@ public class MultiThreadMatrix {
 		matrix2 = new int[k][n];
 		matrix3 = new int[m][n];
 
-		// Ëæ»ú³õÊ¼»¯¾ØÕóa,b
+		// éšæœºåˆå§‹åŒ–çŸ©é˜µa,b
 		fillRandom(matrix1);
 		fillRandom(matrix2);
 		startTime = new Date().getTime();
 
-		// Êä³öa,b
+		// è¾“å‡ºa,b
 		// printMatrix(matrix1);
 		// printMatrix(matrix2);
 
-		// ´´½¨Ïß³Ì,ÊıÁ¿ <= 4
+		// åˆ›å»ºçº¿ç¨‹,æ•°é‡ <= 4
 		for (int i = 0; i < 4; i++) {
 			if (index < m) {
 				Thread t = new Thread(new MyThread());
@@ -50,14 +50,14 @@ public class MultiThreadMatrix {
 			}
 		}
 
-		// µÈ´ı½áÊøºóÊä³ö
+		// ç­‰å¾…ç»“æŸåè¾“å‡º
 		while (threadCount != 0) {
 			Thread.sleep(20);
 		}
 
 		// printMatrix(matrix3);
 		long finishTime = new Date().getTime();
-		System.out.println("¼ÆËãÍê³É,ÓÃÊ±" + (finishTime - startTime) + "ºÁÃë");
+		System.out.println("è®¡ç®—å®Œæˆ,ç”¨æ—¶" + (finishTime - startTime) + "æ¯«ç§’");
 	}
 
 	static void printMatrix(int[][] x) {
@@ -73,7 +73,7 @@ public class MultiThreadMatrix {
 	static void fillRandom(int[][] x) {
 		for (int i = 0; i < x.length; i++) {
 			for (int j = 0; j < x[i].length; j++) {
-				// Ã¿¸öÔªËØÉèÖÃÎª0µ½99µÄËæ»ú×ÔÈ»Êı
+				// æ¯ä¸ªå…ƒç´ è®¾ç½®ä¸º0åˆ°99çš„éšæœºè‡ªç„¶æ•°
 				x[i][j] = (int) (Math.random() * 100);
 			}
 		}
@@ -95,8 +95,8 @@ class MyThread implements Runnable {
 	public void run() {
 		MultiThreadMatrix.threadCount++;
 		while ((task = MultiThreadMatrix.getTask()) != -1) {
-			System.out.println("½ø³Ì: " + Thread.currentThread().getName()
-					+ "\t¿ªÊ¼¼ÆËãµÚ " + (task + 1) + "ĞĞ");
+			System.out.println("è¿›ç¨‹: " + Thread.currentThread().getName()
+					+ "\tå¼€å§‹è®¡ç®—ç¬¬ " + (task + 1) + "è¡Œ");
 			for (int i = 0; i < MultiThreadMatrix.n; i++) {
 				for (int j = 0; j < MultiThreadMatrix.k; j++) {
 					MultiThreadMatrix.matrix3[task][i] += MultiThreadMatrix.matrix1[task][j]

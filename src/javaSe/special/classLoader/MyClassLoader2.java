@@ -11,7 +11,7 @@ import java.io.OutputStream;
 
 public class MyClassLoader2 extends ClassLoader {
 
-	/** Class�ļ�Ŀ¼ */
+	/** Class文件目录 */
 	private String classDir;
 	public MyClassLoader2() {}
 

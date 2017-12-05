@@ -3,29 +3,29 @@ package javaSe.basic.dataStructure.base;
 import java.util.ArrayList;
 import java.util.List;
 /**
- * ·ºĞÍÕ»µÄÀı×Ó
+ * æ³›å‹æ ˆçš„ä¾‹å­
  * @author ppf@jiumao.org
- * @date 2016Äê12ÔÂ13ÈÕ <br>
+ * @date 2016å¹´12æœˆ13æ—¥ <br>
  * @param <T>
  */
-public class MyStack<T> {//ÓÃJDKµÄArrayList×ö´æ´¢
+public class MyStack<T> {//ç”¨JDKçš„ArrayListåšå­˜å‚¨
 	private List<T> stack;
-	int count,capacity;	//¼ÇÂ¼Õ»¶¥Î»ÖÃ
+	int count,capacity;	//è®°å½•æ ˆé¡¶ä½ç½®
 	public MyStack(int capacity) {
 		this.capacity = capacity;
-		stack = new ArrayList<T>(capacity);	//Ä¬ÈÏ16´óĞ¡
+		stack = new ArrayList<T>(capacity);	//é»˜è®¤16å¤§å°
 		count = -1;
 	}
-	public void push(T o) {//Ìí¼ÓÔªËØ
+	public void push(T o) {//æ·»åŠ å…ƒç´ 
 		if(count < capacity-1) {
 			stack.add(o);
 			count++;
 		}
-		else{System.out.println("Õ»Âú");}
+		else{System.out.println("æ ˆæ»¡");}
 	}
-	public T pop() {//³öÕ»
+	public T pop() {//å‡ºæ ˆ
 		if(stack.isEmpty()) {
-			System.out.println("Õ»¿Õ");
+			System.out.println("æ ˆç©º");
 			return null;
 		}
 		T o = stack.remove(count);

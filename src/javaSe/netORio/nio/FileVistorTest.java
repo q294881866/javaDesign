@@ -10,7 +10,7 @@ import java.nio.file.attribute.BasicFileAttributes;
 
 public class FileVistorTest {
 	private static int layer = 0;
-	private static String turn="©» ";
+	private static String turn="â”— ";
 	private static StringBuilder space=new StringBuilder();
 
 	public static void main(String[] args) throws IOException {
@@ -19,14 +19,14 @@ public class FileVistorTest {
 			@Override
 			public FileVisitResult visitFile(Path file,
 					BasicFileAttributes attrs) throws IOException {
-				System.out.format(getSpace(layer)+"µ±Ç°·ÃÎÊµÄÎÄ¼ş %s \n", file);
+				System.out.format(getSpace(layer)+"å½“å‰è®¿é—®çš„æ–‡ä»¶ %s \n", file);
 				return FileVisitResult.CONTINUE;
 			}
 
 			@Override
 			public FileVisitResult preVisitDirectory(Path dir,
 					BasicFileAttributes attrs) throws IOException {
-				System.out.format(getSpace(layer)+"¿ªÊ¼·ÃÎÊÄ¿Â¼ %s \n", dir);
+				System.out.format(getSpace(layer)+"å¼€å§‹è®¿é—®ç›®å½• %s \n", dir);
 				layer++;
 				return FileVisitResult.CONTINUE;
 			}
@@ -34,7 +34,7 @@ public class FileVistorTest {
 			@Override
 			public FileVisitResult visitFileFailed(Path file, IOException exc)
 					throws IOException {
-				System.out.format(getSpace(layer)+"ÎÄ¼ş·ÃÎÊÊ§°Ü %s \n", file);
+				System.out.format(getSpace(layer)+"æ–‡ä»¶è®¿é—®å¤±è´¥ %s \n", file);
 				return FileVisitResult.CONTINUE;
 			}
 
@@ -42,7 +42,7 @@ public class FileVistorTest {
 			public FileVisitResult postVisitDirectory(Path dir, IOException exc)
 					throws IOException {
 				layer--;
-				System.out.format(getSpace(layer)+"½áÊø·ÃÎÊÄ¿Â¼ %s \n", dir);
+				System.out.format(getSpace(layer)+"ç»“æŸè®¿é—®ç›®å½• %s \n", dir);
 				return FileVisitResult.CONTINUE;
 			}
 		});
@@ -53,7 +53,7 @@ public class FileVistorTest {
 	public static String getSpace(int layer) {
 		space.delete(0, space.length());
 		for (int i = 0; i < layer; i++) {
-			space.append("¡¡");
+			space.append("ã€€");
 		}
 		space.append(turn);
 		return space.toString();

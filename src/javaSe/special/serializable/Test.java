@@ -10,10 +10,10 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
 /**
- * ĞòÁĞ»¯Ê¾Àı<br>
+ * åºåˆ—åŒ–ç¤ºä¾‹<br>
  * 
  * @author ppf@jiumao.org
- * @date 2017Äê1ÔÂ18ÈÕ
+ * @date 2017å¹´1æœˆ18æ—¥
  */
 public class Test implements Serializable {
 
@@ -21,7 +21,7 @@ public class Test implements Serializable {
 	public Test() { System.out.println("Serializable init");}
 	
 	public String name = "Serializable";
-	public transient/*²»»á±»ĞòÁĞ»¯*/ String tmp = "transient";
+	public transient/*ä¸ä¼šè¢«åºåˆ—åŒ–*/ String tmp = "transient";
 	
 
 	public static <O extends Serializable> void serialize(O o, File file) {

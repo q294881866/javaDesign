@@ -5,12 +5,12 @@ import java.util.Random;
 
 public class Matrix {
 
-	private int m;//¾ØÕóĞĞ
+	private int m;//çŸ©é˜µè¡Œ
 	
-	private int n;//¾ØÕóÁĞ
+	private int n;//çŸ©é˜µåˆ—
 	
-	private double [][] matrix ;//´æ·Å¾ØÕóÔªËØ
-	private  static int count=0;//Í³¼ÆÒ»´ÎÔËËãÖĞµ÷ÓÃµÄ³Ë·¨ÔËËã´ÎÊı
+	private double [][] matrix ;//å­˜æ”¾çŸ©é˜µå…ƒç´ 
+	private  static int count=0;//ç»Ÿè®¡ä¸€æ¬¡è¿ç®—ä¸­è°ƒç”¨çš„ä¹˜æ³•è¿ç®—æ¬¡æ•°
 	
 	public static int getCount() {
 		return count;
@@ -29,7 +29,7 @@ public class Matrix {
 	
 	public  static  Matrix mutiplyMatrix(Matrix A,Matrix B){
 		if(A.getN()!=B.getM()){
-			System.out.println("²»ºÏ¾ØÕóÏà³ËÌõ¼ş");
+			System.out.println("ä¸åˆçŸ©é˜µç›¸ä¹˜æ¡ä»¶");
 			System.exit(0);
 		}
 		Matrix result = new Matrix(A.getM(),B.getN());

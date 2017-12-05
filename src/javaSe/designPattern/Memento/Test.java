@@ -3,19 +3,19 @@ package javaSe.designPattern.Memento;
 public class Test {
 	public  static void main(String[] args) {  
         
-        // ´´½¨Ô­Ê¼Àà  
+        // åˆ›å»ºåŸå§‹ç±»  
         Original origi = new Original("egg");  
   
-        // ´´½¨±¸ÍüÂ¼  
+        // åˆ›å»ºå¤‡å¿˜å½•  
         Storage storage = new Storage(origi.createMemento());  
   
-        // ĞŞ¸ÄÔ­Ê¼ÀàµÄ×´Ì¬  
-        System.out.println("³õÊ¼»¯×´Ì¬Îª£º" + origi.getValue());  
+        // ä¿®æ”¹åŸå§‹ç±»çš„çŠ¶æ€  
+        System.out.println("åˆå§‹åŒ–çŠ¶æ€ä¸ºï¼š" + origi.getValue());  
         origi.setValue("niu");  
-        System.out.println("ĞŞ¸ÄºóµÄ×´Ì¬Îª£º" + origi.getValue());  
+        System.out.println("ä¿®æ”¹åçš„çŠ¶æ€ä¸ºï¼š" + origi.getValue());  
   
-        // »Ø¸´Ô­Ê¼ÀàµÄ×´Ì¬  
+        // å›å¤åŸå§‹ç±»çš„çŠ¶æ€  
         origi.restoreMemento(storage.getMemento());  
-        System.out.println("»Ö¸´ºóµÄ×´Ì¬Îª£º" + origi.getValue());  
+        System.out.println("æ¢å¤åçš„çŠ¶æ€ä¸ºï¼š" + origi.getValue());  
     }  
 }

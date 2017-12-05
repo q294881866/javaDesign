@@ -6,8 +6,8 @@ import java.util.Date;
 
 /**
  * 
- * JavaBean¹æ·¶£¬ÈÎºÎÀà¶¼¿ÉÄÜÊÇÒ»¸öJavaBean ·ûºÏset¡¢get¹æ·¶µÄJavaÀà¾ÍÊÇÒ»¸öJavabean ÒÔºóÑ§µ½µÄspring
- * bean¹¤³§¾ÍÊÇÍ¨¹ıset¡¢get·½·¨×¢Èë²ÎÊıµÄ UserÓÃ»§³éÏóÀà£¬Ò»¸öµäĞÍµÄJavabean
+ * JavaBeanè§„èŒƒï¼Œä»»ä½•ç±»éƒ½å¯èƒ½æ˜¯ä¸€ä¸ªJavaBean ç¬¦åˆsetã€getè§„èŒƒçš„Javaç±»å°±æ˜¯ä¸€ä¸ªJavabean ä»¥åå­¦åˆ°çš„spring
+ * beanå·¥å‚å°±æ˜¯é€šè¿‡setã€getæ–¹æ³•æ³¨å…¥å‚æ•°çš„ Userç”¨æˆ·æŠ½è±¡ç±»ï¼Œä¸€ä¸ªå…¸å‹çš„Javabean
  * 
  */
 public class User implements Serializable {
@@ -15,7 +15,7 @@ public class User implements Serializable {
     private String name;
     private Date birthday;
     private float money;
-    /** transient:·Ç¾²Ì¬Êı¾İ²»Ïë±»ĞòÁĞ»¯¿ÉÒÔÊ¹ÓÃÕâ¸ö¹Ø¼ü×ÖĞŞÊÎ¡£ */
+    /** transient:éé™æ€æ•°æ®ä¸æƒ³è¢«åºåˆ—åŒ–å¯ä»¥ä½¿ç”¨è¿™ä¸ªå…³é”®å­—ä¿®é¥°ã€‚ */
     private transient int age;
     private static final long serialVersionUID = 9527l;
 
@@ -41,9 +41,9 @@ public class User implements Serializable {
 
 
     /**
-     * ÖøÃûµÄtoString·½·¨ÓÃ»§¿ÉÒÔÖØĞ´
+     * è‘—åçš„toStringæ–¹æ³•ç”¨æˆ·å¯ä»¥é‡å†™
      */
-    @Override // ÖØĞ´×¢½â£¬·µ»ØÖµÀàĞÍ ·½·¨Ãû ²ÎÊıÊıÁ¿ºÍÀàĞÍÒªÍêÈ«Ò»ÖÂ¿ÉÒÔÀí½âÖ±½Ó¸²¸ÇÁË¸¸Àà·½·¨
+    @Override // é‡å†™æ³¨è§£ï¼Œè¿”å›å€¼ç±»å‹ æ–¹æ³•å å‚æ•°æ•°é‡å’Œç±»å‹è¦å®Œå…¨ä¸€è‡´å¯ä»¥ç†è§£ç›´æ¥è¦†ç›–äº†çˆ¶ç±»æ–¹æ³•
     public String toString() {
         return "id=" + this.id + " name=" + this.name + " birthday=" + this.birthday + " money=" + this.money;
     }

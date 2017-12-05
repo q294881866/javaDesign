@@ -7,15 +7,15 @@ import javaSe.basic.dataStructure.Collection;
 import javaSe.basic.dataStructure.Iterator;
 
 /**
- * ¶Ñ¿ÉÒÔ±»¿´³ÉÊÇÒ»¿ÃÊ÷£¬Èç£º¶ÑÅÅĞò¡£
+ * å †å¯ä»¥è¢«çœ‹æˆæ˜¯ä¸€æ£µæ ‘ï¼Œå¦‚ï¼šå †æ’åºã€‚
  * 
  * @author ppf@jiumao.org
- * @date 2016Äê12ÔÂ13ÈÕ <br>
+ * @date 2016å¹´12æœˆ13æ—¥ <br>
  * @param <T>
  */
 public class Heap<T extends Comparable<T>> implements Collection {
 	ArrayList<T> items;
-	int cursor; // ÓÃÓÚ¼ÆÊı
+	int cursor; // ç”¨äºè®¡æ•°
 
 	public Heap(int size) {
 		items = new ArrayList<T>(size);
@@ -28,17 +28,17 @@ public class Heap<T extends Comparable<T>> implements Collection {
 	}
 
 	/**
-	 * ÉÏÒÆ²Ù×÷
+	 * ä¸Šç§»æ“ä½œ
 	 * 
 	 * @param index
-	 *            ±»ÉÏÒÆÔªËØµÄÆğÊ¼Î»ÖÃ¡£
+	 *            è¢«ä¸Šç§»å…ƒç´ çš„èµ·å§‹ä½ç½®ã€‚
 	 */
 	void siftUp(int index) {
 		T intent = items.get(index);
 		while (index > 0) {
 			int pindex = (index - 1) / 2;
 			T parent = items.get(pindex);
-			if (intent.compareTo(parent) > 0) {// ÉÏÒÆµÄÌõ¼ş£¬±È¸¸½Úµã´ó
+			if (intent.compareTo(parent) > 0) {// ä¸Šç§»çš„æ¡ä»¶ï¼Œæ¯”çˆ¶èŠ‚ç‚¹å¤§
 				items.set(index, parent);
 				index = pindex;
 			} else
@@ -48,7 +48,7 @@ public class Heap<T extends Comparable<T>> implements Collection {
 	}
 
 	/**
-	 * ÏÂÒÆ²Ù×÷
+	 * ä¸‹ç§»æ“ä½œ
 	 */
 	void siftDown(int index) {
 		T intent = items.get(index);
@@ -80,13 +80,13 @@ public class Heap<T extends Comparable<T>> implements Collection {
 		if (items.isEmpty()) {
 			throw new NoSuchElementException();
 		}
-		// ÏÈ»ñÈ¡¶¥²¿½Úµã
+		// å…ˆè·å–é¡¶éƒ¨èŠ‚ç‚¹
 		T maxItem = items.get(0);
 		T lastItem = items.remove(items.size() - 1);
 		if (items.isEmpty()) {
 			return lastItem;
 		}
-		// ½«Î²²¿µÄ½Úµã·ÅÖÃ¶¥²¿£¬ÏÂÒÆ£¬Íê³ÉÖØ¹¹
+		// å°†å°¾éƒ¨çš„èŠ‚ç‚¹æ”¾ç½®é¡¶éƒ¨ï¼Œä¸‹ç§»ï¼Œå®Œæˆé‡æ„
 		items.set(0, lastItem);
 		siftDown(0);
 		return maxItem;
@@ -105,9 +105,9 @@ public class Heap<T extends Comparable<T>> implements Collection {
 	}
 	@Override
 	public void add(Object item) {
-		// ÏÈÌí¼Óµ½×îºó
+		// å…ˆæ·»åŠ åˆ°æœ€å
 		items.add((T) item);
-		// Ñ­»·ÉÏÒÆ£¬ÒÔÍê³ÉÖØ¹¹ ÕâÀï¹¹½¨´ó¸ù¶Ñ
+		// å¾ªç¯ä¸Šç§»ï¼Œä»¥å®Œæˆé‡æ„ è¿™é‡Œæ„å»ºå¤§æ ¹å †
 		siftUp(items.size() - 1);
 	}
 

@@ -3,7 +3,7 @@ package oop;
 public class Think implements Art{
 	@Override
 	public void show() {
-		System.out.println("ÓĞĞÄÎŞÏà£¬ÏàËæĞÄÉú£»ÓĞÏàÎŞĞÄ£¬ÏàËæĞÄÃğ¡£");
+		System.out.println("æœ‰å¿ƒæ— ç›¸ï¼Œç›¸éšå¿ƒç”Ÿï¼›æœ‰ç›¸æ— å¿ƒï¼Œç›¸éšå¿ƒç­ã€‚");
 	}
 
 }

@@ -4,20 +4,20 @@ import javaSe.basic.dataStructure.Collection;
 import javaSe.basic.dataStructure.Iterator;
 
 /**
- * Õ»£ºÏÈ½øºó³öµÄÊı¾İ½á¹¹¡£¼ÆËã»ú¿ÆÑ§µÄ»ù´¡ÖªÊ¶
+ * æ ˆï¼šå…ˆè¿›åå‡ºçš„æ•°æ®ç»“æ„ã€‚è®¡ç®—æœºç§‘å­¦çš„åŸºç¡€çŸ¥è¯†
  */
 public class Stack implements Collection{
 
-	/**³õÊ¼»¯Êı×éÈİÁ¿*/
+	/**åˆå§‹åŒ–æ•°ç»„å®¹é‡*/
 	private static final int INIT = 1<<4;
-	/**Êı¾İÈİÁ¿Ôö³¤²ßÂÔ ÓÃÓÚÊı×éÀ©³ä,ÀıÈç£ºnewArray[INIT+0.75*INIT]*/
+	/**æ•°æ®å®¹é‡å¢é•¿ç­–ç•¥ ç”¨äºæ•°ç»„æ‰©å……,ä¾‹å¦‚ï¼šnewArray[INIT+0.75*INIT]*/
 	private static final double Step = 0.75;
-	/**Êı×é*/
+	/**æ•°ç»„*/
 	private static Object[] stack;
-	private int size = 0;//ÔªËØ¸öÊı
-	private int index = 0;//Êı×éÏÂ±ê
+	private int size = 0;//å…ƒç´ ä¸ªæ•°
+	private int index = 0;//æ•°ç»„ä¸‹æ ‡
 	
-	static{//¾²Ì¬´úÂë¿é
+	static{//é™æ€ä»£ç å—
 		stack = new Object[INIT];
 	}
 	
@@ -31,7 +31,7 @@ public class Stack implements Collection{
 		index ++;
 	}
 	
-	public Object remove(){//É¾³ıÕ»¶¥ÔªËØ¼´¶ÓÎ²
+	public Object remove(){//åˆ é™¤æ ˆé¡¶å…ƒç´ å³é˜Ÿå°¾
 		if (0>index) {
 			return null;
 		}else {
@@ -45,7 +45,7 @@ public class Stack implements Collection{
 
 	@Override
 	public Iterator iterator() {
-		// TODO Áô´ı×÷Òµ ¶ÁÕßÊµÏÖ
+		// TODO ç•™å¾…ä½œä¸š è¯»è€…å®ç°
 		return null;
 	}
 }

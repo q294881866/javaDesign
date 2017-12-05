@@ -1,9 +1,9 @@
-/**
- * javaÓï·¨¡¢¹æ·¶
- * JDK³£ÓÃAPIºÍÉè¼Æ
+	/**
+ * javaè¯­æ³•ã€è§„èŒƒ
+ * JDKå¸¸ç”¨APIå’Œè®¾è®¡
  */
 /**
  * @author ppf@jiumao.org
- * @date 2017Äê1ÔÂ10ÈÕ 
+ * @date 2017å¹´1æœˆ10æ—¥ 
  */
 package javaSe;

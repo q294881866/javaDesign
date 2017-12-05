@@ -6,8 +6,8 @@ import java.util.LinkedList;
 
 
 /**
- * ½éÉÜ½¨ÔìÕßÄ£Ê½
- * Êı¾İ¿âÁ¬½Ó³ØÊµÏ°
+ * ä»‹ç»å»ºé€ è€…æ¨¡å¼
+ * æ•°æ®åº“è¿æ¥æ± å®ä¹ 
  * @author Administrator
  *
  */
@@ -18,7 +18,7 @@ public class DataSource {
 	int currentCount = 0;
 	private MyJdbc jdbc;
 
-	//Êı¾İ¿âÁ¬½Ó³Ø<>±íÊ¾·ºĞÍConnection±íÊ¾Ö»´æConnection¼°×ÓÀàÕâÀï±¨´íÁË  ÀàĞÍ²»ÄÜ×ª»»
+	//æ•°æ®åº“è¿æ¥æ± <>è¡¨ç¤ºæ³›å‹Connectionè¡¨ç¤ºåªå­˜ConnectionåŠå­ç±»è¿™é‡ŒæŠ¥é”™äº†  ç±»å‹ä¸èƒ½è½¬æ¢
 //	LinkedList<Connection> connectionsPool = (LinkedList<Connection>) Collections.synchronizedList(new LinkedList<Connection>());
 	LinkedList<Connection> connectionsPool =new LinkedList<Connection>();
 		
@@ -43,13 +43,13 @@ public class DataSource {
 			if (this.connectionsPool.size() > 0)
 				return this.connectionsPool.removeFirst();
 
-			//Èç¹ûµ±Ç°Ã»ÓĞÁ¬½ÓÁË
+			//å¦‚æœå½“å‰æ²¡æœ‰è¿æ¥äº†
 			if (this.currentCount < maxCount) {
 				this.currentCount++;
 				return jdbc.getConnection();
 			}
 
-			throw new SQLException("ÒÑÃ»ÓĞÁ´½Ó");
+			throw new SQLException("å·²æ²¡æœ‰é“¾æ¥");
 		}
 	}
 

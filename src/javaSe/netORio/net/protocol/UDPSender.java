@@ -10,13 +10,13 @@ import java.net.UnknownHostException;
 public class UDPSender {
 	public static void main(String[] args) throws IOException {
 		DatagramSocket ds = new DatagramSocket(8888);
-		String str = "ÄĞÈËÒªÓĞÈı²Å¡£\n" //
-				+ "Ê×ÏÈ£¬ÒªÓĞµãÇ®²Æ£¬²»ÓÃµ£ĞÄÓÍÑÎÃ×²ñ¡£\n"//
-				+ "Æä´Î£¬ÒªÓĞµãÎÄ²É£¬ÈÃÈË¼ÒÓĞµãĞ¡³ç°İ¡£\n" //
-				+ "×îºó£¬Ò²ÊÇ×îÖØÒªµÄ£¬¶ÔÄãµÄÌ¬¶È»ù±¾ÉÏÏñ¸öÅ«²Å¡£\n";
-		// Ê¹ÓÃDatagramPacket½«Êı¾İ·â×°µ½µÄ¸Ã¶ÔÏó°üÖĞ¡£
+		String str = "ç”·äººè¦æœ‰ä¸‰æ‰ã€‚\n" //
+				+ "é¦–å…ˆï¼Œè¦æœ‰ç‚¹é’±è´¢ï¼Œä¸ç”¨æ‹…å¿ƒæ²¹ç›ç±³æŸ´ã€‚\n"//
+				+ "å…¶æ¬¡ï¼Œè¦æœ‰ç‚¹æ–‡é‡‡ï¼Œè®©äººå®¶æœ‰ç‚¹å°å´‡æ‹œã€‚\n" //
+				+ "æœ€åï¼Œä¹Ÿæ˜¯æœ€é‡è¦çš„ï¼Œå¯¹ä½ çš„æ€åº¦åŸºæœ¬ä¸Šåƒä¸ªå¥´æ‰ã€‚\n";
+		// ä½¿ç”¨DatagramPacketå°†æ•°æ®å°è£…åˆ°çš„è¯¥å¯¹è±¡åŒ…ä¸­ã€‚
 		byte[] buf = str.getBytes();
-		DatagramPacket dp = new DatagramPacket(// Êı¾İ°ü
+		DatagramPacket dp = new DatagramPacket(// æ•°æ®åŒ…
 				buf, buf.length, InetAddress.getLocalHost(), 9999);
 		ds.send(dp);
 		ds.close();

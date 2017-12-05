@@ -1,6 +1,5 @@
 package javaSe.netORio.io;
 
-import static org.junit.Assert.*;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
@@ -39,6 +38,7 @@ public class CachedIODemo {
 		System.out.println(new String(bys));
 
 		ByteArrayInputStream bis = new ByteArrayInputStream(bys);
+		System.out.println(bis);
 	}
 
 	@Test
@@ -121,7 +121,6 @@ public class CachedIODemo {
 	// static void setErr(PrintStream err)：重定向“标准”错误输出流”
 	// static void setIn(InputStream in)：重定向“标准"输入流”
 	// static void setOut(PrintStream out)：重定向“标准”输出流”
-	@SuppressWarnings("resource")
 	@Test
 	public void systemStreamTest() throws Exception {
 		// 1.例子：拷贝文件

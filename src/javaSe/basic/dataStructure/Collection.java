@@ -1,12 +1,12 @@
 package javaSe.basic.dataStructure;
 /**
- * Ä£ÄâÖØ¹¹javaÊı¾İ½á¹¹<br>
- * ¼¯ºÏµÄ¶¥¼¶½Ó¿Ú
+ * æ¨¡æ‹Ÿé‡æ„javaæ•°æ®ç»“æ„<br>
+ * é›†åˆçš„é¡¶çº§æ¥å£
  * @author ppf@jiumao.org
- * @date 2016Äê12ÔÂ13ÈÕ <br>
+ * @date 2016å¹´12æœˆ13æ—¥ <br>
  */
-public interface/*½Ó¿Ú¹Ø¼ü×Ö*/ Collection {
-		void add(Object object);//Ä¬ÈÏÊÇpublic abstract
-		public abstract int size();//µÈÍ¬ÓÚint size()
+public interface/*æ¥å£å…³é”®å­—*/ Collection {
+		void add(Object object);//é»˜è®¤æ˜¯public abstract
+		public abstract int size();//ç­‰åŒäºint size()
 		Iterator iterator();
 }

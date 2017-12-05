@@ -1,7 +1,7 @@
 package oop;
 /**
- * ËùÓĞ¶¯Îï¹«¹²¸¸Àà
+ * æ‰€æœ‰åŠ¨ç‰©å…¬å…±çˆ¶ç±»
  * @author ppf@jiumao.org
- * @date 2017Äê2ÔÂ14ÈÕ
+ * @date 2017å¹´2æœˆ14æ—¥
  */
 public interface Animal extends Action,Art{ }

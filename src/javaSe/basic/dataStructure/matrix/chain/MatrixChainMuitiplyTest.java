@@ -1,6 +1,6 @@
 package javaSe.basic.dataStructure.matrix.chain;
 /**
- * ¾ØÕóÎÊÌâ
+ * çŸ©é˜µé—®é¢˜
  * @author shuofenglxy
  */
 public class MatrixChainMuitiplyTest {
@@ -11,8 +11,8 @@ public class MatrixChainMuitiplyTest {
 		MatrixChain demo = new MatrixChain(MatrixChain.generateMatrixDetails(200));
 		
 		
-		/**ÓÅ»¯µÄµÄ¾ØÕóÁ´È¡×î¼Ñ¼ÓÀ¨ºÅÎ»ÖÃÏà³Ë
-		 * Í³¼ÆÏûºÄÊ±¼äºÍ¹²¼ÆµÄ¼Ó·¨´ÎÊı
+		/**ä¼˜åŒ–çš„çš„çŸ©é˜µé“¾å–æœ€ä½³åŠ æ‹¬å·ä½ç½®ç›¸ä¹˜
+		 * ç»Ÿè®¡æ¶ˆè€—æ—¶é—´å’Œå…±è®¡çš„åŠ æ³•æ¬¡æ•°
 		 */
 		long startNomal = System.nanoTime();
 		demo.optimizedMutiplyMatixChain(demo.getMatrixChain());
@@ -20,13 +20,13 @@ public class MatrixChainMuitiplyTest {
 		System.out.println("OptimizedMutiplyMatixChain Method totally costs  "+(endNomal-startNomal)+"  nanoseconds");
 		System.out.println("OptimizedMutiplyMatixChain Method caluclating times is: "+Matrix.getCount()+" times");
 		
-		//½«Í³¼ÆÔËËã´ÎÊı×ÜÊı¹é0
+		//å°†ç»Ÿè®¡è¿ç®—æ¬¡æ•°æ€»æ•°å½’0
 		Matrix.setCount(0);
 		
 		System.out.println("---------------------");
 		
-		/**Õı³£µÄ¾ØÕóÁ´Ö±½ÓÏà³Ë
-		 * Í³¼ÆÏûºÄÊ±¼äºÍ¹²¼ÆµÄ¼Ó·¨´ÎÊı
+		/**æ­£å¸¸çš„çŸ©é˜µé“¾ç›´æ¥ç›¸ä¹˜
+		 * ç»Ÿè®¡æ¶ˆè€—æ—¶é—´å’Œå…±è®¡çš„åŠ æ³•æ¬¡æ•°
 		 */
 		startNomal = System.nanoTime();
 		demo.mutiplyMatrixChain(demo.getMatrixChain());

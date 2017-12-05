@@ -1,22 +1,22 @@
 package javaSe.special.enums;
 /**
- * ²âÊÔÃ¶¾ÙµÄÌØĞÔ<br>
+ * æµ‹è¯•æšä¸¾çš„ç‰¹æ€§<br>
  * @author ppf@jiumao.org
- * @date 2017Äê1ÔÂ17ÈÕ
+ * @date 2017å¹´1æœˆ17æ—¥
  */
 public enum Color {
-	RED("ºìÉ«", 3), GREEN("ÂÌÉ«", 2), BLUE("À¶É«", 1);
-	// ³ÉÔ±±äÁ¿
+	RED("çº¢è‰²", 3), GREEN("ç»¿è‰²", 2), BLUE("è“è‰²", 1);
+	// æˆå‘˜å˜é‡
 	private String name;
 	private int index;
-	// ¹¹Ôì·½·¨
+	// æ„é€ æ–¹æ³•
 	Color(String name, int index) {
 		this.name = name;
 		this.index = index;
 	}
 	private Color() {
 	}
-	// ÆÕÍ¨·½·¨ Óë ÆÕÍ¨javaÀàÃ»ÓĞÇø±ğ
+	// æ™®é€šæ–¹æ³• ä¸ æ™®é€šjavaç±»æ²¡æœ‰åŒºåˆ«
 	public static String getName(int index) {
 		for (Color c : Color.values()) {
 			if (c.index == index) {

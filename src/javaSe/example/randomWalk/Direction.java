@@ -1,22 +1,22 @@
 package javaSe.example.randomWalk;
 
 /**
- * ²ÉÓÃÉú³ÉÒ»¸öËæ»úÊý£¬ºÍ4È¡ÓàµÃµ½ËÄ¸ö·½Î»µÄÊý×Ö±íÊ¾À´±íÊ¾Ëæ»ú·½ÏòµÄÑ¡Ôñ
+ * é‡‡ç”¨ç”Ÿæˆä¸€ä¸ªéšæœºæ•°ï¼Œå’Œ4å–ä½™å¾—åˆ°å››ä¸ªæ–¹ä½çš„æ•°å­—è¡¨ç¤ºæ¥è¡¨ç¤ºéšæœºæ–¹å‘çš„é€‰æ‹©
  * @author liuyuchen
  *
  */
 public class Direction {
 	/**
-	 * Éú³ÉÒ»¸ö1µ½100µÄÒ»¸öËæ»úÊý(Ô­ÒòÔÚÓÚ100ÊÇ4µÄ±¶Êý£¬ÕâÑù¸ÅÂÊÏàµÈ)
+	 * ç”Ÿæˆä¸€ä¸ª1åˆ°100çš„ä¸€ä¸ªéšæœºæ•°(åŽŸå› åœ¨äºŽ100æ˜¯4çš„å€æ•°ï¼Œè¿™æ ·æ¦‚çŽ‡ç›¸ç­‰)
 	 */
 	int rand = (int)(Math.random()*100 + 1);
 	/**
-	 * µÃµ½Ò»¸ö1µ½4µÄÊý´ú±í·½Ïò
-	 * 1£º¶«
-	 * 2£ºÄÏ
-	 * 3£ºÎ÷
-	 * 4£º±±
-	 * ·µ»Ø·½ÏòÈ¡Öµ
+	 * å¾—åˆ°ä¸€ä¸ª1åˆ°4çš„æ•°ä»£è¡¨æ–¹å‘
+	 * 1ï¼šä¸œ
+	 * 2ï¼šå—
+	 * 3ï¼šè¥¿
+	 * 4ï¼šåŒ—
+	 * è¿”å›žæ–¹å‘å–å€¼
 	 */
 	public int direction() {
 		return (rand % 4 +1);

@@ -3,7 +3,7 @@ package javaSe.basic.dataStructure.matrix;
 import java.io.*;
 import java.util.*;
 
-class Matrix // ¶¨Òå¾ØÕó½á¹¹
+class Matrix // å®šä¹‰çŸ©é˜µç»“æ„
 {
 	public int[][] m ;
 	public Matrix() {
@@ -16,7 +16,7 @@ class Matrix // ¶¨Òå¾ØÕó½á¹¹
 
 public class StrassenMatrix {
 	public int IfIsEven(int n)
-	{// ÅĞ¶ÏÊäÈë¾ØÕó½×ÊıÊÇ·ñÎª2^k
+	{// åˆ¤æ–­è¾“å…¥çŸ©é˜µé˜¶æ•°æ˜¯å¦ä¸º2^k
 		int a = 0, temp = n;
 		while (temp % 2 == 0) {
 			if (temp % 2 == 0)
@@ -31,7 +31,7 @@ public class StrassenMatrix {
 
 	public void Divide(Matrix d, Matrix d11, Matrix d12, Matrix d21,
 			Matrix d22, int n)
-	{// ·Ö½â¾ØÕó
+	{// åˆ†è§£çŸ©é˜µ
 		int i, j;
 		for (i = 1; i <= n; i++)
 			for (j = 1; j <= n; j++) {
@@ -43,7 +43,7 @@ public class StrassenMatrix {
 	}
 
 	public Matrix Merge(Matrix a11, Matrix a12, Matrix a21, Matrix a22, int n)
-	{// ºÏ²¢¾ØÕó
+	{// åˆå¹¶çŸ©é˜µ
 		int i, j;
 		Matrix a = new Matrix(n);
 		for (i = 1; i <= n; i++)
@@ -57,7 +57,7 @@ public class StrassenMatrix {
 	}
 
 	public Matrix TwoMatrixMultiply(Matrix x, Matrix y)
-	{ // ½×ÊıÎª2µÄ¾ØÕó³Ë·¨
+	{ // é˜¶æ•°ä¸º2çš„çŸ©é˜µä¹˜æ³•
 		int m1, m2, m3, m4, m5, m6, m7;
 		Matrix z = new Matrix();
 
@@ -76,7 +76,7 @@ public class StrassenMatrix {
 	}
 
 	public Matrix MatrixPlus(Matrix f, Matrix g, int n) 
-	{// ¾ØÕó¼Ó·¨
+	{// çŸ©é˜µåŠ æ³•
 		int i, j;
 		Matrix h = new Matrix();
 		for (i = 1; i <= n; i++)
@@ -86,7 +86,7 @@ public class StrassenMatrix {
 	}
 
 	public Matrix MatrixMinus(Matrix f, Matrix g, int n) 
-	{// ¾ØÕó¼õ·¨·½·¨
+	{// çŸ©é˜µå‡æ³•æ–¹æ³•
 		int i, j;
 		Matrix h = new Matrix();
 		for (i = 1; i <= n; i++)
@@ -96,7 +96,7 @@ public class StrassenMatrix {
 	}
 
 	public Matrix MatrixMultiply(Matrix a, Matrix b, int n) 
-	{// ¾ØÕó³Ë·¨·½·¨
+	{// çŸ©é˜µä¹˜æ³•æ–¹æ³•
 		int k;
 		Matrix a11, a12, a21, a22;
 		a11 = new Matrix(n);
@@ -122,7 +122,7 @@ public class StrassenMatrix {
 		} else {
 			k = n / 2;
 			/*
-			 * ²ğ·ÖA¡¢B¡¢C¾ØÕó
+			 * æ‹†åˆ†Aã€Bã€CçŸ©é˜µ
 			 */
 			Divide(a, a11, a12, a21, a22, k); 
 			Divide(b, b11, b12, b21, b22, k);
@@ -143,7 +143,7 @@ public class StrassenMatrix {
 			c21 = MatrixPlus(m3, m4, k);
 			c22 = MatrixMinus(MatrixMinus(MatrixPlus(m5, m1, k), m3, k), m7, k);
 
-			// ºÏ²¢C¾ØÕó
+			// åˆå¹¶CçŸ©é˜µ
 			c = Merge(c11, c12, c21, c22, k); 
 			return c;
 		}
@@ -172,36 +172,36 @@ public class StrassenMatrix {
 		// Matrix A, B, C, D;
 		Matrix A, B, C;
 		Scanner in = new Scanner(System.in);
-		System.out.print("ÊäÈë¾ØÕóµÄ½×Êı: ");
+		System.out.print("è¾“å…¥çŸ©é˜µçš„é˜¶æ•°: ");
 		n = in.nextInt();
 		A = new Matrix(n);
 		B = new Matrix(n);
 		C = new Matrix(n);
 		// D = new matrix();
 		if (instance.IfIsEven(n) == 0) {
-			System.out.println("¾ØÕóA:");
+			System.out.println("çŸ©é˜µA:");
 			A = instance.GetMatrix(A, n);
 			SimpleMatrix.printResult(A.m);
-			System.out.println("¾ØÕóB:");
+			System.out.println("çŸ©é˜µB:");
 			B = instance.GetMatrix(B, n);
 			SimpleMatrix.printResult(B.m);
 			if (n == 1)
-				C.m[1][1] = A.m[1][1] * B.m[1][1]; // ¾ØÕó½×ÊıÎª1Ê±µÄÌØÊâ´¦Àí
+				C.m[1][1] = A.m[1][1] * B.m[1][1]; // çŸ©é˜µé˜¶æ•°ä¸º1æ—¶çš„ç‰¹æ®Šå¤„ç†
 			else {
 				long startTime = new Date().getTime();
 				C = instance.MatrixMultiply(A, B, n);
 				long finishTime = System.currentTimeMillis();
-				System.out.println("¼ÆËãÍê³É,ÓÃÊ±" + (finishTime - startTime) + "ºÁÃë");
+				System.out.println("è®¡ç®—å®Œæˆ,ç”¨æ—¶" + (finishTime - startTime) + "æ¯«ç§’");
 			}
-			System.out.println("Strassen¾ØÕóCÎª:");
+			System.out.println("StrassençŸ©é˜µCä¸º:");
 			SimpleMatrix.printResult(C.m);
 			/*
 			 * D = instance.UsualMatrixMultiply(A, B, D, n);
-			 * System.out.println("ÆÕÍ¨³Ë·¨¾ØÕóDÎª:"); for (i = 1; i <= n; i++) { for
+			 * System.out.println("æ™®é€šä¹˜æ³•çŸ©é˜µDä¸º:"); for (i = 1; i <= n; i++) { for
 			 * (j = 1; j <= n; j++) System.out.print(D.m[i][j] + " ");
 			 * System.out.println(); }
 			 */
 		} else
-			System.out.println("ÊäÈëµÄ½×Êı²»ÊÇ2µÄN´Î·½");
+			System.out.println("è¾“å…¥çš„é˜¶æ•°ä¸æ˜¯2çš„Næ¬¡æ–¹");
 	}
 }

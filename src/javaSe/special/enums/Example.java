@@ -3,12 +3,12 @@ package javaSe.special.enums;
 public class Example {
 
 	public static boolean isNum(String s) {
-		// °Ñ×Ö·û´®²ð³Éµ¥¸ö×Ö·ûÊý×é
+		// æŠŠå­—ç¬¦ä¸²æ‹†æˆå•ä¸ªå­—ç¬¦æ•°ç»„
 		char[] cs = s.toCharArray();
 		for (char c : cs) {
-			// Character.isDigit(c) ÅÐ¶ÏÊÇ·ñÊÇÊý×Ö
+			// Character.isDigit(c) åˆ¤æ–­æ˜¯å¦æ˜¯æ•°å­—
 			if (!(c >= '0' && c <= '9')) {
-				// ÅÐ¶Ïµ¥¸ö×Ö·ûÊÇ·ñÔÚ0-9Ö®¼ä
+				// åˆ¤æ–­å•ä¸ªå­—ç¬¦æ˜¯å¦åœ¨0-9ä¹‹é—´
 				return false;
 			}
 		}

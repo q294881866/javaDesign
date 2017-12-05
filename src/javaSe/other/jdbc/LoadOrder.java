@@ -1,21 +1,21 @@
 package javaSe.other.jdbc;
 /**
- * ½éÉÜJava¸¸Àà×ÓÀà¸÷ÖÖ·½·¨¼ÓÔØË³Ğò
+ * ä»‹ç»Javaçˆ¶ç±»å­ç±»å„ç§æ–¹æ³•åŠ è½½é¡ºåº
  * @author Administrator
  *
  */
 public class LoadOrder {
 
 	  static {  
-	        System.out.println("¸¸Àà--¾²Ì¬´úÂë¿é");  
+	        System.out.println("çˆ¶ç±»--é™æ€ä»£ç å—");  
 	    }  
 	  
 	    public LoadOrder() {  
-	        System.out.println("¸¸Àà--¹¹Ôìº¯Êı");  
+	        System.out.println("çˆ¶ç±»--æ„é€ å‡½æ•°");  
 	    }  
 	  
 	    {  
-	        System.out.println("¸¸Àà--·Ç¾²Ì¬´úÂë¿é");  
+	        System.out.println("çˆ¶ç±»--éé™æ€ä»£ç å—");  
 	    }  
 	  
 	    public static void main(String[] args) {  
@@ -25,14 +25,14 @@ public class LoadOrder {
 	  
 	class child extends LoadOrder {  
 	    static {  
-	        System.out.println("×ÓÀà--¾²Ì¬´úÂë¿é");  
+	        System.out.println("å­ç±»--é™æ€ä»£ç å—");  
 	    }  
 	    {  
-	        System.out.println("×ÓÀà--·Ç¾²Ì¬´úÂë¿é");  
+	        System.out.println("å­ç±»--éé™æ€ä»£ç å—");  
 	    }  
 	  
 	    public child() {  
-	        System.out.println("×ÓÀà--¹¹Ôìº¯Êı");  
+	        System.out.println("å­ç±»--æ„é€ å‡½æ•°");  
 	    }  
 	
 }
