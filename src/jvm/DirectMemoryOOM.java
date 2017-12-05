@@ -11,7 +11,7 @@ import net.sf.cglib.proxy.MethodProxy;
 /**
  * VM Args: -Xmx20m -XX:MaxDirectMemorySize=10m
  * @author ppf@jiumao.org
- * @date 2017Äê1ÔÂ11ÈÕ
+ * @date 2017å¹´1æœˆ11æ—¥
  */
 public class DirectMemoryOOM {
 	private static final int _1MB =1024*1024;

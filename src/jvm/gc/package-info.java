@@ -1,8 +1,8 @@
 /**
- * gcÏà¹ØÎÊÌâ
+ * gcç›¸å…³é—®é¢˜
  */
 /**
  * @author ppf@jiumao.org
- * @date 2017Äê1ÔÂ11ÈÕ 
+ * @date 2017å¹´1æœˆ11æ—¥ 
  */
 package jvm.gc;

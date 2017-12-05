@@ -4,20 +4,20 @@ public class CopyOfParent {
 	
 	private String base = "base";
 	static {
-		System.out.println("¸¸Àà¾²Ì¬´úÂë¿é");
+		System.out.println("çˆ¶ç±»é™æ€ä»£ç å—");
 	}
 	{
-		System.out.println("¸¸Àà´úÂë¿é");
+		System.out.println("çˆ¶ç±»ä»£ç å—");
 	}
 
 	public CopyOfParent() {
-		System.out.println("¸¸ÀàBaseµÄ¹¹Ôì·½·¨±»µ÷ÓÃÁË£¡");
-		System.out.println("¸¸ÀàBaseµÄ³ÉÔ±±äÁ¿baseName±»³õÊ¼»¯Îª" + base);
+		System.out.println("çˆ¶ç±»Baseçš„æ„é€ æ–¹æ³•è¢«è°ƒç”¨äº†ï¼");
+		System.out.println("çˆ¶ç±»Baseçš„æˆå‘˜å˜é‡baseNameè¢«åˆå§‹åŒ–ä¸º" + base);
 		callName();
 	}
 
 	public void callName() {
-		System.out.println("¸¸ÀàBaseµÄcallName()·½·¨±»µ÷ÓÃÁË£¡");
+		System.out.println("çˆ¶ç±»Baseçš„callName()æ–¹æ³•è¢«è°ƒç”¨äº†ï¼");
 		System.out.println(base);
 	}
 
@@ -25,19 +25,19 @@ public class CopyOfParent {
 		static final String SUB_BASE="SUB_BASE"; 
 		private String subString = "sub";
 		static {
-			System.out.println("×ÓÀà¾²Ì¬´úÂë¿é");
+			System.out.println("å­ç±»é™æ€ä»£ç å—");
 		}
 		{
-			System.out.println("×ÓÀà´úÂë¿é");
+			System.out.println("å­ç±»ä»£ç å—");
 		}
 
 		public Sub() {
-			System.out.println("×ÓÀà¹¹Ôì·½·¨");
+			System.out.println("å­ç±»æ„é€ æ–¹æ³•");
 		}
 
 
 		public void callName() {
-			System.out.println("×ÓÀàSubµÄcallName()·½·¨");
+			System.out.println("å­ç±»Subçš„callName()æ–¹æ³•");
 			System.out.println(subString);
 			System.out.println(SUB_BASE);
 		}

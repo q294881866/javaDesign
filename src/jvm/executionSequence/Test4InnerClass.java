@@ -4,9 +4,9 @@ public class Test4InnerClass {
 
 	
 	public static void main(String[] args) {
-		//¾²Ì¬µÄÄÚ²¿Àà
+		//é™æ€çš„å†…éƒ¨ç±»
 		new Parent.Sub().call();
-		//·Ç¾²Ì¬µÄÄÚ²¿Àà
+		//éé™æ€çš„å†…éƒ¨ç±»
 //		new Parent().new Sub().call();
 	}
 }

@@ -3,26 +3,26 @@ package jvm.executionSequence;
 public class Copy_2_of_Parent {
 	
 	static {
-		System.out.println("¸¸Àà¾²Ì¬´úÂë¿é");
+		System.out.println("çˆ¶ç±»é™æ€ä»£ç å—");
 	}
 	{
-		System.out.println("¸¸Àà´úÂë¿é");
+		System.out.println("çˆ¶ç±»ä»£ç å—");
 	}
 
 	public Copy_2_of_Parent() {
-		System.out.println("¸¸Àà¹¹Ôì·½·¨");
+		System.out.println("çˆ¶ç±»æ„é€ æ–¹æ³•");
 	}
 
 	static class Sub extends Copy_2_of_Parent {
 		static {
-			System.out.println("×ÓÀà¾²Ì¬´úÂë¿é");
+			System.out.println("å­ç±»é™æ€ä»£ç å—");
 		}
 		{
-			System.out.println("×ÓÀà´úÂë¿é");
+			System.out.println("å­ç±»ä»£ç å—");
 		}
 
 		public Sub() {
-			System.out.println("×ÓÀà¹¹Ôì·½·¨");
+			System.out.println("å­ç±»æ„é€ æ–¹æ³•");
 		}
 	}
 

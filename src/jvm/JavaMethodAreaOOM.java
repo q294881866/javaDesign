@@ -8,9 +8,9 @@ import net.sf.cglib.proxy.MethodProxy;
 
 /**
  * VM Args: -XX:PermSize=10M -XX:MaxPermSize=10m
- * <br>Õâ¸öÊ¹ÓÃCGLib×Ö½ÚÂë¼¼Êõ
+ * <br>è¿™ä¸ªä½¿ç”¨CGLibå­—èŠ‚ç æŠ€æœ¯
  * @author ppf@jiumao.org
- * @date 2017Äê1ÔÂ11ÈÕ
+ * @date 2017å¹´1æœˆ11æ—¥
  */
 public class JavaMethodAreaOOM {
 	

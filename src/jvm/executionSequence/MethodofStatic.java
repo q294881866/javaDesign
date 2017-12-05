@@ -29,8 +29,8 @@ public class MethodofStatic {
 		while (Test.threadCount != 0) {
 			Thread.sleep(1 * 1000);
 		}
-		System.out.println("¶ÔÏó·½·¨Ö´ĞĞ´ÎÊı£º" + ms.obj+ ms.j);
-		System.out.println("¾²Ì¬·½·¨Ö´ĞĞ´ÎÊı£º" + ms.sta+ ms.i);// ¾²Ì¬ÒªÓÃÀàµ÷ÓÃ£¬²»¹æ·¶
+		System.out.println("å¯¹è±¡æ–¹æ³•æ‰§è¡Œæ¬¡æ•°ï¼š" + ms.obj+ ms.j);
+		System.out.println("é™æ€æ–¹æ³•æ‰§è¡Œæ¬¡æ•°ï¼š" + ms.sta+ ms.i);// é™æ€è¦ç”¨ç±»è°ƒç”¨ï¼Œä¸è§„èŒƒ
 	}
 }
 

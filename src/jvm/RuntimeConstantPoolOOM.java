@@ -7,14 +7,14 @@ import java.util.List;
  * VM Args: -XX:PermSize=10M -XX:MaxPermSize=10m
  * 
  * @author ppf@jiumao.org
- * @date 2017Äê1ÔÂ11ÈÕ
+ * @date 2017å¹´1æœˆ11æ—¥
  */
 public class RuntimeConstantPoolOOM {
 	
 	public static void inJDK6() {
-		//±ÜÃâFull GC»ØÊÕ³£Á¿³ØĞĞÎª£¬¿ÉÒÔ°Ñ×Ö·û´®·Åµ½¼¯ºÏÖĞ
+		//é¿å…Full GCå›æ”¶å¸¸é‡æ± è¡Œä¸ºï¼Œå¯ä»¥æŠŠå­—ç¬¦ä¸²æ”¾åˆ°é›†åˆä¸­
 		List<String> list = new ArrayList<String>();
-		//10mµÄPermSizeÔÚInteger·¶Î§ÄÚ×ã¹»²úÉúOOMÁË
+		//10mçš„PermSizeåœ¨IntegerèŒƒå›´å†…è¶³å¤Ÿäº§ç”ŸOOMäº†
 		int i=0;
 		while (true) {
 			list.add(String.valueOf(i++).intern());
@@ -26,7 +26,7 @@ public class RuntimeConstantPoolOOM {
 	 * in jdk1.7 1.8 true false
 	 */
 	public static void internTest() {
-		String s1 = new StringBuilder("¼ÆËã»ú").append("Èí¼ş").toString();
+		String s1 = new StringBuilder("è®¡ç®—æœº").append("è½¯ä»¶").toString();
 		System.out.println(s1==s1.intern());
 		
 		String s2 = new StringBuilder("ja").append("va").toString();

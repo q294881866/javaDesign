@@ -1,8 +1,8 @@
 package jvm.ref;
 /**
- * ÒıÓÃÏà¹ØµÄÀı×Ó
+ * å¼•ç”¨ç›¸å…³çš„ä¾‹å­
  * @author ppf@jiumao.org
- * @date 2017Äê1ÔÂ18ÈÕ
+ * @date 2017å¹´1æœˆ18æ—¥
  */
 public class Test {
 	

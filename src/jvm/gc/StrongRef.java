@@ -7,26 +7,26 @@ import java.util.ArrayList;
 import java.util.WeakHashMap;
 
 /**
- * Ç¿ÒıÓÃÊ¾Àı<br>
+ * å¼ºå¼•ç”¨ç¤ºä¾‹<br>
  * 
  * @author ppf@jiumao.org
- * @date 2017Äê1ÔÂ19ÈÕ
+ * @date 2017å¹´1æœˆ19æ—¥
  */
 public class StrongRef {
 
 	public static void main(String[] args) {
 		StrongRef sRef = new StrongRef();
-		sRef = null;// ÕâÃ»Ê²Ã´ÒâÒå
+		sRef = null;// è¿™æ²¡ä»€ä¹ˆæ„ä¹‰
 		// sRef ... do something
 	}
 
 	public static void SoftRef() {
 		String s1 = "abc";
-		// ÈíÒıÓÃ
+		// è½¯å¼•ç”¨
 		SoftReference<String> softRef = new SoftReference<String>(s1);
-		// ÈõÒıÓÃ
+		// å¼±å¼•ç”¨
 		WeakReference<String> weakRef = new WeakReference<String>(s1);
-		// ĞéÒıÓÃ
+		// è™šå¼•ç”¨
 		PhantomReference<String> noneRef = new PhantomReference<String>(s1,null);
 		
 	}

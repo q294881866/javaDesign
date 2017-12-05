@@ -1,8 +1,8 @@
 /**
- * javaÖ´ĞĞË³Ğò
+ * javaæ‰§è¡Œé¡ºåº
  */
 /**
  * @author ppf@jiumao.org
- * @date 2017Äê1ÔÂ9ÈÕ 
+ * @date 2017å¹´1æœˆ9æ—¥ 
  */
 package jvm.executionSequence;

@@ -2,14 +2,14 @@ package jvm.gc;
 
 
 /**
- * ÒıÓÃ¼ÆÊıÆ÷Ëã·¨²»ÄÜ½â¾öµÄÎÊÌâ£º<br>
- * 1.Ñ­»·ÒıÓÃ -XX:+PrintGCDetails
+ * å¼•ç”¨è®¡æ•°å™¨ç®—æ³•ä¸èƒ½è§£å†³çš„é—®é¢˜ï¼š<br>
+ * 1.å¾ªç¯å¼•ç”¨ -XX:+PrintGCDetails
  */
 public class CircleRef {
 	private static final int _1MB = 1024*1024;
 	public Object instance = null;
 	/**
-	 * Õâ¸ö³ÉÔ±ÊôĞÔµÄÎ¨Ò»ÒâÒå¾ÍÊÇÕ¼µãÄÚ´æ£¬ÒÔ±ãÔÚGCÈÕÖ¾ÖĞ¿´ÊÇ·ñ±»»ØÊÕ¹ı
+	 * è¿™ä¸ªæˆå‘˜å±æ€§çš„å”¯ä¸€æ„ä¹‰å°±æ˜¯å ç‚¹å†…å­˜ï¼Œä»¥ä¾¿åœ¨GCæ—¥å¿—ä¸­çœ‹æ˜¯å¦è¢«å›æ”¶è¿‡
 	 */
 	private byte[] bigSize = new byte[2*_1MB];
 	

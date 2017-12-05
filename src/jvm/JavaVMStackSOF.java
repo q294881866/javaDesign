@@ -2,7 +2,7 @@ package jvm;
 /**
  * VM Args:-Xss128k
  * @author ppf@jiumao.org
- * @date 2017Äê1ÔÂ10ÈÕ
+ * @date 2017å¹´1æœˆ10æ—¥
  */
 public class JavaVMStackSOF {
 	private int stackLength=1;

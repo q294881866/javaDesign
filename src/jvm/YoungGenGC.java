@@ -5,11 +5,11 @@ import java.util.List;
 
 /**
  * VM Args:-Xms20m -Xmx20m -XX:+HeapDumpOnOutOfMemoryError<br>
- * ²ÎÊıÒâÒåjava¶Ñ´óĞ¡20m£¬×îĞ¡ÖµºÍ×î´óÖµÒ»Ñù±ÜÃâ×Ô¶¯À©Õ¹¡£ 
- * µ±ÄÚ´æÒç³öÊ±Dump³öµ±Ç°µÄÄÚ´æ¶Ñ×ª´¢¿ìÕÕ
+ * å‚æ•°æ„ä¹‰javaå †å¤§å°20mï¼Œæœ€å°å€¼å’Œæœ€å¤§å€¼ä¸€æ ·é¿å…è‡ªåŠ¨æ‰©å±•ã€‚ 
+ * å½“å†…å­˜æº¢å‡ºæ—¶Dumpå‡ºå½“å‰çš„å†…å­˜å †è½¬å‚¨å¿«ç…§
  * 
  * @author ppf@jiumao.org
- * @date 2017Äê1ÔÂ10ÈÕ
+ * @date 2017å¹´1æœˆ10æ—¥
  */
 public class YoungGenGC {
 	public static void main(String[] args) {
