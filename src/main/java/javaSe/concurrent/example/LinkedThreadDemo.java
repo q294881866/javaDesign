@@ -16,41 +16,24 @@ import java.util.concurrent.locks.LockSupport;
  * @author ppf@jiumao.org
  * @date 2017年9月25日
  */
-public class AliDemo2 implements Runnable {
+public class LinkedThreadDemo implements Runnable {
+    final Set<Integer> primeNumber = new HashSet<>();
 
     int end;
     volatile int i;
     Node exec;
 
-    public AliDemo2(int begin, int end) {
+    public LinkedThreadDemo(int begin, int end) {
         super();
         this.i = begin;
         this.end = end;
     }
 
 
-    final static Set<Integer> PrimeNumber = new HashSet<>();
-    public static boolean isPrimeNumber(int c) {
-        if (0 == c)
-            return false;
-        if (1 == c)
-            return true;
 
-        if (PrimeNumber.contains(c)) {
-            return true;
-        }
-        for (Integer prime : PrimeNumber) {
-            if (c % prime == 0) {
-                return false;
-            }
-        }
-        PrimeNumber.add(c);
-        return true;
-    }
-    
     public static void main(String[] args) throws Exception {
 
-        AliDemo2 demo = new AliDemo2(0, 100);
+        LinkedThreadDemo demo = new LinkedThreadDemo(0, 100);
 
         Thread a = new Thread(demo, "A");
         Node A = new Node(true, a);
@@ -72,16 +55,14 @@ public class AliDemo2 implements Runnable {
     @Override
     public void run() {
         for (; i < end + 1;) {
-            if (Thread.currentThread() == exec.thread && isPrimeNumber(i) == exec.status) {// A线程
+            if (Thread.currentThread() == exec.thread && MathUtil.isPrime(i, primeNumber) == exec.status) {// A线程
                 System.out.println(Thread.currentThread().getName() + " : " + i);
                 i++;
-            }
-            else if (Thread.currentThread() == exec.next.thread && isPrimeNumber(i) == exec.next.status) {// B线程
+            } else if (Thread.currentThread() == exec.next.thread && MathUtil.isPrime(i, primeNumber) == exec.next.status) {// B线程
                 System.out.println(Thread.currentThread().getName() + " : " + i);
                 i++;
-            }
-            else {// 状态不匹配
-                Thread unpark = Thread.currentThread() == exec.thread? exec.next.thread:exec.thread;
+            } else {// 状态不匹配
+                Thread unpark = Thread.currentThread() == exec.thread ? exec.next.thread : exec.thread;
                 LockSupport.unpark(unpark);
                 LockSupport.park();
             }

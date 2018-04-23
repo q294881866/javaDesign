@@ -15,48 +15,28 @@ import java.util.concurrent.TimeUnit;
  * @author ppf@jiumao.org
  * @date 2017年9月25日
  */
-public class AliDemo implements Runnable {
-    final static Set<Integer> PrimeNumber = new HashSet<>();
-
+public class ObjectLockDemo implements Runnable {
+    final Set<Integer> primeNumber = new HashSet<>();
     int end;
     volatile int i;
     Node exec;
     Object lock = new Object();
 
 
-    public AliDemo(int begin, int end) {
+    public ObjectLockDemo(int begin, int end) {
         super();
         this.i = begin;
         this.end = end;
     }
 
 
-    public static boolean isPrimeNumber(int c) {
-        if (0 == c)
-            return false;
-        if (1 == c)
-            return true;
-
-        if (PrimeNumber.contains(c)) {
-            return true;
-        }
-        for (Integer prime : PrimeNumber) {
-            if (c % prime == 0) {
-                return false;
-            }
-        }
-        PrimeNumber.add(c);
-        return true;
-    }
-
-
     public static void main(String[] args) throws Exception {
-        
-        AliDemo demo = new AliDemo(0, 100);
 
-        Thread a = new Thread(demo,"A");
+        ObjectLockDemo demo = new ObjectLockDemo(0, 100);
+
+        Thread a = new Thread(demo, "A");
         Node A = new Node(true, a);
-        Thread b = new Thread(demo,"B");
+        Thread b = new Thread(demo, "B");
         Node B = new Node(false, b);
 
         A.next = B;
@@ -64,7 +44,7 @@ public class AliDemo implements Runnable {
 
         a.start();
         b.start();
-        for(;;){
+        for (;;) {
             TimeUnit.SECONDS.sleep(1);
         }
     }
@@ -73,20 +53,19 @@ public class AliDemo implements Runnable {
     @Override
     public void run() {
         synchronized (lock) {
-            for (; i < end+1; ) {
-                if (Thread.currentThread() == exec.thread && isPrimeNumber(i) == exec.status) {// A 线程
-                    System.out.println(Thread.currentThread().getName()+" : "+i);
+            for (; i < end + 1;) {
+                if (Thread.currentThread() == exec.thread && MathUtil.isPrime(i, primeNumber) == exec.status) {// A
+                    // 线程
+                    System.out.println(Thread.currentThread().getName() + " : " + i);
                     i++;
-                }
-                else if (Thread.currentThread() == exec.next.thread && isPrimeNumber(i) == exec.next.status) {// B 线程
-                    System.out.println(Thread.currentThread().getName()+" : "+i);
+                } else if (Thread.currentThread() == exec.next.thread && MathUtil.isPrime(i, primeNumber) == exec.next.status) {// B
+                    // 线程
+                    System.out.println(Thread.currentThread().getName() + " : " + i);
                     i++;
-                }
-                else {// 状态不匹配
+                } else {// 状态不匹配
                     try {
                         lock.wait();
-                    }
-                    catch (InterruptedException e) {
+                    } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
                 }
