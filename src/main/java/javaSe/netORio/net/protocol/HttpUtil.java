@@ -1,6 +1,4 @@
-package com.weibo.api.admin.recommend.domain;
-
-import com.alibaba.fastjson.JSONObject;
+package javaSe.netORio.net.protocol;
 
 import sun.misc.BASE64Encoder;
 
@@ -13,6 +11,8 @@ import java.net.URLConnection;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
+
+import com.alibaba.fastjson.JSONObject;
 
 /**
  * 简单的http类
