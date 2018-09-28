@@ -16,7 +16,6 @@ public class TreeNode implements Comparable<TreeNode> {
 		this.data = newData;
 	}
 
-	@Override
 	public int compareTo(TreeNode o) {
 		return this.data-o.data;
 	}
