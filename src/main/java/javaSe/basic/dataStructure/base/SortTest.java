@@ -7,7 +7,8 @@ import org.junit.Test;
 
 /**
  * 注意越界检查
- * 
+ * @see <a href="https://www.cnblogs.com/onepixel/p/7674659.html">算法blog</a>
+ *
  * @author ppf
  * @since 2017年3月31日
  */
@@ -51,6 +52,11 @@ public class SortTest {
 
     // ===========================sorting_algorithm=========================================
 
+    /**
+     * 冒泡排序。
+     *
+     * @throws Exception
+     */
     @Test
     public void bubble() throws Exception {
         Sort bubble = () -> {
@@ -125,11 +131,9 @@ public class SortTest {
         while (index1 < begin && index2 < end) {
             if (arr[index1] > arr[index2]) {
                 tmp[k++] = arr[index2++];
-            }
-            else if (arr[index1] < arr[index2]) {
+            } else if (arr[index1] < arr[index2]) {
                 tmp[k++] = arr[index1++];
-            }
-            else {// 相等全部拷贝
+            } else {// 相等全部拷贝
                 tmp[k++] = arr[index1++];
                 tmp[k++] = arr[index2++];
             }
@@ -138,8 +142,7 @@ public class SortTest {
         if (index1 < begin) {
             System.arraycopy(arr, index1, tmp, k, limit - index1);
             k += limit - index1;
-        }
-        else if (index2 < end) {// 右边数组有剩余
+        } else if (index2 < end) {// 右边数组有剩余
             System.arraycopy(arr, index2, tmp, k, limit - index2 + gap);
             k += limit - index2 + gap;
         }
@@ -152,8 +155,7 @@ public class SortTest {
             int tmp = arr[i];
             if (tmp > arr[maxIndex]) {
                 maxIndex = i;// 标注最大
-            }
-            else if (tmp < arr[littleIndex]) {
+            } else if (tmp < arr[littleIndex]) {
                 littleIndex = i;// 标注最小
             }
         }
@@ -195,8 +197,9 @@ public class SortTest {
 
 
     // =======================================static_tools==============================================
+
     /**
-     * @param base 基数，最理想比较基准
+     * @param base  基数，最理想比较基准
      * @param range 误差范围，提高基数选择效率
      * @return 基数
      */
@@ -251,7 +254,7 @@ public class SortTest {
 
 
     public static void main(String[] args) {
-        int[] arr = { 1, 3, 6 };
+        int[] arr = {1, 3, 6};
         int i = 0;
         System.out.println(arr[i++] + " | " + arr[++i]);
     }
