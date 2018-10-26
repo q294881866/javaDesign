@@ -14,26 +14,15 @@ public class TcpClient {
 	}
 
     private static void main0(String[] args) {
-        Socket s;
-        try {
-            s = new Socket(InetAddress.getLocalHost().getHostAddress(), 10002);
-        }
-        catch (IOException e) {
-           throw new RuntimeException(e);
-        }
         
-        try(ObjectOutputStream oos = new ObjectOutputStream(s.getOutputStream());){
+        try(Socket s = new Socket(InetAddress.getLocalHost().getHostAddress(), 10002);
+            ObjectOutputStream oos = new ObjectOutputStream(s.getOutputStream());){
+
             User u = new User("jiumao");
             u.setBirthday(new Date());
             oos.writeObject(u);
         }catch (Exception e) {
-        }finally {
-            try {
-                s.close();
-            }
-            catch (IOException e) {
-                e.printStackTrace();
-            }
         }
     }
 }
+
