@@ -12,5 +12,5 @@ public class User {
     protected String password;
     protected Boolean gender;
     protected String  email;
-    protected Integer tel;
+    protected Long tel;
 }

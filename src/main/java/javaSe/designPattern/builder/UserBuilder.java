@@ -19,24 +19,24 @@ public class UserBuilder extends User {
         private String password;
         private Boolean gender;
         private String email;
-        private Integer tel;
+        private Long tel;
 
         public Build(String userName, String password) {
             this.userName = userName;
             this.password = password;
         }
 
-        public Build setGender(Boolean gender) {
+        public Build gender(Boolean gender) {
             this.gender = gender;
             return this;
         }
 
-        public Build setEmail(String email) {
+        public Build email(String email) {
             this.email = email;
             return this;
         }
 
-        public Build setTel(Integer tel) {
+        public Build tel(Long tel) {
             this.tel = tel;
             return this;
         }
@@ -44,5 +44,10 @@ public class UserBuilder extends User {
         public User build() {
             return new UserBuilder(this);
         }
+    }
+
+    public static void main(String[] args) {
+        Build build = new Build("name","pwd");
+        User user = build.email("t@g.com").tel(18076767865L).build();
     }
 }
