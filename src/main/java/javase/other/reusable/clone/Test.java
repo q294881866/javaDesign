@@ -1,4 +1,4 @@
-package javase.other.Reusable.clone;
+package javase.other.reusable.clone;
 
 public class Test {
 

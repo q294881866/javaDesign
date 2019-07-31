@@ -1,4 +1,4 @@
-package javase.example.randomWalk;
+package javase.example.roam;
 /**
  * 下一步运算
  * 通过调用方向函数，作出下一步的运算

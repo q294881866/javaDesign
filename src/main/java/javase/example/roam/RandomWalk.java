@@ -1,4 +1,4 @@
-package javase.example.randomWalk;
+package javase.example.roam;
 
 
 public class RandomWalk {

@@ -1,4 +1,4 @@
-package javase.example.randomWalk;
+package javase.example.roam;
 
 /**
  * 采用生成一个随机数，和4取余得到四个方位的数字表示来表示随机方向的选择

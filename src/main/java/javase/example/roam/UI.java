@@ -1,4 +1,4 @@
-package javase.example.randomWalk;
+package javase.example.roam;
 /**
  * 随机游走界面<br>
  * 模仿醉汉随机走路问题
