@@ -110,6 +110,16 @@
 			<version>4.13-beta-2</version>
 			<scope>compile</scope>
 		</dependency>
+		<dependency>
+			<groupId>com.youzan</groupId>
+			<artifactId>httpasyncclient</artifactId>
+			<version>4.1.2-RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.4</version>
+		</dependency>
 
 
 	</dependencies>
