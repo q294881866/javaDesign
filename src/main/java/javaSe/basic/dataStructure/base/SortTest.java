@@ -12,7 +12,7 @@ import org.junit.Test;
  * @author ppf
  * @since 2017年3月31日
  */
-public class Sort {
+public class SortTest {
 
     private static int[] arr/* = { 2, 1, 3 } */;
     private static final int SIZE = 30;// 栈上分配
