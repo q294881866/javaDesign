@@ -1,11 +1,5 @@
 package javaSe.netORio.net.web;
 
-import com.youzan.http.impl.nio.client.CloseableHttpAsyncClient;
-import com.youzan.http.impl.nio.client.HttpAsyncClients;
-import com.youzan.http.impl.nio.conn.PoolingNHttpClientConnectionManager;
-import com.youzan.http.nio.conn.NoopIOSessionStrategy;
-import com.youzan.http.nio.conn.SchemeIOSessionStrategy;
-import com.youzan.http.nio.conn.ssl.SSLIOSessionStrategy;
 import javaSe.netORio.net.HttpConstant;
 import lombok.Getter;
 import org.apache.commons.lang3.StringUtils;
@@ -23,13 +17,19 @@ import org.apache.http.concurrent.FutureCallback;
 import org.apache.http.config.ConnectionConfig;
 import org.apache.http.config.Registry;
 import org.apache.http.config.RegistryBuilder;
+import org.apache.http.conn.ssl.SSLContexts;
 import org.apache.http.entity.ByteArrayEntity;
 import org.apache.http.entity.ContentType;
+import org.apache.http.impl.nio.client.CloseableHttpAsyncClient;
+import org.apache.http.impl.nio.client.HttpAsyncClients;
+import org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager;
 import org.apache.http.impl.nio.reactor.DefaultConnectingIOReactor;
 import org.apache.http.impl.nio.reactor.IOReactorConfig;
+import org.apache.http.nio.conn.NoopIOSessionStrategy;
+import org.apache.http.nio.conn.SchemeIOSessionStrategy;
+import org.apache.http.nio.conn.ssl.SSLIOSessionStrategy;
 import org.apache.http.nio.reactor.ConnectingIOReactor;
 import org.apache.http.protocol.HTTP;
-import org.apache.http.ssl.SSLContexts;
 import org.apache.http.util.EntityUtils;
 
 import javax.net.ssl.TrustManager;
