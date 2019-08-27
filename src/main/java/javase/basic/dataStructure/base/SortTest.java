@@ -58,13 +58,13 @@ public class SortTest {
      * @throws Exception
      */
     @Test
-    public void bubble() throws Exception {
+    public void bubble() {
         Sort bubble = () -> {
             int max;
             for (int i = 0; i < arr.length; i++) {
                 for (int j = 0; j < arr.length - i; j++) {
-                    max = arr[j];// 临时保存
-                    if (j + 1 < arr.length - i && arr[j + 1] < max) {// 交换
+                    max = arr[j];
+                    if (j + 1 < arr.length - i && arr[j + 1] < max) {
                         arr[j] = arr[j + 1];
                         arr[j + 1] = max;
                     }
@@ -76,7 +76,7 @@ public class SortTest {
 
 
     @Test
-    public void select() throws Exception {
+    public void select() {
         Sort select = () -> {
             // 遍历，找最大最小
             selectSort(0, SIZE - 1);
@@ -89,7 +89,7 @@ public class SortTest {
 
 
     @Test
-    public void merge() throws Exception {
+    public void merge() {
         Sort merge = () -> {
             // 分组 按数组长度分组，先2 2^2 2^4 直到 >length/2,依次合并数组
             for (gap = 1; arr.length / gap > 0; gap = gap << 1) {
@@ -168,7 +168,7 @@ public class SortTest {
 
 
     @Test
-    public void insert() throws Exception {
+    public void insert() {
         Sort insert = () -> {
             // 遍历元素并插入
             for (int i = 1; i < arr.length; i++) {
@@ -188,7 +188,7 @@ public class SortTest {
 
 
     @Test
-    public void quick() throws Exception {
+    public void quick() {
         Sort quick = () -> {
             quickSort(0, SIZE - 1);
         };
@@ -229,7 +229,7 @@ public class SortTest {
             // 从后往前比较
             while (stop > start && arr[stop] >= key)
                 stop--;
-            if (arr[stop] <= key) { // 等于？ 能否优化
+            if (arr[stop] <= key) {
                 swap(arr, start, stop);
             }
             // 从前往后比较
