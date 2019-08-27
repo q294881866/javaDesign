@@ -1,4 +1,4 @@
-package javase.basic.dataStructure;
+package javase.basic.dataStructure.collection;
 
 /**
  * 模拟 链表的实现<br>

@@ -1,4 +1,4 @@
-package javase.basic.dataStructure;
+package javase.basic.dataStructure.collection;
 /**
  * 这个是比较的进一步抽象<br>
  * 把比较单独抽取出来，用户可以任意选择不同的比较器。

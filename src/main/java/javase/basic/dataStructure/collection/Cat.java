@@ -1,4 +1,4 @@
-package javase.basic.dataStructure;
+package javase.basic.dataStructure.collection;
 
 public class Cat implements java.lang.Comparable<Cat> {
 	private int height;

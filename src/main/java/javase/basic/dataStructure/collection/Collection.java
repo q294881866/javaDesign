@@ -1,4 +1,4 @@
-package javase.basic.dataStructure;
+package javase.basic.dataStructure.collection;
 /**
  * 模拟重构java数据结构<br>
  * 集合的顶级接口

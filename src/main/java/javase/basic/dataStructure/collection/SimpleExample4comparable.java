@@ -1,4 +1,4 @@
-package javase.basic.dataStructure;
+package javase.basic.dataStructure.collection;
 /**
  * 这里比较对象的value值<br>
  * 用户在实现时候可以选择任意类型的比较

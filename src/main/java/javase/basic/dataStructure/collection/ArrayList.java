@@ -1,4 +1,4 @@
-package javase.basic.dataStructure;
+package javase.basic.dataStructure.collection;
 
 /**
  * 模拟实现ArrayList<br>

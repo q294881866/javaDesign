@@ -1,4 +1,4 @@
-package javase.basic.dataStructure;
+package javase.basic.dataStructure.collection;
 /**
  * 模拟实现compareble接口<br>
  * 这里的比较仅仅是业务逻辑意义:<br>

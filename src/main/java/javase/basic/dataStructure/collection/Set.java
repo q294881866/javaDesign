@@ -1,4 +1,4 @@
-package javase.basic.dataStructure;
+package javase.basic.dataStructure.collection;
 /**
  * set集合的实现要保证元素的唯一性<br>
  * hashCode 和equals方法是重要的实现

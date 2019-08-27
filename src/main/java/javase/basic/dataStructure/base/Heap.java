@@ -3,8 +3,8 @@ package javase.basic.dataStructure.base;
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
 
-import javase.basic.dataStructure.Collection;
-import javase.basic.dataStructure.Iterator;
+import javase.basic.dataStructure.collection.Collection;
+import javase.basic.dataStructure.collection.Iterator;
 
 /**
  * 堆可以被看成是一棵树，如：堆排序。

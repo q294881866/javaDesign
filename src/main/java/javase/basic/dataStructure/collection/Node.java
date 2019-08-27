@@ -1,4 +1,4 @@
-package javase.basic.dataStructure;
+package javase.basic.dataStructure.collection;
 /**
  * 存储链表单位数据<br>
  * 由数据和下一个结点的引用组成<br>

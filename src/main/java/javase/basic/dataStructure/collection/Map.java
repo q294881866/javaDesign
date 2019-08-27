@@ -1,4 +1,4 @@
-package javase.basic.dataStructure;
+package javase.basic.dataStructure.collection;
 
 /**
  * 内部是一个元素是通过一个Entry(Node)实例来保存的

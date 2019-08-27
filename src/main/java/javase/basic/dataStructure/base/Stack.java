@@ -1,7 +1,7 @@
 package javase.basic.dataStructure.base;
 
-import javase.basic.dataStructure.Collection;
-import javase.basic.dataStructure.Iterator;
+import javase.basic.dataStructure.collection.Collection;
+import javase.basic.dataStructure.collection.Iterator;
 
 /**
  * 栈：先进后出的数据结构。计算机科学的基础知识

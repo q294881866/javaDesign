@@ -1,4 +1,4 @@
-package javase.basic.dataStructure;
+package javase.basic.dataStructure.collection;
 public class SimpleExample4comparator implements Comparator {
 
 	/**
