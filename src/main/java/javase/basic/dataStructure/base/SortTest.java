@@ -254,32 +254,43 @@ public class SortTest {
 
 
     @Test
-    public void heapifyTest() {
+    public void heapify() {
         Sort heapify = () -> {
-            for (int i = SIZE / 2 - 1; i >= 0; i--) {
-                heapSort(i);
+            //1.构建大顶堆
+            for (int i = arr.length / 2 - 1; i >= 0; i--) {
+                //从第一个非叶子结点从下至上，从右至左调整结构
+                adjustHeap(arr, i, arr.length);
+            }
+            //2.调整堆结构+交换堆顶元素与末尾元素
+            for (int j = arr.length - 1; j > 0; j--) {
+                //将堆顶元素与末尾元素进行交换
+                swap(arr, 0, j);
+                //重新对堆进行调整
+                adjustHeap(arr, 0, j);
             }
         };
         runTest(heapify);
     }
 
-    private void heapSort(int i) {
-        int left = 2 * i + 1;
-        int right = 2 * i + 2;
-        int largest = i;
-
-        if (left < SIZE && arr[left] > arr[largest]) {
-            largest = left;
+    public static void adjustHeap(int[] arr, int i, int length) {
+        //先取出当前元素i
+        int temp = arr[i];
+        //从i结点的左子结点开始，也就是2i+1处开始
+        for (int k = i * 2 + 1; k < length; k = k * 2 + 1) {
+            //如果左子结点小于右子结点，k指向右子结点
+            if (k + 1 < length && arr[k] < arr[k + 1]) {
+                k++;
+            }
+            //如果子节点大于父节点，将子节点值赋给父节点（不用进行交换）
+            if (arr[k] > temp) {
+                arr[i] = arr[k];
+                i = k;
+            } else {
+                break;
+            }
         }
-
-        if (right < SIZE && arr[right] > arr[largest]) {
-            largest = right;
-        }
-
-        if (largest != i) {
-            swap(arr, i, largest);
-            heapSort(largest);
-        }
+        //将temp值放到最终的位置
+        arr[i] = temp;
     }
 
 
