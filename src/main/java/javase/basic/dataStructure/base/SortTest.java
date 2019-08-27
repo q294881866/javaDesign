@@ -256,7 +256,7 @@ public class SortTest {
     @Test
     public void heapifyTest() {
         Sort heapify = () -> {
-            for (int i = (int) Math.floor(SIZE / 2); i >= 0; i--) {
+            for (int i = SIZE / 2 - 1; i >= 0; i--) {
                 heapSort(i);
             }
         };
