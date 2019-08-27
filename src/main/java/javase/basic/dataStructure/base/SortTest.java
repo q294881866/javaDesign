@@ -7,9 +7,9 @@ import org.junit.Test;
 
 /**
  * 注意越界检查
- * @see <a href="https://www.cnblogs.com/onepixel/p/7674659.html">算法blog</a>
  *
  * @author ppf
+ * @see <a href="https://www.cnblogs.com/onepixel/p/7674659.html">算法blog</a>
  * @since 2017年3月31日
  */
 public class SortTest {
@@ -253,10 +253,34 @@ public class SortTest {
     }
 
 
-    public static void main(String[] args) {
-        int[] arr = {1, 3, 6};
-        int i = 0;
-        System.out.println(arr[i++] + " | " + arr[++i]);
+    @Test
+    public void heapifyTest() {
+        Sort heapify = () -> {
+            for (int i = (int) Math.floor(SIZE / 2); i >= 0; i--) {
+                heapifySort(i);
+            }
+        };
+        runTest(heapify);
     }
+
+    private void heapifySort(int i) {
+        int left = 2 * i + 1;
+        int right = 2 * i + 2;
+        int largest = i;
+
+        if (left < SIZE && arr[left] > arr[largest]) {
+            largest = left;
+        }
+
+        if (right < SIZE && arr[right] > arr[largest]) {
+            largest = right;
+        }
+
+        if (largest != i) {
+            swap(arr, i, largest);
+            heapifySort(largest);
+        }
+    }
+
 
 }
