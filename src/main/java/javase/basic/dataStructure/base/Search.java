@@ -16,12 +16,15 @@ public class Search {
 		do {// 最后值return判断大小
 			index = (left + right) / 2;
 			tmp = arr[index];
-			if (dest > tmp) {// 大于往后找
-				left = index;// 左边界收缩
+			// 大于往后找
+			if (dest > tmp) {
+				// 左边界收缩
+				left = index;
 			} else if (dest == tmp) {
 				return index;
-			} else {// 小于往前找
-				right = index;// 右边界收缩
+			}else {// 小于往前找
+				// 右边界收缩
+				right = index;
 			}
 		} while (right - left > 1);
 		return dest > arr[index] ? index + 1 : index;
