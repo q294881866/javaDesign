@@ -257,13 +257,13 @@ public class SortTest {
     public void heapifyTest() {
         Sort heapify = () -> {
             for (int i = (int) Math.floor(SIZE / 2); i >= 0; i--) {
-                heapifySort(i);
+                heapSort(i);
             }
         };
         runTest(heapify);
     }
 
-    private void heapifySort(int i) {
+    private void heapSort(int i) {
         int left = 2 * i + 1;
         int right = 2 * i + 2;
         int largest = i;
@@ -278,7 +278,7 @@ public class SortTest {
 
         if (largest != i) {
             swap(arr, i, largest);
-            heapifySort(largest);
+            heapSort(largest);
         }
     }
 
