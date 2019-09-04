@@ -15,7 +15,7 @@ import org.junit.Test;
 public class SortTest {
 
     private static int[] arr/* = { 2, 1, 3 } */;
-    private static final int SIZE = 30;// 栈上分配
+    private static final int SIZE = 9;// 栈上分配
 
     @FunctionalInterface
     interface Sort {
@@ -273,24 +273,20 @@ public class SortTest {
     }
 
     public static void adjustHeap(int[] arr, int i, int length) {
-        //先取出当前元素i
-        int temp = arr[i];
         //从i结点的左子结点开始，也就是2i+1处开始
         for (int k = i * 2 + 1; k < length; k = k * 2 + 1) {
             //如果左子结点小于右子结点，k指向右子结点
             if (k + 1 < length && arr[k] < arr[k + 1]) {
                 k++;
             }
-            //如果子节点大于父节点，将子节点值赋给父节点（不用进行交换）
-            if (arr[k] > temp) {
-                arr[i] = arr[k];
+            //如果子节点大于父节点，将子节点值赋给父节点
+            if (arr[k] > arr[i]) {
+                swap(arr, i, k);
                 i = k;
             } else {
                 break;
             }
         }
-        //将temp值放到最终的位置
-        arr[i] = temp;
     }
 
 

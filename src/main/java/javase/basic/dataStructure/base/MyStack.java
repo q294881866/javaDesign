@@ -8,9 +8,13 @@ import java.util.List;
  * @date 2016年12月13日 <br>
  * @param <T>
  */
-public class MyStack<T> {//用JDK的ArrayList做存储
+public class MyStack<T> {
+	/**
+	 * 用JDK的ArrayList做存储
+	 */
 	private List<T> stack;
-	int count,capacity;	//记录栈顶位置
+	// 记录栈顶位置
+	int count,capacity;
 	public MyStack(int capacity) {
 		this.capacity = capacity;
 		stack = new ArrayList<T>(capacity);	//默认16大小
